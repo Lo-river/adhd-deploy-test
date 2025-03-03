@@ -13,3 +13,28 @@
 @import 'partials/index';
 @import 'partials/login';
 @import 'partials/tasks';
+
+
+
+body {
+    background-color: $primary-backgroundcolor;
+    color: $primary-textcolor;
+    font-family: $primary-font;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+
+
+  main {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
+
+
+
+ 
+  
