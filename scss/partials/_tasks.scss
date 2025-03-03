@@ -1,36 +1,3 @@
-<<<<<<< HEAD
-// * {
-//     margin: 0;
-//     padding: 0;
-//     box-sizing: border-box;
-//   }
-  
-
-  
-  header {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-top: 15px;
-    width: 100%;
-  
-    .logo {
-      width: 50px;
-    }
-  
-    .login-icon {
-      margin-top: 5%;
-      margin-left: 70%;
-      width: 30px;
-    }
-  }
-  
-  .date {
-    text-align: center;
-    font-size: 18px;
-    font-weight: 200;
-=======
 * {
   margin: 0;
   padding: 0;
@@ -105,7 +72,6 @@ z-index: 1000;
   transition: all 300ms ease-in-out;
   z-index: 1010;
   h1.todo-title {
->>>>>>> develop
     margin: 10px 0;
     font-size: 20px;
     color: #616161;
@@ -145,57 +111,6 @@ z-index: 1000;
     background: transparent;
     color: #7C7C7C;
   }
-<<<<<<< HEAD
-  /* Edit modal */
-  
-  /* Footer-stilar */
-  // .bottom-nav {
-  //   display: flex;
-  //   justify-content: space-around;
-  //   align-items: center;
-  //   position: fixed;
-  //   bottom: 0;
-  //   width: 100%;
-  //   /* height: $nav-height; */
-  //   border-top: 1px solid #ddd;
-  
-  //   .nav-item {
-  //     display: flex;
-  //     flex-direction: column;
-  //     align-items: center;
-  //     font-size: 12px;
-  //     text-decoration: none;
-  //     color: #000000;
-  //     /* margin-top: 18px; */
-  
-  //     img {
-  //       width: 24px;
-  //       height: 24px;
-  //     }
-  //   }
-  
-    .cta-button {
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      background-image: url("/images/cta-button.svg");
-      background-size: cover;
-      background-repeat: no-repeat;
-      border: none;
-      position: absolute;
-      bottom: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      cursor: pointer;
-    }
-  
-    .cta-button:hover {
-      background-image: url("/images/cta-button-hover.svg");
-    }
-  
-  /* Footer-stilar */
-  
-=======
 }
 
 &.todo-active {
@@ -419,4 +334,3 @@ border-top: 1px solid #ddd;
   background-image: url("/images/cta-button-hover.svg");
 }
 }
->>>>>>> develop
