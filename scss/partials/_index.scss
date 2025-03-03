@@ -1,0 +1,52 @@
+
+
+#logo-index{
+  width: 11px;
+  height: 16px;
+  border: 8px darkcyan dotted;
+}
+
+#index-header{
+  border: 3px dotter palevioletred !important;
+}
+.bottom-nav .icon {
+  display: block;
+  width: 40px;
+  height: 40px;
+  background-size: cover;
+  background-position: center;
+  transition: background-image 0.3s ease-in-out; 
+  border: 3px dotter palevioletred !important;
+
+  
+}
+
+
+
+
+// .bottom-nav #home .icon {
+//   background-image: url("/images/navbar/home.svg");
+// }
+// .bottom-nav #tasks .icon {
+//   background-image: url("/images/navbar/form.svg");
+// }
+// .bottom-nav #habits .icon {
+//   background-image: url("/images/navbar/fitness.svg");
+// }
+// .bottom-nav #events .icon {
+//   background-image: url("/images/navbar/calender.svg");
+// }
+
+
+// .bottom-nav #home:hover .icon {
+//   background-image: url("/images/navbar/home-hover-yellow.svg");
+// }
+// .bottom-nav #tasks:hover .icon {
+//   background-image: url("/images/navbar/form-hover-yellow.svg");
+// }
+// .bottom-nav #habits:hover .icon {
+//   background-image: url("/images/navbar/fitness-hover-yellow.svg");
+// }
+// .bottom-nav #events:hover .icon {
+//   background-image: url("/images/navbar/calender-hover-yellow.svg");
+// }

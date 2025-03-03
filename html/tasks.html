@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Tasks - Productivity Assistant Application</title>
+    <link rel="stylesheet" href="/css/main.css"/>
+    <script src="/js/tasks.js" defer></script>
+    <script src="/js/main.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
+    
+    <style>
+      #tasks .icon-img {
+        background-image: url("/images/navbar/form-hover-yellow.svg") !important;}
+      #tasks{color: #FFBC2C !important;}
+ </style>
+  </head>
+  <body>
+    <div class="wrap-container">
+      <header>
+        <a href="login.html" id="login" class="icon">
+          <div class="icon-img"></div>
+        </a>
+        <img src="/images/adhd-logo.svg" alt="logo" class="logo" />
+      </header>
+<br>
+<br>
+      <main>
+       <p class="date">Loading date...</p>
+       <h1>TASKS</h1>
+      </main>
+    <!-- </div> -->
+      <br>
+      <br>
+      <div class="todo" id="todo">
+        <div class="overlay"></div>
+        <div class="todo-content">
+          <img src="/images/cross-svgrepo-com.svg" class="close-icon" alt="Close the modal" style="width: 24; height: 24px;">
+          <span class="edit-btn"></span>
+          <h1 class="todo-title">To Do Title</h1>
+          <h2 class="category-title">Category</h2>
+          <p class="todo-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+        <div class="controls">
+          <button class="save-btn">Save</button>
+        </div>
+        </div>
+      </div>
+     <div class="list-container">
+        <ul id="todo-list">
+        <li>
+          
+        </li>
+    </ul>
+    <button id="add-task-btn">Add Task</button>
+  </div>
+ 
+  <nav class="bottom-nav">
+    <a href="home.html" id="home" class="icon" alt="Home icon, press to go to start page">
+      <div class="icon-img"></div>
+      <span>Home</span>
+    </a>
+
+    <a href="tasks.html" id="tasks" class="icon" alt="Tasks icon, press to go to task page">
+      <div class="icon-img"></div>
+      <span>Tasks</span>
+    </a>
+
+    <button class="cta-button" alt="Add icon, press to add task, habit and event"></button>
+
+    <a href="habits.html" id="habits" class="icon" alt="Habits icon, press to go to habits page">
+      <div class="icon-img"></div>
+      <span>Habits</span>
+    </a>
+
+    <a href="events.html" id="events" class="icon" alt="Events icon, press to go to event page">
+      <div class="icon-img"></div>
+      <span>Events</span> 
+  </nav>
+    </div> 
+  </div> 
+  </body>
+</html>

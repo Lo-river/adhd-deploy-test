@@ -1,0 +1,15 @@
+// Huvudfilen som importerar alla SCSS-filer
+
+/* === main.scss === */
+
+@import 'partials/variables';
+@import 'partials/mixins';
+@import 'partials/media';
+@import 'partials/header';
+@import 'partials/footer';
+@import 'partials/events';
+@import 'partials/habits';
+@import 'partials/home';
+@import 'partials/index';
+@import 'partials/login';
+@import 'partials/tasks';

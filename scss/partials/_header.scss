@@ -1,0 +1,33 @@
+
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 15px;
+    width: 100%;
+  
+    .logo {
+      width: 50px;  
+    }
+  
+    .login-icon {
+        margin-top: 5%;
+        margin-left: 200%;
+        width: 30px;
+    }
+  
+  }
+
+header #login .icon-img {
+  width: 24px;                
+  height: 24px;               
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("/images/login.svg");
+}
+
+header #login:hover .icon-img {
+  background-image: url("/images/login-hover.svg");
+}
