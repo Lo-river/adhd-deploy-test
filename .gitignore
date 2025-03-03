@@ -1,6 +1,5 @@
 # Ignorera kompilationsfiler
 /css/*.map
-/css/*.css
 
 # Ignorera Node-modules om ni använder npm
 node_modules/
