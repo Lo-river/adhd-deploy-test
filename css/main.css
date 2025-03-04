@@ -170,7 +170,12 @@ header #login:hover .icon-img {
 .events-list {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 6px;
+  width: 100%;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  align-items: center;
 }
 
 .wrap-container {
@@ -207,12 +212,12 @@ h1 {
 
 .filter-sort-container {
   display: flex;
-  justify-content: flex-end; /* Flyttar knapparna åt höger */
+  justify-content: flex-end;
   gap: 10px;
-  margin-bottom: 15px;
   width: 100%;
-  padding-right: 20px;
+  padding-right: 40px;
   position: relative;
+  margin-top: 80px;
 }
 
 .filter-btn, .sort-btn {
@@ -257,7 +262,7 @@ h1 {
   min-width: 100px;
   /* Positionera menyn korrekt under knappen */
   top: 100%;
-  left: 48%;
+  left: 43%;
   flex-direction: column;
   gap: 12px;
   text-align: left;
@@ -340,6 +345,11 @@ h1 {
 .events-section {
   width: 90%;
   max-width: 400px;
+  margin-bottom: -30px;
+}
+
+.events-section:first-child {
+  margin-top: -35px !important;
 }
 
 .event-card {
@@ -347,13 +357,13 @@ h1 {
   justify-content: space-between;
   align-items: center;
   background-color: #FBFAF7;
-  padding: 15px;
+  padding: 12px 15px;
   border-radius: 12px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-  margin-bottom: 10px;
   text-align: left;
   position: relative;
   cursor: pointer;
+  width: 100%;
 }
 .event-card .event-info {
   display: flex;
@@ -636,12 +646,16 @@ input {
   color: #3f3f3f;
   height: auto;
   min-height: 30px;
-  appearance: textfield; /* Fix för att se till att input ser normal ut */
+  -webkit-appearance: textfield;
+     -moz-appearance: textfield;
+          appearance: textfield; /* Fix för att se till att input ser normal ut */
 }
 
 /* Fix för att nummerinput ska visa pilar */
 input[type=number] {
-  appearance: textfield !important;
+  -webkit-appearance: textfield !important;
+     -moz-appearance: textfield !important;
+          appearance: textfield !important;
 }
 
 select {
@@ -993,6 +1007,7 @@ span.delete-btn .edit-btn {
   background-color: #FFBC2C;
   display: flex;
   justify-content: center;
+  width: -moz-fit-content;
   width: fit-content;
   margin: 20px auto;
   padding: 10px 15px;
@@ -1081,7 +1096,8 @@ span.delete-btn .edit-btn {
 .checkbox-icon img {
   max-width: 100%;
   max-height: 100%;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 .checkbox-input:checked + .checkbox-icon {
@@ -1336,4 +1352,4 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-}
+}/*# sourceMappingURL=main.css.map */

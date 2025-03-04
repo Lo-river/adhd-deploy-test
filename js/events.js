@@ -3,7 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
     setupSorting();
     setupEventPopup();
     setupSaveEvent();
-    loadEventsFromLocalStorage(); // Hämta eventen från localStorage vid sidladdning
+    loadEventsFromLocalStorage(); 
+    adjustEventsSpacing();
 });
 
 let editingEvent = null; // Håller koll på vilket event som redigeras
@@ -75,6 +76,37 @@ function setupSorting() {
             eventsContainer.insertBefore(upcomingSection, finishedSection);
         }
         isSortedAscending = !isSortedAscending;
+    });
+}
+
+function adjustEventsSpacing() {
+    const eventsContainer = document.getElementById("events-container");
+    const sections = eventsContainer.querySelectorAll(".events-section");
+
+    if (sections.length > 0) {
+        sections.forEach(section => section.style.marginTop = "5px");
+        sections[0].style.marginTop = "5px"; 
+    }
+}
+
+// Uppdatera sorteringsfunktionen
+function setupSorting() {
+    const sortBtn = document.getElementById("sort-btn");
+    const eventsContainer = document.getElementById("events-container");
+    const upcomingSection = document.getElementById("upcoming-section");
+    const finishedSection = document.getElementById("finished-section");
+
+    let isSortedAscending = true;
+    sortBtn.addEventListener("click", () => {
+        if (isSortedAscending) {
+            eventsContainer.insertBefore(finishedSection, upcomingSection);
+        } else {
+            eventsContainer.insertBefore(upcomingSection, finishedSection);
+        }
+        isSortedAscending = !isSortedAscending;
+
+        // Vänta en kort stund och justera spacing efter sortering
+        setTimeout(adjustEventsSpacing, 50);
     });
 }
 
