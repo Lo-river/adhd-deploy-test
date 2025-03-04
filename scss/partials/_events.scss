@@ -50,10 +50,9 @@ main {
 
 // Huvudrubriken "Events"
 h1 {
-    font-size: 35px;
-    font-weight: 200;
+    font-size: 35px;;
     font-family: $primary-font;
-    font-variation-settings: "wght" 200;
+    font-variation-settings: "wght" 400;
     margin-bottom: 15px;
 }
 
@@ -198,9 +197,9 @@ h1 {
         flex-direction: column;
     }
 
-    h3 {
+    h3.event-title {
         font-size: 16px;
-        font-weight: bold;
+        font-weight: lighter;
         margin: 0;
     }
 
