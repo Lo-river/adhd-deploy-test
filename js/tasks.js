@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
   let tasks = JSON.parse(localStorage.getItem('tasks')) || {};
   let currentTaskId = null;
-  let isEditing = false;
+  let isEditing = false; // Track if the task is being edited
   let newTaskCreated = false; 
   
   /* Hantera Popup */
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const editIcon = document.querySelector(".edit-btn");
       
     // Clear previous modal state
-    todoNode.classList.remove("new-task", "edit-task", "view-task");
+    todoNode.classList.remove("edit-task", "view-task");
 
     if (isEditingMode) {
         saveBtn.style.display = "block"; // visa save-knappen i redigeringsläge
@@ -53,19 +53,32 @@ document.addEventListener('DOMContentLoaded', function () {
       
       newTaskCreated = false;
       isEditing = false;
-      todoNode.style.display = 'none'; 
+      todoNode.style.display = 'none'; // Hide the modal
 
-      if (newTaskCreated && currentTaskId && !isEditing) { 
-      delete tasks[currentTaskId]; 
-      localStorage.setItem("tasks", JSON.stringify(tasks));
-    }
+    //   if (newTaskCreated && currentTaskId && !isEditing) { 
+    //   delete tasks[currentTaskId]; 
+    //   localStorage.setItem("tasks", JSON.stringify(tasks));
+    // }
   }
+
   // Enable editing when "Edit" icon is clicked
   function enableEditing() {
       if (!isEditing) {
-          document.querySelector(".todo-title").setAttribute("contenteditable", "true");
-          document.querySelector(".category-title").setAttribute("contenteditable", "true");
-          document.querySelector(".todo-description").setAttribute("contenteditable", "true");
+          const title = document.querySelector(".todo-title");
+          const category = document.querySelector(".category-title");
+          const description = document.querySelector(".todo-description");
+
+          // fråga kattis varför listan försvinner när jag lägger in denna kod
+          // if (!isEditing) {
+          //   // Switch to edit mode
+          //   todoNode.classList.remove("view-task"); // Remove view mode class
+          //   todoNode.classList.add("edit-task"); // Add edit mode class
+          title.setAttribute("contenteditable", "true");
+          category.setAttribute("contenteditable", "true");
+          description.setAttribute("contenteditable", "true");
+
+          saveBtn.style.display = "block"; // Show save button
+          editIcon.style.display = "none"; // Hide edit button
           isEditing = true;
       }
   }
@@ -92,6 +105,14 @@ document.addEventListener('DOMContentLoaded', function () {
           const task = tasks[taskId];
           const li = document.createElement("li");
           
+          const showTaskBtn = document.createElement("button");
+          showTaskBtn.textContent = task.title;
+          showTaskBtn.classList.add("show-task-btn");
+          showTaskBtn.setAttribute("data-task", taskId);
+          showTaskBtn.addEventListener("click", function () {
+              openToDoModal(taskId, false); // Open modal in view mode (not editable)
+          });
+
           if (task.checked) {
           li.classList.add("completed"); 
           }
@@ -146,14 +167,6 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 
-          const showTaskBtn = document.createElement("button");
-          showTaskBtn.textContent = task.title;
-          showTaskBtn.classList.add("show-task-btn");
-          showTaskBtn.setAttribute("data-task", taskId);
-          showTaskBtn.addEventListener("click", function () {
-              openToDoModal(taskId, false); // Open modal in view mode (not editable)
-          });
-
           if (task.checked) {
             showTaskBtn.classList.add("completed")
           }
@@ -196,13 +209,12 @@ document.addEventListener('DOMContentLoaded', function () {
       updateTaskList();
   }
 
-  
   // Event listeners  
-  document.getElementById("add-task-btn").addEventListener("click", addNewTask);
-  document.querySelector(".save-btn").addEventListener("click", saveTask);
-  document.querySelector(".close-icon").addEventListener("click", closeToDo);
+  document.getElementById("add-task-btn").addEventListener("click", addNewTask); 
+  document.querySelector(".save-btn").addEventListener("click", saveTask); // Save task on save button click
+  document.querySelector(".close-icon").addEventListener("click", closeToDo); // Close modal when close icon is clicked
 //   document.querySelector(".edit-icon").addEventListener("click", enableEditing);
-  document.querySelector(".edit-btn").addEventListener("click", enableEditing);
+  document.querySelector(".edit-btn").addEventListener("click", enableEditing); // Enable editing on pen icon click
   
 // Fire confetti function
 const count = 400,

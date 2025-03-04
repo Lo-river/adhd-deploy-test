@@ -347,3 +347,12 @@ border-top: 1px solid #ddd;
 #todo.edit-task .todo-description {
   background-color: #ccc;
 }
+
+
+.save-btn {
+  display: none; /* Hidden by default */
+}
+
+.save-btn.show {
+  display: block; /* Show save button when in edit mode */
+}
