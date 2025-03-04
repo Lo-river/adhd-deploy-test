@@ -200,9 +200,8 @@ main {
 
 h1 {
   font-size: 35px;
-  font-weight: 200;
   font-family: "Roboto", sans-serif;
-  font-variation-settings: "wght" 200;
+  font-variation-settings: "wght" 400;
   margin-bottom: 15px;
 }
 
@@ -265,6 +264,32 @@ h1 {
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.2s ease-in-out, visibility 0.2s;
+}
+
+.filter-menu input[type=checkbox] {
+  display: none;
+}
+
+.custom-checkbox {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 10px;
+}
+
+.checkmark {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: inline-block;
+  background: url("/images/iconunchecked.svg") no-repeat center;
+  background-size: contain;
+  transition: background 0.3s ease-in-out;
+}
+
+.filter-menu input:checked + .checkmark {
+  background: url("/images/iconchecked.svg") no-repeat center;
+  background-size: contain;
 }
 
 .filter-menu.show {
@@ -334,9 +359,9 @@ h1 {
   display: flex;
   flex-direction: column;
 }
-.event-card h3 {
+.event-card h3.event-title {
   font-size: 16px;
-  font-weight: bold;
+  font-weight: lighter;
   margin: 0;
 }
 .event-card .event-date {

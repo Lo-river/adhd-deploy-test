@@ -36,18 +36,20 @@
             Filter <img src="/images/filter-up.svg" alt="Filter icon" />
           </button>
 
-          <!-- Filter-menyn under knappen -->
-          <div id="filter-menu" class="filter-menu">
-            <span class="filter-title">Filter</span>
-            <label>
-              <input type="checkbox" id="filter-finished" />
-              Finished
-            </label>
-            <label>
-              <input type="checkbox" id="filter-upcoming" />
-              Upcoming
-            </label>
-          </div>
+        <!-- Filter-menyn med anpassade checkboxar -->
+    <div id="filter-menu" class="filter-menu">
+        <span class="filter-title">Filter</span>
+
+      <label class="custom-checkbox">
+        <input type="checkbox" id="filter-finished">
+        <span class="checkmark"></span> Finished
+      </label>
+
+      <label class="custom-checkbox">
+        <input type="checkbox" id="filter-upcoming">
+        <span class="checkmark"></span> Upcoming
+      </label>
+    </div>
 
           <!-- Sorteringsknapp -->
           <button class="dropdown-btn sort-btn" id="sort-btn">
