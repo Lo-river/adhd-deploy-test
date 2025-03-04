@@ -18,7 +18,9 @@
 .events-list {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 6px; 
+    width: 100%;
+    align-items: center;
 }
 
 // Wrapper-container för att centrera innehållet
@@ -59,13 +61,13 @@ h1 {
 // Filter & Sortering - Justera placering åt höger
 .filter-sort-container {
     display: flex;
-    justify-content: flex-end; /* Flyttar knapparna åt höger */
+    justify-content: flex-end; 
     gap: 10px;
-    margin-bottom: 15px;
     width: 100%;
-    padding-right: 20px; 
-    position: relative;
-}
+    padding-right: 40px; 
+    position: relative; 
+    margin-top: 80px; 
+    
 
 // Filter & Sort-knappar (text inuti knapparna)
 .filter-btn, .sort-btn {
@@ -115,7 +117,7 @@ h1 {
 
     /* Positionera menyn korrekt under knappen */
     top: 100%;
-    left: 48%;
+    left: 43%;
      
     flex-direction: column;
     gap: 12px;
@@ -204,6 +206,11 @@ h1 {
 .events-section {
     width: 90%;
     max-width: 400px;
+    margin-bottom: -30px; 
+}
+
+.events-section:first-child {
+    margin-top: -35px !important;
 }
 
 .event-card {
@@ -211,13 +218,13 @@ h1 {
     justify-content: space-between;
     align-items: center;
     background-color: $card-backgroundcolor;
-    padding: 15px;
+    padding: 12px 15px; 
     border-radius: 12px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-    margin-bottom: 10px;
     text-align: left;
     position: relative;
     cursor: pointer;
+    width: 100%;  */
 
     .event-info {
         display: flex;

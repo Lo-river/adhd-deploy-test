@@ -170,7 +170,9 @@ header #login:hover .icon-img {
 .events-list {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 6px;
+  width: 100%;
+  align-items: center;
 }
 
 .wrap-container {
@@ -209,10 +211,10 @@ h1 {
   display: flex;
   justify-content: flex-end; /* Flyttar knapparna åt höger */
   gap: 10px;
-  margin-bottom: 15px;
   width: 100%;
-  padding-right: 20px;
+  padding-right: 40px;
   position: relative;
+  margin-top: 80px; /* Justera detta värde för att sänka knapparna */
 }
 
 .filter-btn, .sort-btn {
@@ -257,7 +259,7 @@ h1 {
   min-width: 100px;
   /* Positionera menyn korrekt under knappen */
   top: 100%;
-  left: 48%;
+  left: 43%;
   flex-direction: column;
   gap: 12px;
   text-align: left;
@@ -340,6 +342,11 @@ h1 {
 .events-section {
   width: 90%;
   max-width: 400px;
+  margin-bottom: -30px;
+}
+
+.events-section:first-child {
+  margin-top: -35px !important;
 }
 
 .event-card {
@@ -347,13 +354,13 @@ h1 {
   justify-content: space-between;
   align-items: center;
   background-color: #FBFAF7;
-  padding: 15px;
+  padding: 12px 15px; /* Lite mindre padding för bättre proportioner */
   border-radius: 12px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-  margin-bottom: 10px;
   text-align: left;
   position: relative;
   cursor: pointer;
+  width: 100%; /* Se till att korten fyller sin container */
 }
 .event-card .event-info {
   display: flex;
