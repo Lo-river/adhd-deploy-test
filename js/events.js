@@ -8,6 +8,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
 let editingEvent = null; // Håller koll på vilket event som redigeras
 
+// Funktion för att formatera datum och tid
+function formatEventDateTime(datetimeString) {
+    const dateObj = new Date(datetimeString);
+   
+    const options = { day: "2-digit", month: "long", year: "numeric" };
+    const formattedDate = dateObj.toLocaleDateString("en-GB", options); // Ex: 19 March 2025
+
+
+    // Hämta timmar och minuter
+    const hours = dateObj.getHours().toString().padStart(2, "0");
+    const minutes = dateObj.getMinutes().toString().padStart(2, "0");
+
+
+    return `${formattedDate} | ${hours}:${minutes}`;
+}
+
 // Funktionerna för filter-menyn
 function setupFilterMenu() {
     const filterBtn = document.getElementById("filter-btn");
@@ -136,24 +152,33 @@ function loadEventsFromLocalStorage() {
     const finishedEventsList = document.getElementById("finished-events");
     const eventTemplate = document.getElementById("event-template");
 
+
     upcomingEventsList.innerHTML = "";
     finishedEventsList.innerHTML = "";
+
 
     let events = JSON.parse(localStorage.getItem("events")) || [];
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
+
     events.forEach(event => {
         const eventDateObj = new Date(event.date);
         const eventCard = eventTemplate.content.cloneNode(true);
         eventCard.querySelector(".event-title").textContent = event.title;
-        eventCard.querySelector(".event-date").textContent = event.date;
 
-const editButton = eventCard.querySelector(".edit-btn");
-const deleteButton = eventCard.querySelector(".delete-btn");
+
+        // Visar korrekt datumformat
+        eventCard.querySelector(".event-date").textContent = formatEventDateTime(event.date);
+
+
+        const editButton = eventCard.querySelector(".edit-btn");
+        const deleteButton = eventCard.querySelector(".delete-btn");
+
 
         editButton.addEventListener("click", () => openEditEvent(event));
         deleteButton.addEventListener("click", () => deleteEvent(event.id));
+
 
         if (eventDateObj < today) {
             eventCard.querySelector(".event-card").classList.add("finished-event");
