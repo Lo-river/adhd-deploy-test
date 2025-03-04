@@ -132,6 +132,7 @@ header #login:hover .icon-img {
 }
 
 .bottom-nav .cta-button {
+  background-color:#FFBC2C !important;
   border-radius: 60%;
   width: 60px;
   height: 60px;
@@ -447,22 +448,13 @@ h1 {
     font-size: 35px;
   }
 }
-body {
-  background-color: #F3F2EE;
-  color: #000000;
-  font-family: "Roboto", sans-serif;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
 .action-buttons {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-#save-btn #cancel-btn {
+#save-btn #cancel-btn, button {
   background-color: #7c7c7c;
   color: #fff;
   margin-top: 50px;
@@ -474,8 +466,8 @@ body {
   cursor: pointer;
 }
 
-#save-btn #cancel-btn:hover {
-  background-color: #FFBC2C;
+#save-btn:hover #cancel-btn, button:hover {
+  background-color: #FFBC2C !important;
 }
 
 /* Skapa overlay-effekt när popup är öppen */
@@ -519,7 +511,7 @@ body {
   text-align: left;
   background: #fbfaf7;
   margin: auto;
-  padding: 25px;
+  padding: 35px;
   gap: 5px;
   border-radius: 20px;
   width: 300px;
@@ -527,31 +519,23 @@ body {
 
 .close-icon {
   position: absolute;
-  top: 10px;
+  margin-top: 5px;
+  margin-right: 5px;
   right: 15px;
   cursor: pointer;
 }
 
 .habit-card {
   background: #FBFAF7;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  position: relative;
-  margin-bottom: 10px;
+  padding: 35px;
+  margin: 80px auto;
+  width: 250px;
+  border-radius: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .habit-list-container {
   margin-top: 2px;
-}
-
-.edit-btn {
-  background-image: url("images/edit-button.svg");
-  background-color: transparent;
-}
-
-.edit-btn:hover {
-  background-image: url("images/edit-button-hover-yellow.svg");
 }
 
 .bottom-nav .cta-button {
@@ -611,9 +595,9 @@ input {
   color: #3f3f3f;
   height: auto;
   min-height: 30px;
-  -webkit-appearance: textfield;
-     -moz-appearance: textfield;
-          appearance: textfield; /* Fix för att se till att input ser normal ut */
+  -webkit-appearance: textfield !important;
+     -moz-appearance: textfield !important;
+          appearance: textfield !important; /* Fix för att se till att input ser normal ut */
 }
 
 /* Fix för att nummerinput ska visa pilar */
@@ -647,37 +631,34 @@ option {
 }
 
 /* Klasser för delete & edit hover: */
-span.delete-btn .edit-btn {
-  width: 24px;
-  height: 24px;
+.delete-btn, .delete-svg {
+  background-image: url("/images/trash.svg");
+  height: 20px;
+  width: 20px;
+  border: none;
+  background-color: transparent;
+}
+
+.delete-btn:hover {
+  background-image: url("/images/trash-hover-yellow.svg") !important;
+  color: #FFBC2C !important;
+}
+
+.edit-btn, .delete-svg {
+  background-image: url("/images/edit-button.svg");
+  height: 20px;
+  width: 20px;
+  border: none;
+  background-color: transparent;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }
 
-/* .edit-btn .edit-svg */
-.edit-btn, .edit-svg {
-  background-image: url("/images/edit-button.svg");
-}
-
-/* .edit-btn .edit-svg:hover  */
 .edit-btn:hover {
-  background-image: url("/images/edit-button-hover-yellow.svg");
+  background-image: url("/images/edit-button-hover-yellow.svg") !important;
   color: #FFBC2C !important;
 }
-
-/* .delete-btn .delete-svg */
-.delete-btn, .delete-svg {
-  background-image: url("/images/trash.svg");
-}
-
-/* .delete-btn .delete-svg:hover  */
-.delete-btn .delete-svg:hover {
-  background-image: url("/images/trash-hover-yellow.svg");
-  color: #FFBC2C !important;
-}
-
-
 
 /* Övriga stilar kommer som tidigare … */
 /* Stilar för Habit Select */
@@ -729,11 +710,6 @@ span.delete-btn .edit-btn {
 
 .habit-select.active .habit-select-menu {
   display: block;
-}
-
-#throw #change {
-  width: 250px;
-  height: 250px;
 }
 
 #index {
@@ -1191,10 +1167,4 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-
-
-
-
-/*# sourceMappingURL=main.css.map */
+}/*# sourceMappingURL=main.css.map */
