@@ -40,7 +40,17 @@
           <h2 class="todo-title">To Do Title</h2>
           <h3 class="category-title">Category</h3>
           <p class="todo-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-        <div class="controls">
+          <!-- VISA ENDAST I EDIT MODE EJ KLART  -->
+          <div class="time-estimate"> 
+            <label for="time-estimate">Time Estimate:</label>
+            <input type="text" id="time-estimate" class="time-input" placeholder="Enter time estimate" />
+        </div> 
+        <!-- VISA ENDAST I VIEW-MODE EJ KLART -->
+        <div class="time-estimate-icon-container">
+          <img class="time-estimate-icon" src="/images/clock-nine-svgrepo-com.svg" alt="Time Estimate Icon" />
+          <span class="time-estimate-tooltip">Time Estimate: <span id="time-estimate-text">Not set</span></span>
+      </div>
+          <div class="controls">
           <button class="save-btn">Save</button>
         </div>
         </div>

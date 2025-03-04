@@ -876,6 +876,73 @@ span.delete-btn .edit-btn {
   cursor: pointer;
   width: 100%;
 }
+.todo .todo-content .time-estimate-display {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #616161;
+}
+.todo .todo-content .time-estimate {
+  margin-top: 15px;
+}
+.todo .todo-content .time-estimate label {
+  font-size: 14px;
+  color: #616161;
+  display: block;
+  margin-bottom: 5px;
+}
+.todo .todo-content .time-estimate-icon {
+  height: 20px;
+  width: 20px;
+}
+.todo .todo-content .time-input {
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+}
+.todo .todo-content .time-input:disabled {
+  background-color: #f1f1f1;
+  cursor: not-allowed;
+}
+.todo .todo-content .time-estimate-icon-container {
+  position: relative;
+  display: inline-block;
+  margin-top: 10px;
+}
+.todo .todo-content .time-estimate-icon {
+  width: 24px; /* Adjust size as needed */
+  height: 24px; /* Adjust size as needed */
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+.todo .todo-content .time-estimate-icon:hover {
+  transform: scale(1.1);
+}
+.todo .todo-content .time-estimate-tooltip {
+  visibility: hidden;
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: white;
+  padding: 5px;
+  border-radius: 3px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.todo .todo-content .time-estimate-icon-container:hover .time-estimate-tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+.todo .todo-content #time-estimate-text {
+  font-weight: bold;
+}
 .todo .todo-content .controls {
   background: transparent;
   color: #7C7C7C;

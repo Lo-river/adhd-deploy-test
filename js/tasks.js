@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const title = todoNode.querySelector(".todo-title");
       const category = todoNode.querySelector(".category-title");
       const description = todoNode.querySelector(".todo-description");
+      const timeEstimateIcon = document.querySelector("#time-estimate-icon-container");
       const saveBtn = document.querySelector(".save-btn");
       const editIcon = document.querySelector(".edit-btn");
       
@@ -39,15 +40,30 @@ document.addEventListener('DOMContentLoaded', function () {
         title.textContent = tasks[taskId].title;
         category.textContent = tasks[taskId].category;
         description.textContent = tasks[taskId].description;
+        
+        // In view mode, display the time estimate using the image icon
+        const timeEstimate = tasks[taskId].timeEstimate || "Not set";
+        
+        const timeEstimateIconElement = document.querySelector(".time-estimate-icon");
+        const timeEstimateText = document.querySelector("#time-estimate-text");
+        if (timeEstimate === "Not set") {
+          timeEstimateIconElement.src = "/images/clock-nine-svgrepo-com.svg"; // Default icon for no time estimate
+          timeEstimateText.textContent = "Not set";
+      } else {
+          timeEstimateIconElement.src = "/images/clock-nine-svgrepo-com.svg"; // Change icon based on time estimate
+          timeEstimateText.textContent = timeEstimate; // Optional, in case you still want to show text in tooltip
+      }
     } else {
         title.textContent = "New Task";
         category.textContent = "No Category";
         description.textContent = "Enter task description...";
+        
     }
       // Set contenteditable based on mode
       title.setAttribute("contenteditable", isEditingMode ? "true" : "false");
       category.setAttribute("contenteditable", isEditingMode ? "true" : "false");
       description.setAttribute("contenteditable", isEditingMode ? "true" : "false");
+      timeEstimateInput.value = ''; // Empty time estimate for new task
   } 
   // Close modal function
   function closeToDo() {
@@ -90,8 +106,9 @@ document.addEventListener('DOMContentLoaded', function () {
           const title = document.querySelector(".todo-title").textContent;
           const category = document.querySelector(".category-title").textContent;
           const description = document.querySelector(".todo-description").textContent;
+          const timeEstimate = document.querySelector("#time-estimate").value; // Get time estimate value
 
-          tasks[currentTaskId] = { title, category, description }; 
+          tasks[currentTaskId] = { title, category, description, timeEstimate }; // Add time estimate to the task object 
           localStorage.setItem("tasks", JSON.stringify(tasks));
          
           updateTaskList();
@@ -278,7 +295,7 @@ function setupSorting() {
   document.getElementById("add-task-btn").addEventListener("click", addNewTask); 
   document.querySelector(".save-btn").addEventListener("click", saveTask); // Save task on save button click
   document.querySelector(".close-icon").addEventListener("click", closeToDo); // Close modal when close icon is clicked
-//   document.querySelector(".edit-icon").addEventListener("click", enableEditing);
+  // document.querySelector(".edit-icon").addEventListener("click", enableEditing);
   document.querySelector(".edit-btn").addEventListener("click", enableEditing); // Enable editing on pen icon click
   
 // Fire confetti function
@@ -298,5 +315,4 @@ confetti(
 updateTaskList(); 
 });
 
-// document.querySelector(".edit-icon").addEventListener("click", enableEditing);
 document.querySelector(".edit-btn").addEventListener("click", enableEditing);

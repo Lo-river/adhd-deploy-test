@@ -76,6 +76,85 @@ z-index: 1000;
     }
 
   }
+  .time-estimate-display {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #616161;
+}
+
+  .time-estimate {
+    margin-top:15px;
+  }
+
+  .time-estimate label {
+    font-size: 14px;
+    color: #616161;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.time-estimate-icon {
+  height: 20px;
+  width: 20px;
+}
+
+.time-input {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.time-input:disabled {
+    background-color: #f1f1f1;
+    cursor: not-allowed;
+}
+
+.time-estimate-icon-container {
+  position: relative;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.time-estimate-icon {
+  width: 24px; /* Adjust size as needed */
+  height: 24px; /* Adjust size as needed */
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.time-estimate-icon:hover {
+  transform: scale(1.1);
+}
+
+.time-estimate-tooltip {
+  visibility: hidden;
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: white;
+  padding: 5px;
+  border-radius: 3px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.time-estimate-icon-container:hover .time-estimate-tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+#time-estimate-text {
+  font-weight: bold;
+}
+
   .controls {
     background: transparent;
     color: #7C7C7C;
@@ -450,14 +529,14 @@ border-top: 1px solid #ddd;
   text-align: left;
 }
 
-// Stil för checkboxarna
-.filter-menu input[type="checkbox"] {
-  width: 20px; // Större checkbox
-  height: 20px;
-  border-radius: 6px;
-  border: 2px solid #B0B0B0;
-  cursor: pointer;
-}
+ // Stil för checkboxarna
+ .filter-menu input[type="checkbox"] {
+   width: 20px; // Större checkbox
+   height: 20px;
+   border-radius: 6px;
+   border: 2px solid #B0B0B0;
+   cursor: pointer;
+ }
 
 .filter-btn {
   position: relative;
