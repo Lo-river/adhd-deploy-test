@@ -29,7 +29,8 @@
        <p class="date">Loading date...</p>
        <h1>TASKS</h1>
       </main>
-    <!-- </div> -->
+      <br>
+      <br>
       <br>
       <br>
       <div class="todo" id="todo">
@@ -37,18 +38,45 @@
         <div class="todo-content">
           <img src="/images/cross-svgrepo-com.svg" class="close-icon" alt="Close the modal" style="width: 24; height: 24px;">
           <span class="edit-btn"></span>
-          <h1 class="todo-title">To Do Title</h1>
-          <h2 class="category-title">Category</h2>
+          <h2 class="todo-title">To Do Title</h2>
+          <h3 class="category-title">Category</h3>
           <p class="todo-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-        <div class="controls">
+          <div class="event-due-date">
+            <label for="due-date">Due date</label>
+            <input type="datetime-local" id="due-date" />
+          </div>
+          <div class="controls">
           <button class="save-btn">Save</button>
         </div>
         </div>
       </div>
      <div class="list-container">
-        <ul id="todo-list">
-        <li>
-          
+      <div class="filter-sort-container">
+        <!--  Filter-knapp -->
+        <button class="dropdown-btn filter-btn" id="filter-btn">
+          Filter <img src="/images/filter-up.svg" alt="Filter icon" />
+        </button>
+
+        <!-- Filter-menyn under knappen -->
+        <div id="filter-menu" class="filter-menu">
+          <span class="filter-title">Filter</span>
+          <label>
+            <input type="checkbox" id="filter-finished" />
+            Finished
+          </label>
+          <label>
+            <input type="checkbox" id="filter-upcoming" />
+            Upcoming
+          </label>
+        </div>
+          <!-- Sorteringsknapp -->
+          <button class="dropdown-btn sort-btn" id="sort-btn">
+            Sort <img src="/images/sort-arrows.svg" alt="Sort icon" />
+          </button>
+        </div>
+      <ul id="todo-list">
+
+        <li>          
         </li>
     </ul>
     <button id="add-task-btn">Add Task</button>
