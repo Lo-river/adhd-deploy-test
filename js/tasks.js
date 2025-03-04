@@ -1,10 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
   let tasks = JSON.parse(localStorage.getItem('tasks')) || {};
   let currentTaskId = null;
-  let isEditing = false; // Track if the task is being edited
+  let isEditing = false;
   let newTaskCreated = false; 
-  setupFilterMenu();
-  setupSorting();
   
   /* Hantera Popup */
   function openToDoModal(taskId, isEditingMode = false) {
@@ -22,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const editIcon = document.querySelector(".edit-btn");
       
     // Clear previous modal state
-    todoNode.classList.remove("edit-task", "view-task");
+    todoNode.classList.remove("new-task", "edit-task", "view-task");
 
     if (isEditingMode) {
         saveBtn.style.display = "block"; // visa save-knappen i redigeringsläge
@@ -62,38 +60,15 @@ document.addEventListener('DOMContentLoaded', function () {
       localStorage.setItem("tasks", JSON.stringify(tasks));
     }
   }
-
-    // Event listeners
-    document.getElementById("add-task-btn").addEventListener("click", function () {
-      const taskId = "task" + Date.now() + Math.floor(Math.random() * 1000);
-      tasks[taskId] = { title: "New Task", category: "No Category", description: "Enter task details...", checked: false };
-      localStorage.setItem("tasks", JSON.stringify(tasks));
-      newTaskCreated = true;
-  
-
-  // Enable editing when "pen icon" is clicked
+  // Enable editing when "Edit" icon is clicked
   function enableEditing() {
-    const todoNode = document.querySelector("#todo");
-    const title = document.querySelector(".todo-title");
-    const category = document.querySelector(".category-title");
-    const description = document.querySelector(".todo-description");
-    const saveBtn = document.querySelector(".save-btn");
-    const editIcon = document.querySelector(".edit-btn");
-    
-    if (!isEditing) {
-      // Switch to edit mode
-      todoNode.classList.remove("view-task"); // Remove view mode class
-      todoNode.classList.add("edit-task"); // Add edit mode class
-      title.setAttribute("contenteditable", "true");
-      category.setAttribute("contenteditable", "true");
-      description.setAttribute("contenteditable", "true");  
-        
-      saveBtn.style.display = "block"; // Show save button
-      editIcon.style.display = "none"; // Hide edit button
-      isEditing = true; // Mark as editing
+      if (!isEditing) {
+          document.querySelector(".todo-title").setAttribute("contenteditable", "true");
+          document.querySelector(".category-title").setAttribute("contenteditable", "true");
+          document.querySelector(".todo-description").setAttribute("contenteditable", "true");
+          isEditing = true;
       }
   }
-
   // Save task function
   function saveTask() {
       if (currentTaskId) {
@@ -247,62 +222,4 @@ updateTaskList();
 });
 
 // document.querySelector(".edit-icon").addEventListener("click", enableEditing);
-document.querySelector(".edit-btn").addEventListener("click", enableEditing);})
-
-// Funktionerna för filter-menyn
-function setupFilterMenu() {
-  const filterBtn = document.getElementById("filter-btn");
-  const filterMenu = document.getElementById("filter-menu");
-  const filterFinished = document.getElementById("filter-finished");
-  const filterUpcoming = document.getElementById("filter-upcoming");
-  // const upcomingSection = document.getElementById("upcoming-section");
-  // const finishedSection = document.getElementById("finished-section");
-
-  filterBtn.style.position = "relative";
-
-  // Toggla filter-menyn
-  filterBtn.addEventListener("click", (event) => {
-      event.stopPropagation();
-      filterMenu.classList.toggle("show");
-      filterBtn.classList.toggle("active");
-  });
-
-    // Filter checkboxes
-    filterFinished.addEventListener("change", updateTaskList);
-    filterUpcoming.addEventListener("change", updateTaskList);
-  
-  document.addEventListener("click", (event) => {
-      if (!filterMenu.contains(event.target) && !filterBtn.contains(event.target)) {
-          filterMenu.classList.remove("show");
-          filterBtn.classList.remove("active");
-      }
-  });
-
-  if (filterFinished && filterUpcoming) {
-      filterFinished.addEventListener("change", function () {
-          finishedSection.style.display = this.checked ? "block" : "none";
-      });
-
-      filterUpcoming.addEventListener("change", function () {
-          upcomingSection.style.display = this.checked ? "block" : "none";
-      });
-  }
-}
-
-// Funktion för att hantera sortering av events
-function setupSorting() {
-  const sortBtn = document.getElementById("sort-btn");
-  const eventsContainer = document.getElementById("events-container");
-  const upcomingSection = document.getElementById("upcoming-section");
-  const finishedSection = document.getElementById("finished-section");
-
-  let isSortedAscending = true;
-  sortBtn.addEventListener("click", () => {
-      if (isSortedAscending) {
-          eventsContainer.insertBefore(finishedSection, upcomingSection);
-      } else {
-          eventsContainer.insertBefore(upcomingSection, finishedSection);
-      }
-      isSortedAscending = !isSortedAscending;
-  });
-}
+document.querySelector(".edit-btn").addEventListener("click", enableEditing);

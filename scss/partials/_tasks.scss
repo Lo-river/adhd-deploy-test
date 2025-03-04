@@ -2,14 +2,13 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-.center {
-position: absolute;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-}
+ }
+ .center {
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%, -50%);
+ }
 
 .todo {
 position: fixed;
@@ -130,15 +129,6 @@ cursor: pointer;
 z-index: 10;
 transition: color 0.3s ease;
 }
-
-/* button {
-  background: $yellow-detailcolor;
-  color: #fff;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  width: 100%; */
 
 .add-task-btn {
   background-color: #FFBC2C;
@@ -273,15 +263,53 @@ background-color: #D9D9D9;
 opacity: 30%;
 }
 
-
-
+.bottom-nav {
+display: flex;
+justify-content: space-around;
+align-items: center;
+position: fixed;
+bottom: 0;
+width: 100%;
+/* height: $nav-height; */
+border-top: 1px solid #ddd;
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 12px;
+  text-decoration: none;
+  color: #000000;
+  /* margin-top: 18px; */
+  img {
+    width: 24px;
+    height: 24px;
+  }
+}
+.cta-button {
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  background-image: url("/images/cta-button.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: none;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+}
+.cta-button:hover {
+  background-image: url("/images/cta-button-hover.svg");
+}
+}
 
 /* SAM Default styling for view-mode */
 #todo.view-task .todo-title,
 #todo.view-task .category-title,
 #todo.view-task .todo-description {
     background-color: #f9f9f9; /* Light background to indicate view-only */
-    color: #000; /* Muted color for non-editable fields */
+    color: #666; /* Muted color for non-editable fields */
     border: none; /* Remove any border to indicate it's not an editable input */
     cursor: default; /* Make the cursor show a 'default' cursor to prevent interaction */
 }
@@ -298,7 +326,7 @@ opacity: 30%;
     color: #777; /* Lighter color for description */
 }
 
-/* SAM Styling for edit task modal */
+/* Styling for edit task modal */
 #todo.edit-task .todo-title,
 #todo.edit-task .category-title,
 #todo.edit-task .todo-description {
@@ -319,85 +347,3 @@ opacity: 30%;
 #todo.edit-task .todo-description {
   background-color: #ccc;
 }
-
-// Filter & Sortering - Justera placering åt höger
-.filter-sort-container {
-  display: flex;
-  justify-content: flex-end; /* Flyttar knapparna åt höger */
-  gap: 10px;
-  margin-bottom: 15px;
-  width: 100%;
-  padding-right: 20px; 
-  position: relative;
-}
-
-// Filter & Sort-knappar (text inuti knapparna)
-.filter-btn, .sort-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;  
-  background: #F8F7F4;
-  border: 2px solid #ccc;
-  padding: 8px 20px;
-  font-size: 14px;
-  font-weight: 500;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s, border-color 0.3s;
-  min-width: 80px;
-
-  &:hover {
-      background: rgba(255, 188, 44, 0.1);
-  }
-
-  &.active {
-      border-color: #FFBC2C;
-      background: rgba(255, 188, 44, 0.1);
-  }
-
-  img {
-      width: 14px; 
-      height: 14px;
-  }
-}
-
-.filter-btn, .sort-btn {
-  color: #000 !important; /* Försäkrar att texten blir svart på events sidan TA INTE BORT!!*/
-}
-
-// Justerar filter-menyn
-.filter-menu {
-  display: none;
-  position: absolute;
-  background: #F8F7F4;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-  min-width: 100px;
-
-  /* Positionera menyn korrekt under knappen */
-  top: 100%;
-  left: 48%;
-   
-  flex-direction: column;
-  gap: 12px;
-  text-align: left;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.2s ease-in-out, visibility 0.2s;
-}
-
-.filter-menu.show {
-  display: flex;
-  opacity: 1;
-  visibility: visible;
-}
-
- // Datum-fält
- .event-due-date {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  margin-top: 10px;}
