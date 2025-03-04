@@ -1,52 +1,53 @@
-
-
-#logo-index{
-  width: 11px;
-  height: 16px;
-  border: 8px darkcyan dotted;
+#index{
+  margin-top: 50px;
+}
+.index-container{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
 }
 
-#index-header{
-  border: 3px dotter palevioletred !important;
-}
-.bottom-nav .icon {
+#h1-index{
+  font-family: DM Serif Display;
   display: block;
-  width: 40px;
-  height: 40px;
-  background-size: cover;
-  background-position: center;
-  transition: background-image 0.3s ease-in-out; 
-  border: 3px dotter palevioletred !important;
+  color: rgb(59, 59, 59);
+  font-size: 2em;
+  margin-top: 0.67em;
+  margin-bottom: 10px;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+}
 
-  
+#h2-index{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 200;
+  font-family: "Roboto", sans-serif;
+  font-variation-settings: "wght" 200;
+  margin-bottom: 15px;
+  margin-top: 0;
+  width: 100%;
 }
 
 
 
+#login-button {
+  background-color: #7c7c7c;
+  color: #fff;
+  margin-top: 50px;
+  padding: 10px 20px;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  border-radius: 20px;
+  cursor: pointer;
+}
 
-// .bottom-nav #home .icon {
-//   background-image: url("/images/navbar/home.svg");
-// }
-// .bottom-nav #tasks .icon {
-//   background-image: url("/images/navbar/form.svg");
-// }
-// .bottom-nav #habits .icon {
-//   background-image: url("/images/navbar/fitness.svg");
-// }
-// .bottom-nav #events .icon {
-//   background-image: url("/images/navbar/calender.svg");
-// }
+#login-button {
+  background-color: #FFBC2C;
+}
 
 
-// .bottom-nav #home:hover .icon {
-//   background-image: url("/images/navbar/home-hover-yellow.svg");
-// }
-// .bottom-nav #tasks:hover .icon {
-//   background-image: url("/images/navbar/form-hover-yellow.svg");
-// }
-// .bottom-nav #habits:hover .icon {
-//   background-image: url("/images/navbar/fitness-hover-yellow.svg");
-// }
-// .bottom-nav #events:hover .icon {
-//   background-image: url("/images/navbar/calender-hover-yellow.svg");
-// }
