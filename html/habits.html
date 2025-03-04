@@ -33,7 +33,6 @@
           <div class="popup-content">          
             <span class="close-icon"">&times;</span>
 
-            <!-- <img src="/images/cross-svgrepo-com.svg" class="close-icon" alt="Close the modal" style="width: 24px; height: 24px;"> -->
             <img src="/images/cross-svgrepo-com.svg" class="close-icon" alt="Close the modal" style="width: 24px; height: 24px;">
             <input type="text" id="habit-title" placeholder="Enter Habit title" disabled>
             
@@ -60,7 +59,6 @@
             
             <input type="number" name="habit-repetition" id="habit-repetition" placeholder="Enter number of repetitions:"  min="1" disabled>
             
-            <!-- Habit Category Select -->
             <div class="habit-select" id="habit-category-select">
               <button type="button" class="habit-select-btn" id="habit-category-btn" disabled>
                 <span id="habit-category-btn-text" class="select-choice">Choose category</span>
@@ -69,15 +67,15 @@
               </button>
               <div class="habit-select-menu" id="habit-category-menu">
                 <label>
-                  <input type="checkbox" class="input-text"  name="habit-category" value="health">
+                  <input type="checkbox" class="input-text"  name="habit-category" value="Workout">
                   Health
                 </label>
                 <label>
-                  <input type="checkbox" class="input-text"  name="habit-category" value="study">
+                  <input type="checkbox" class="input-text"  name="habit-category" value="Study">
                   Study
                 </label>
                 <label>
-                  <input type="checkbox" class="input-text"  name="habit-category" value="clean">
+                  <input type="checkbox" class="input-text"  name="habit-category" value="Clean">
                   Clean
                 </label>
               </div>
@@ -95,6 +93,11 @@
 
       <div class="habit-list-container">
         <div id="habit-list"></div>
+      </div>
+
+      <div class="kollaknappar">
+        <button class="edit-btn" id="change" alt="Edit" ></button>
+        <button class="delete-btn" id="throw" alt="Delete"></button>
       </div>
 
       <nav class="bottom-nav">
