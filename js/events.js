@@ -152,40 +152,38 @@ function loadEventsFromLocalStorage() {
     const finishedEventsList = document.getElementById("finished-events");
     const eventTemplate = document.getElementById("event-template");
 
-
     upcomingEventsList.innerHTML = "";
     finishedEventsList.innerHTML = "";
-
 
     let events = JSON.parse(localStorage.getItem("events")) || [];
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
+    // Sortera Upcoming Events i kronologisk ordning
+    events.sort((a, b) => new Date(a.date) - new Date(b.date));
 
     events.forEach(event => {
         const eventDateObj = new Date(event.date);
         const eventCard = eventTemplate.content.cloneNode(true);
         eventCard.querySelector(".event-title").textContent = event.title;
 
-
-        // Visar korrekt datumformat
+        // Format: 19 March 2025 | 00:00
         eventCard.querySelector(".event-date").textContent = formatEventDateTime(event.date);
-
 
         const editButton = eventCard.querySelector(".edit-btn");
         const deleteButton = eventCard.querySelector(".delete-btn");
 
-
         editButton.addEventListener("click", () => openEditEvent(event));
         deleteButton.addEventListener("click", () => deleteEvent(event.id));
 
-
         if (eventDateObj < today) {
+            // Lägg till Finished Events
             eventCard.querySelector(".event-card").classList.add("finished-event");
             eventCard.querySelector(".event-title").style.textDecoration = "line-through";
             eventCard.querySelector(".event-title").style.color = "#7D7D7D";
             finishedEventsList.appendChild(eventCard);
         } else {
+            // Lägg till Upcoming Events i sorterad ordning
             upcomingEventsList.appendChild(eventCard);
         }
     });
