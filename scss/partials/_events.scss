@@ -125,6 +125,33 @@ h1 {
     transition: opacity 0.2s ease-in-out, visibility 0.2s;
 }
 
+// Checkbox-styling
+.filter-menu input[type="checkbox"] {
+    display: none;
+  }
+  
+  .custom-checkbox {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 10px;
+  }
+  
+  .checkmark {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: inline-block;
+    background: url('/images/iconunchecked.svg') no-repeat center;
+    background-size: contain;
+    transition: background 0.3s ease-in-out;
+  }
+  
+  .filter-menu input:checked + .checkmark {
+    background: url('/images/iconchecked.svg') no-repeat center;
+    background-size: contain;
+  }
+
 .filter-menu.show {
     display: flex;
     opacity: 1;
