@@ -11,15 +11,16 @@ header {
       width: 50px;  
     }
   
-    .login-icon {
-        margin-top: 5%;
-        margin-left: 200%;
-        width: 30px;
-    }
-  
   }
 
 header #login .icon-img {
+  display: block;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  margin-left: 480%;// ändrar placering på login
+  margin-top: 70%;// ändrar placering på login
+  width: 50%;
   width: 24px;                
   height: 24px;               
   background-size: contain;
@@ -31,3 +32,5 @@ header #login .icon-img {
 header #login:hover .icon-img {
   background-image: url("/images/login-hover.svg");
 }
+
+// ändrar placering på login

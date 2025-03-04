@@ -40,13 +40,15 @@ header {
 header .logo {
   width: 50px;
 }
-header .login-icon {
-  margin-top: 5%;
-  margin-left: 200%;
-  width: 30px;
-}
 
 header #login .icon-img {
+  display: block;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  margin-left: 480%;
+  margin-top: 70%;
+  width: 50%;
   width: 24px;
   height: 24px;
   background-size: contain;
@@ -68,7 +70,7 @@ header #login:hover .icon-img {
   width: 100%;
   height: 60px;
   border-top: 1px solid #ddd;
-  background-color: white;
+  background-color: #F3F2EE;
 }
 
 .bottom-nav .icon {
@@ -727,54 +729,6 @@ span.delete-btn .edit-btn {
   display: block;
 }
 
-body {
-  background-color: #F3F2EE;
-  color: #000000;
-  font-family: "Roboto", sans-serif;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-main {
-  flex-grow: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-header {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding-top: 15px;
-  width: 100%;
-}
-
-header .logo {
-  width: 50px;
-}
-
-header .login-icon {
-  margin-top: 5%;
-  margin-left: 200%;
-  width: 30px;
-}
-
-header #login .icon-img {
-  width: 24px;
-  height: 24px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-image: url("/images/login.svg");
-}
-
-header #login:hover .icon-img {
-  background-image: url("/images/login-hover.svg");
-}
-
 #index {
   margin-top: 50px;
 }
@@ -835,23 +789,6 @@ header #login:hover .icon-img {
 body {
   font-family: "Roboto", sans-serif;
   background-color: #F3F2EE;
-}
-
-header {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding-top: 15px;
-  width: 100%;
-}
-header .logo {
-  width: 50px;
-}
-header .login-icon {
-  margin-top: 5%;
-  margin-left: 70%;
-  width: 30px;
 }
 
 .date {
