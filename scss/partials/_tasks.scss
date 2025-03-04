@@ -1,14 +1,9 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
- }
- .center {
+.center {
  position: absolute;
  top: 50%;
  left: 50%;
  transform: translate(-50%, -50%);
- }
+}
 
 .todo {
 position: fixed;
@@ -106,7 +101,7 @@ z-index: 1000;
 }
 
 .edit-icon {
-  display: block;
+display: block;
 cursor: pointer;
 font-size: 20px;
 color: #616161;
@@ -130,7 +125,7 @@ z-index: 10;
 transition: color 0.3s ease;
 }
 
-.add-task-btn {
+.button .add-task-btn {
   background-color: #FFBC2C;
   display: flex;
   justify-content: center;
@@ -145,24 +140,37 @@ transition: color 0.3s ease;
   transition: background 0.3s ease-in-out;
 }
 
-.delete-task-btn {
-background: none;
-border: none;
-cursor: pointer;
-padding: 5px;
-margin-left: 10px;
-position: relative;
-z-index: 500;
-.delete-icon {
-  width: 20px;
+/* Klasser för delete & edit hover: */
+span.delete-btn .edit-btn {
+  width: 24px;
+  height: 24px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+/* .edit-btn .edit-svg */
+.edit-btn, .edit-svg {
+  background-image: url("/images/edit-button.svg");
+}
+/* .edit-btn .edit-svg:hover  */
+.edit-btn:hover  {
+  background-image: url("/images/edit-button-hover-yellow.svg");
+  color: #FFBC2C !important;
+}
+/* .delete-btn .delete-svg */
+.delete-btn, .delete-svg {
+  background-image: url("/images/trash.svg");
   height: 20px;
-  opacity: 0.7;
-  transition: opacity 0.3s ease;
+  width: 20px;
+  border: none;
+  background-color: transparent;
 }
-&:hover .delete-icon {
-  opacity: 1;
+/* .delete-btn .delete-svg:hover  */
+.delete-btn:hover {
+  background-image: url("/images/trash-hover-yellow.svg");
+  color: #FFBC2C !important;
 }
-}
+
 
 .list-container {
 display: block;
@@ -171,7 +179,7 @@ padding: 10px;
 border-radius: 10px;
 box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 min-height: 10px;
-min-width: 10px;
+min-width: 250px;
 max-width: 350px;
 margin: 10px auto;
 margin-top: 10px auto;
@@ -348,11 +356,109 @@ border-top: 1px solid #ddd;
   background-color: #ccc;
 }
 
-
 .save-btn {
   display: none; /* Hidden by default */
 }
 
 .save-btn.show {
   display: block; /* Show save button when in edit mode */
+}
+
+// Filter & Sortering - Justera placering åt höger
+.filter-sort-container {
+  display: flex;
+  justify-content: flex-end; /* Flyttar knapparna åt höger */
+  gap: 10px;
+  margin-bottom: 15px;
+  width: 100%;
+  padding-right: 20px; 
+  position: relative;
+}
+
+// Filter & Sort-knappar (text inuti knapparna)
+.filter-btn, .sort-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;  
+  background: #F8F7F4;
+  border: 2px solid #ccc;
+  padding: 8px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s, border-color 0.3s;
+  min-width: 80px;
+
+  &:hover {
+      background: rgba(255, 188, 44, 0.1);
+  }
+
+  &.active {
+      border-color: #FFBC2C;
+      background: rgba(255, 188, 44, 0.1);
+  }
+
+  img {
+      width: 14px; 
+      height: 14px;
+  }
+}
+
+.filter-btn, .sort-btn {
+  color: #000 !important; /* Försäkrar att texten blir svart på events sidan TA INTE BORT!!*/
+}
+
+// Justerar filter-menyn
+.filter-menu {
+  display: none;
+  position: absolute;
+  background: #F8F7F4;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  min-width: 100px;
+
+  /* Positionera menyn korrekt under knappen */
+  top: 100%;
+  left: 48%;
+   
+  flex-direction: column;
+  gap: 12px;
+  text-align: left;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease-in-out, visibility 0.2s;
+}
+
+.filter-menu.show {
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+}
+
+// Anpassa checkbox och text
+.filter-menu label {
+  display: flex;
+  align-items: center;
+  gap: 10px; 
+  font-size: 16px; 
+  font-weight: 500;
+  color: #333; 
+  text-align: left;
+}
+
+// Stil för checkboxarna
+.filter-menu input[type="checkbox"] {
+  width: 20px; // Större checkbox
+  height: 20px;
+  border-radius: 6px;
+  border: 2px solid #B0B0B0;
+  cursor: pointer;
+}
+
+.filter-btn {
+  position: relative;
 }

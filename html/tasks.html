@@ -46,6 +46,30 @@
         </div>
       </div>
      <div class="list-container">
+      <div class="filter-sort-container">
+        <!--  Filter-knapp -->
+        <button class="dropdown-btn filter-btn" id="filter-btn">
+          Filter <img src="/images/filter-up.svg" alt="Filter icon" />
+        </button>
+
+        <!-- Filter-menyn under knappen -->
+        <div id="filter-menu" class="filter-menu">
+          <span class="filter-title">Filter</span>
+          <label>
+            <input type="checkbox" id="filter-finished" />
+            Finished
+          </label>
+          <label>
+            <input type="checkbox" id="filter-upcoming" />
+            Upcoming
+          </label>
+        </div>
+
+        <!-- Sorteringsknapp -->
+        <button class="dropdown-btn sort-btn" id="sort-btn">
+          Sort <img src="/images/sort-arrows.svg" alt="Sort icon" />
+        </button>
+      </div>
         <ul id="todo-list">
         <li>
           
