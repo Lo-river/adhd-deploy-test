@@ -1243,7 +1243,7 @@ h2[contenteditable], h3[contenteditable], p[contenteditable] {
   display: block; /* Show save button when in edit mode */
 }
 
-.filter-sort-container {
+.filter-sort-container-tasks {
   display: flex;
   justify-content: flex-end; /* Flyttar knapparna åt höger */
   gap: 10px;
