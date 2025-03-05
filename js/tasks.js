@@ -19,8 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const title = todoNode.querySelector(".todo-title");
       const category = todoNode.querySelector(".category-title");
       const description = todoNode.querySelector(".todo-description");
-      const timeEstimateIconContainer = document.querySelector("#time-estimate-icon-container");
-      const timeEstimateInput = document.querySelector("#time-estimate");
+      const timeEstimateIcon = document.querySelector("#time-estimate-icon-container");
       const saveBtn = document.querySelector(".save-btn");
       const editIcon = document.querySelector(".edit-btn");
       
@@ -31,18 +30,10 @@ document.addEventListener('DOMContentLoaded', function () {
         saveBtn.style.display = "block"; // visa save-knappen i redigeringsläge
         editIcon.style.display = "none"; // göm redigeringsikonen
         todoNode.classList.add("edit-task");
-
-        // Show time estimate input in edit mode
-        timeEstimateInput.style.display = "block";
-        timeEstimateIconContainer.style.display = "none";
     } else {
         saveBtn.style.display = "none"; // göm save-knappen i view-läge
         editIcon.style.display = "block"; // visa redigeringsikonen
         todoNode.classList.add("view-task");
-
-         // Show time estimate icon in view mode
-         timeEstimateInput.style.display = "none";
-         timeEstimateIconContainer.style.display = "block";
     }
     
     if (tasks[taskId]) {
@@ -72,7 +63,6 @@ document.addEventListener('DOMContentLoaded', function () {
       title.setAttribute("contenteditable", isEditingMode ? "true" : "false");
       category.setAttribute("contenteditable", isEditingMode ? "true" : "false");
       description.setAttribute("contenteditable", isEditingMode ? "true" : "false");
-      
       timeEstimateInput.value = ''; // Empty time estimate for new task
   } 
   // Close modal function
