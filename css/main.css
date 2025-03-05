@@ -29,6 +29,24 @@ Då tex med:
     height: 70px;
   }
 }
+@media (min-width: 500px) {
+  #habit-list {
+    flex: 1 1 calc(33.33% - 20px);
+    min-width: calc(33.33% - 20px);
+  }
+}
+@media (min-width: 500px) {
+  .card-container {
+    flex: 1 calc(33.33% - 20px);
+    min-width: 500px;
+  }
+}
+@media (min-width: 500px) {
+  .habit-card {
+    flex: 1 calc(33.33% - 20px);
+    min-width: 500px;
+  }
+}
 header {
   display: flex;
   flex-direction: column;
@@ -58,7 +76,7 @@ header #login .icon-img {
 }
 
 header #login:hover .icon-img {
-  background-image: url("/images/login-hover.svg");
+  background-image: url("/images/login-hover-yellow.svg");
 }
 
 .bottom-nav {
@@ -132,6 +150,7 @@ header #login:hover .icon-img {
 }
 
 .bottom-nav .cta-button {
+  background-color: #FFBC2C !important;
   border-radius: 60%;
   width: 60px;
   height: 60px;
@@ -157,7 +176,7 @@ header #login:hover .icon-img {
 }
 .events-section h2 {
   font-size: 16px;
-  color: #b7b7b7;
+  color: rgb(182.5, 182.5, 182.5);
   font-weight: normal;
   letter-spacing: 0.5px;
   margin-bottom: 10px;
@@ -199,7 +218,7 @@ main {
   font-size: 16px;
   font-weight: 100;
   font-family: "Roboto", sans-serif;
-  color: #b7b7b7;
+  color: rgb(182.5, 182.5, 182.5);
   margin-bottom: 5px;
 }
 
@@ -482,35 +501,30 @@ h1 {
     font-size: 35px;
   }
 }
-body {
-  background-color: #F3F2EE;
-  color: #000000;
-  font-family: "Roboto", sans-serif;
-  text-align: center;
-  margin: 0;
-  padding: 0;
+#habit-body {
+  padding-bottom: 80px;
 }
 
-.action-buttons {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+.card-container {
+  margin-top: 30px;
+  gap: 10px;
+  width: 100%;
+  box-sizing: content-box !important;
 }
 
-#save-btn #cancel-btn {
+#save-btn #cancel-btn, button {
   background-color: #7c7c7c;
   color: #fff;
-  margin-top: 50px;
   padding: 10px 20px;
   border: none;
   outline: none;
   font-size: 15px;
-  border-radius: 20px;
+  border-radius: 5px;
   cursor: pointer;
 }
 
-#save-btn #cancel-btn:hover {
-  background-color: #FFBC2C;
+#save-btn:hover #cancel-btn, button:hover {
+  background-color: #FFBC2C !important;
 }
 
 /* Skapa overlay-effekt när popup är öppen */
@@ -554,7 +568,7 @@ body {
   text-align: left;
   background: #fbfaf7;
   margin: auto;
-  padding: 25px;
+  padding: 35px;
   gap: 5px;
   border-radius: 20px;
   width: 300px;
@@ -562,31 +576,23 @@ body {
 
 .close-icon {
   position: absolute;
-  top: 10px;
+  margin-top: 5px;
+  margin-right: 5px;
   right: 15px;
   cursor: pointer;
-}
-
-.habit-card {
-  background: #FBFAF7;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  position: relative;
-  margin-bottom: 10px;
+  top: 10px;
+  font-size: 20px;
 }
 
 .habit-list-container {
   margin-top: 2px;
 }
 
-.edit-btn {
-  background-image: url("images/edit-button.svg");
-  background-color: transparent;
-}
-
-.edit-btn:hover {
-  background-image: url("images/edit-button-hover-yellow.svg");
+#habit-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .bottom-nav .cta-button {
@@ -613,6 +619,12 @@ body {
   justify-content: space-between;
   align-items: center;
   margin-top: 10px;
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 h1 {
@@ -646,12 +658,12 @@ input {
   color: #3f3f3f;
   height: auto;
   min-height: 30px;
-  appearance: textfield; /* Fix för att se till att input ser normal ut */
+  appearance: textfield !important; /* Fix för att se till att input ser normal ut */
 }
 
 /* Fix för att nummerinput ska visa pilar */
 input[type=number] {
-  appearance: textfield !important;
+  appearance: auto !important;
 }
 
 select {
@@ -677,39 +689,41 @@ option {
   padding: 8px;
 }
 
-/* Klasser för delete & edit hover: */
-span.delete-btn .edit-btn {
-  width: 24px;
-  height: 24px;
+.delete-btn, .delete-svg {
+  background-image: url("/images/trash.svg");
+  height: 20px;
+  width: 20px;
+  border: none;
+  background-color: transparent;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }
 
-/* .edit-btn .edit-svg */
+.delete-btn:hover {
+  background-image: url("/images/trash-hover-yellow.svg") !important;
+  background-color: transparent !important;
+  color: #FFBC2C !important;
+}
+
 .edit-btn, .edit-svg {
   background-image: url("/images/edit-button.svg");
+  height: 20px;
+  width: 20px;
+  border: none;
+  background-color: transparent;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
-/* .edit-btn .edit-svg:hover  */
 .edit-btn:hover {
-  background-image: url("/images/edit-button-hover-yellow.svg");
+  background-image: url("/images/edit-button-hover-yellow.svg") !important;
+  background-color: transparent !important;
   color: #FFBC2C !important;
 }
 
-/* .delete-btn .delete-svg */
-.delete-btn, .delete-svg {
-  background-image: url("/images/delete-button.svg");
-}
-
-/* .delete-btn .delete-svg:hover  */
-.delete-btn .delete-svg:hover {
-  background-image: url("/images/delete-button-hover-yellow.svg");
-  color: #FFBC2C !important;
-}
-
-/* Övriga stilar kommer som tidigare … */
-/* Stilar för Habit Select */
+/* Habit Card styles*/
 .habit-select {
   position: relative;
   width: 100%;
@@ -730,18 +744,33 @@ span.delete-btn .edit-btn {
   align-items: center;
 }
 
+#habit-title, #habit-repetition {
+  background: #FBFAF7 !important;
+  border: none;
+  outline: none;
+}
+
+.habit-select-menu label {
+  display: block;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+}
+
 .habit-select-btn img {
   width: 16px;
   height: 16px;
 }
 
 .habit-select-menu {
-  display: none; /* Dölj menyn som standard */
+  display: none;
+  flex-direction: row;
   position: absolute;
   top: 100%;
-  left: 0;
-  width: 100%;
-  background: #F8F7F4;
+  text-align: left !important;
+  background: #FBFAF7;
+  margin-top: 3px;
   border: 1px solid #ccc;
   border-radius: 8px;
   padding: 10px;
@@ -754,14 +783,136 @@ span.delete-btn .edit-btn {
   margin-bottom: 8px;
   font-size: 16px;
   cursor: pointer;
+  text-align: left;
 }
 
 .habit-select.active .habit-select-menu {
   display: block;
+  border: none !important;
+}
+
+.habit-select-btn, #habit-category-btn, .habit-select-btn, #habit-priority-btn {
+  background-color: #FBFAF7;
+  font-family: "Roboto";
+  font-size: 14px;
+  padding: 6px;
+  border: none;
+  color: #616161;
+}
+
+.habit-select-menu input[type=checkbox] {
+  opacity: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.habit-select-btn, #habit-category-btn, .habit-select-btn, #habit-priority-btn {
+  background-color: transparent !important;
+}
+
+.habit-select-menu label {
+  font-size: 14px;
+  color: #616161;
+  line-height: 1.4;
+}
+
+.habit-card {
+  width: calc(50% - 10px);
+  min-width: 50%;
+  background-color: #FBFAF7;
+  padding: 0px;
+  border-radius: 10px;
+  text-align: center;
+  transform: scale(0.8);
+  zoom: 0.9;
+}
+
+.habit-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.habit-card-inner {
+  transform: scale(0.8);
+}
+
+#habit-trash-edit, .delete-btn .edit-btn {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+.habit-category {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+  font-weight: 200;
+  font-family: "Roboto", sans-serif;
+  font-variation-settings: "wght" 200;
+}
+
+.habit-divider {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.habit-card-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+}
+
+/* Footer: antal repetioner, placerat längst ner till höger */
+.habit-card-footer {
+  text-align: right;
+  font-size: 14px;
+  color: #616161;
+}
+
+.habit-card .delete-btn, .edit-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+}
+
+.habit-card .delete-btn {
+  background-image: url("/images/trash.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.habit-card .delete-btn:hover {
+  background-image: url("/images/trash-hover-yellow.svg");
+}
+
+.habit-card .edit-btn {
+  background-image: url("/images/edit-button.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.habit-card .edit-btn:hover {
+  background-image: url("/images/edit-button-hover-yellow.svg");
+}
+
+.habit-icon img {
+  max-width: 100%;
+  height: 100px;
+  width: 100px;
 }
 
 #index {
   margin-top: 50px;
+}
+
+img#logo-index {
+  margin-top: 100px;
 }
 
 .index-container {
@@ -795,24 +946,108 @@ span.delete-btn .edit-btn {
   width: 100%;
 }
 
-#login-button {
-  background-color: #7c7c7c;
+#start {
+  background-color: #FFBC2C;
   color: #fff;
-  margin-top: 50px;
-  padding: 10px 20px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  text-decoration: none;
+  font-variation-settings: "wght" 600;
+  margin-top: 80px;
+  padding: 12px 80px;
   border: none;
   outline: none;
-  font-size: 15px;
-  border-radius: 20px;
+  font-size: 22px;
+  border-radius: 8px;
   cursor: pointer;
 }
 
-#login-button {
-  background-color: #FFBC2C;
+#start:hover {
+  background-color: #7c7c7c;
 }
 
-.tasks-body {
-  padding-bottom: 80px;
+#login-header {
+  margin-top: 150px;
+}
+
+img#logo-inlog {
+  margin-top: 100px;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  margin-top: 50;
+  width: 80%;
+}
+
+#h1-login {
+  display: block;
+  color: rgb(59, 59, 59);
+  font-size: 2em;
+  margin-top: 0.67em;
+  margin-bottom: 10px;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+}
+
+#h2-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 200;
+  font-family: "Roboto", sans-serif;
+  font-variation-settings: "wght" 200;
+  margin-bottom: 15px;
+  margin-top: 0;
+  width: 100%;
+}
+
+#login-btn {
+  background-color: #FFBC2C;
+  color: #fff;
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  text-decoration: none;
+  font-variation-settings: "wght" 600;
+  margin-top: 80px;
+  padding: 12px 80px;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#login-btn:hover {
+  background-color: #7c7c7c;
+}
+
+.login-action-container {
+  display: flex;
+  flex-direction: row !important;
+  justify-content: space-between;
+  margin-top: 8px;
+  font-size: smaller;
+  color: #9D9D9D;
+}
+
+.login-divider {
+  display: flex;
+  justify-self: center;
+  border: none;
+  border-top: 1px solid #ddd;
+  margin-top: 300px;
+  width: 90%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .center {
@@ -858,13 +1093,13 @@ span.delete-btn .edit-btn {
   transition: all 300ms ease-in-out;
   z-index: 1010;
 }
-.todo-content h2.todo-title {
+.todo .todo-content h2.todo-title {
   margin: 10px 0;
   font-size: 20px;
   color: #616161;
   text-align: left;
 }
-.todo-content h3.category-title {
+.todo .todo-content h3.category-title {
   margin: 10px 0;
   font-size: 16px;
   color: #616161;
@@ -1159,45 +1394,259 @@ h2[contenteditable], h3[contenteditable], p[contenteditable] {
   opacity: 30%;
 }
 
-.bottom-nav {
+/* SAM Default styling for view-mode */
+#todo.view-task .todo-title,
+#todo.view-task .category-title,
+#todo.view-task .todo-description {
+  background-color: #f9f9f9; /* Light background to indicate view-only */
+  color: #000; /* Muted color for non-editable fields */
+  border: none; /* Remove any border to indicate it's not an editable input */
+  cursor: default; /* Make the cursor show a 'default' cursor to prevent interaction */
+}
+
+#todo.view-task .todo-title {
+  font-weight: bold; /* Make title stand out */
+}
+
+#todo.view-task .category-title {
+  font-style: italic; /* Make category slightly different */
+}
+
+#todo.view-task .todo-description {
+  color: #777; /* Lighter color for description */
+}
+
+/* SAM Styling for edit task modal */
+#todo.edit-task .todo-title,
+#todo.edit-task .category-title,
+#todo.edit-task .todo-description {
+  background-color: white;
+  color: black;
+  border: 1px solid #ccc;
+  cursor: text;
+}
+
+#todo.edit-task .todo-title {
+  background-color: #ccc;
+}
+
+#todo.edit-task .category-title {
+  background-color: #ccc;
+}
+
+#todo.edit-task .todo-description {
+  background-color: #ccc;
+}
+
+.filter-sort-container {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  position: fixed;
-  bottom: 0;
+  justify-content: flex-end; /* Flyttar knapparna åt höger */
+  gap: 10px;
+  margin-bottom: 15px;
   width: 100%;
-  /* height: $nav-height; */
-  border-top: 1px solid #ddd;
+  padding-right: 20px;
+  position: relative;
 }
-.bottom-nav .nav-item {
+
+.filter-btn, .sort-btn {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  font-size: 12px;
-  text-decoration: none;
-  color: #000000;
-  /* margin-top: 18px; */
+  justify-content: center;
+  gap: 5px;
+  background: #F8F7F4;
+  border: 2px solid #ccc;
+  padding: 8px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s, border-color 0.3s;
+  min-width: 80px;
 }
-.bottom-nav .nav-item img {
-  width: 24px;
-  height: 24px;
+.filter-btn:hover, .sort-btn:hover {
+  background: rgba(255, 188, 44, 0.1);
 }
-.bottom-nav .cta-button {
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  background-image: url("/images/cta-button.svg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  border: none;
+.filter-btn.active, .sort-btn.active {
+  border-color: #FFBC2C;
+  background: rgba(255, 188, 44, 0.1);
+}
+.filter-btn img, .sort-btn img {
+  width: 14px;
+  height: 14px;
+}
+
+.filter-btn, .sort-btn {
+  color: #000 !important; /* Försäkrar att texten blir svart på events sidan TA INTE BORT!!*/
+}
+
+.filter-menu {
+  display: none;
   position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
+  background: #F8F7F4;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  min-width: 100px;
+  /* Positionera menyn korrekt under knappen */
+  top: 100%;
+  left: 48%;
+  flex-direction: column;
+  gap: 12px;
+  text-align: left;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease-in-out, visibility 0.2s;
+}
+
+.filter-menu.show {
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+}
+
+.event-due-date {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+/* SAM Default styling for view-mode */
+#todo.view-task .todo-title, #todo.view-task .category-title, #todo.view-task .todo-description {
+  background-color: #f9f9f9; /* Light background to indicate view-only */
+  color: #666; /* Muted color for non-editable fields */
+  border: none; /* Remove any border to indicate it's not an editable input */
+  cursor: default; /* Make the cursor show a 'default' cursor to prevent interaction */
+}
+
+#todo.view-task .todo-title {
+  font-weight: bold; /* Make title stand out */
+}
+
+#todo.view-task .category-title {
+  font-style: italic; /* Make category slightly different */
+}
+
+#todo.view-task .todo-description {
+  color: #777; /* Lighter color for description */
+}
+
+/* Styling for edit task modal */
+#todo.edit-task .todo-title, #todo.edit-task .category-title, #todo.edit-task .todo-description {
+  background-color: white;
+  color: black;
+  border: 1px solid #ccc;
+  cursor: text;
+}
+
+#todo.edit-task .todo-title {
+  background-color: #ccc;
+}
+
+#todo.edit-task .category-title {
+  background-color: #ccc;
+}
+
+#todo.edit-task .todo-description {
+  background-color: #ccc;
+}
+
+.save-btn {
+  display: none; /* Hidden by default */
+}
+
+.save-btn.show {
+  display: block; /* Show save button when in edit mode */
+}
+
+.filter-sort-container-tasks {
+  display: flex;
+  justify-content: flex-end; /* Flyttar knapparna åt höger */
+  gap: 10px;
+  margin-bottom: 15px;
+  width: 100%;
+  padding-right: 20px;
+  position: relative;
+}
+
+.filter-btn, .sort-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  background: #F8F7F4;
+  border: 2px solid #ccc;
+  padding: 8px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s, border-color 0.3s;
+  min-width: 80px;
+}
+.filter-btn:hover, .sort-btn:hover {
+  background: rgba(255, 188, 44, 0.1);
+}
+.filter-btn.active, .sort-btn.active {
+  border-color: #FFBC2C;
+  background: rgba(255, 188, 44, 0.1);
+}
+.filter-btn img, .sort-btn img {
+  width: 14px;
+  height: 14px;
+}
+
+.filter-btn, .sort-btn {
+  color: #000 !important; /* Försäkrar att texten blir svart på events sidan TA INTE BORT!!*/
+}
+
+.filter-menu {
+  display: none;
+  position: absolute;
+  background: #F8F7F4;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  min-width: 100px;
+  /* Positionera menyn korrekt under knappen */
+  top: 100%;
+  left: 48%;
+  flex-direction: column;
+  gap: 12px;
+  text-align: left;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease-in-out, visibility 0.2s;
+}
+
+.filter-menu.show {
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+}
+
+.filter-menu label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  text-align: left;
+}
+
+.filter-menu input[type=checkbox] {
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  border: 2px solid #B0B0B0;
   cursor: pointer;
 }
-.bottom-nav .cta-button:hover {
-  background-image: url("/images/cta-button-hover.svg");
+
+.filter-btn {
+  position: relative;
 }
 
 /* SAM Default styling for view-mode */
@@ -1352,3 +1801,5 @@ main {
   justify-content: center;
   align-items: center;
 }
+
+/*# sourceMappingURL=main.css.map */

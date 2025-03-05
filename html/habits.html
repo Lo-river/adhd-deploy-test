@@ -19,103 +19,102 @@
   </head>
   <body id="habit-body">
     <div class="wrap-container">
-      <header>
-        <a href="login.html" id="login" class="icon">
-          <div class="icon-img"></div>
-        </a>
-        <img src="/images/adhd-logo.svg" alt="logo" class="logo" />
-      </header>
-      <main>
-        <p class="date">MONDAY 17 MAY 2025</p>
-        <h1>HABITS</h1>
+        <header>
+    
+          <a href="login.html" id="login" class="icon">
+            <div class="icon-img"></div>
+          </a>
 
-        <div id="habit-popup" class="popup">
-          <div class="popup-content">          
-            <span class="close-icon"">&times;</span>
+          <img src="/images/adhd-logo.svg" alt="logo" class="logo" />
+        </header>
+        <!-- <main> -->
+          <p class="date">MONDAY 17 MAY 2025</p>
+          <h1>HABITS</h1>
+          <div class="card-container">
+          <div id="habit-popup" class="popup">
+            <div class="popup-content">  
 
-            <!-- <img src="/images/cross-svgrepo-com.svg" class="close-icon" alt="Close the modal" style="width: 24px; height: 24px;"> -->
-            <img src="/images/cross-svgrepo-com.svg" class="close-icon" alt="Close the modal" style="width: 24px; height: 24px;">
-            <input type="text" id="habit-title" placeholder="Enter Habit title" disabled>
-            
-            <div class="habit-select" id="habit-priority-select">
-              <button type="button" class="habit-select-btn" id="habit-priority-btn" placeholder="hej" disabled>
-                <span id="habit-priority-btn-text" class="select-choice"></span>
-                <img src="/images/filter-down.svg" alt="Select icon">
-              </button>
-              <div class="habit-select-menu" id="habit-priority-menu">
-                <label>
-                  <input type="checkbox" class="input-text" name="habit-priority" value="low">
-                  Low
-                </label>
-                <label>
-                  <input type="checkbox" class="input-text" name="habit-priority" value="normal">
-                  Normal
-                </label>
-                <label>
-                  <input type="checkbox" class="input-text"  name="habit-priority" value="high">
-                  High
-                </label>
+              <span class="close-icon" alt="Close the modal" style="width: 15px; height: 15px;">&times;</span>
+              <input type="text" id="habit-title" placeholder="Enter Habit title" disabled>
+              
+              <div class="habit-select" id="habit-priority-select">
+                <button type="button" class="habit-select-btn" id="habit-priority-btn" placeholder="hej" disabled>
+                  <span id="habit-priority-btn-text" class="select-choice"></span>
+                  <img src="/images/filter-down.svg" alt="Select icon">
+                </button>
+                <div class="habit-select-menu" id="habit-priority-menu">
+                  <label>
+                    <input type="checkbox" class="input-text" name="habit-priority" value="low">
+                    Low
+                  </label>
+                  <label>
+                    <input type="checkbox" class="input-text" name="habit-priority" value="normal">
+                    Normal
+                  </label>
+                  <label>
+                    <input type="checkbox" class="input-text"  name="habit-priority" value="high">
+                    High
+                  </label>
+                </div>
               </div>
-            </div>
-            
-            <input type="number" name="habit-repetition" id="habit-repetition" placeholder="Enter number of repetitions:"  min="1" disabled>
-            
-            <!-- Habit Category Select -->
-            <div class="habit-select" id="habit-category-select">
-              <button type="button" class="habit-select-btn" id="habit-category-btn" disabled>
-                <span id="habit-category-btn-text" class="select-choice">Choose category</span>
+              <input type="number" name="habit-repetition" id="habit-repetition" placeholder="Enter number of repetitions"  min="1" >
+              
+              <div class="habit-select" id="habit-category-select">
+                <button type="button" class="habit-select-btn" id="habit-category-btn" disabled>
+                  <span id="habit-category-btn-text" class="select-choice">Choose category</span>
 
-                <img src="/images/filter-down.svg" alt="Select icon">
-              </button>
-              <div class="habit-select-menu" id="habit-category-menu">
-                <label>
-                  <input type="checkbox" class="input-text"  name="habit-category" value="health">
-                  Health
-                </label>
-                <label>
-                  <input type="checkbox" class="input-text"  name="habit-category" value="study">
-                  Study
-                </label>
-                <label>
-                  <input type="checkbox" class="input-text"  name="habit-category" value="clean">
-                  Clean
-                </label>
+                  <img src="/images/filter-down.svg" alt="Select icon">
+                </button>
+                <div class="habit-select-menu" id="habit-category-menu">
+                  <label>
+                    <input type="checkbox" class="input-text"  name="habit-category" value="Workout">
+                    Workout
+                  </label>
+                  <label>
+                    <input type="checkbox" class="input-text"  name="habit-category" value="Study">
+                    Study
+                  </label>
+                  <label>
+                    <input type="checkbox" class="input-text"  name="habit-category" value="Clean">
+                    Clean
+                  </label>
+                </div>
               </div>
-            </div>
-            
-            <div class="button-space">
-              <div class="action-buttons">
-                <button id="cancel-btn">Cancel</button>
-                <button id="save-btn">Save</button>
+              
+              <div class="button-space">
+                <div class="action-buttons">
+                  <button id="cancel-btn">Cancel</button>
+                  <button id="save-btn">Save</button>
+                </div>
               </div>
             </div>
           </div>
+    
+
+        <div class="habit-list-container">
+          <div id="habit-list"></div>
         </div>
-      </main>
-
-      <div class="habit-list-container">
-        <div id="habit-list"></div>
-      </div>
-
-      <nav class="bottom-nav">
-        <a href="home.html" id="home" class="icon" alt="Home icon, press to go to start page">
-          <div class="icon-img"></div>
-          <span>Home</span>
-        </a>
-        <a href="tasks.html" id="tasks" class="icon" alt="Tasks icon, press to go to task page">
-          <div class="icon-img"></div>
-          <span>Tasks</span>
-        </a>
-        <button class="cta-button" alt="Add icon, press to add task, habit and event"></button>
-        <a href="habits.html" id="habits" class="icon" alt="Habits icon, press to go to habits page">
-          <div class="icon-img"></div>
-          <span>Habits</span>
-        </a>
-        <a href="events.html" id="events" class="icon" alt="Events icon, press to go to event page">
-          <div class="icon-img"></div>
-          <span>Events</span>
-        </a>
-      </nav>
+          </div>    
+        <!-- </main> -->
+          <nav class="bottom-nav">
+            <a href="home.html" id="home" class="icon" alt="Home icon, press to go to start page">
+              <div class="icon-img"></div>
+              <span>Home</span>
+            </a>
+            <a href="tasks.html" id="tasks" class="icon" alt="Tasks icon, press to go to task page">
+              <div class="icon-img"></div>
+              <span>Tasks</span>
+            </a>
+            <button class="cta-button" alt="Add icon, press to add task, habit and event"></button>
+            <a href="habits.html" id="habits" class="icon" alt="Habits icon, press to go to habits page">
+              <div class="icon-img"></div>
+              <span>Habits</span>
+            </a>
+            <a href="events.html" id="events" class="icon" alt="Events icon, press to go to event page">
+              <div class="icon-img"></div>
+              <span>Events</span>
+            </a>
+          </nav>
     </div>
   </body>
 </html>
