@@ -27,3 +27,23 @@
     height: 70px;
   }
 }
+
+@media (min-width: 500px) {
+  #habit-list {
+    flex: 1 1 calc(33.33% - 20px);
+    min-width: calc(33.33% - 20px);
+  }
+}
+@media (min-width: 500px) {
+  .card-container {
+    flex: 1  calc(33.33% - 20px);
+    min-width: 500px;
+  }
+}
+@media (min-width: 500px) {
+  .habit-card {
+    flex: 1  calc(33.33% - 20px);
+    min-width: 500px;
+  }
+}
+
