@@ -1,6 +1,9 @@
 #index{
   margin-top: 50px;
 }
+img#logo-index{
+  margin-top: 100px;
+}
 .index-container{
   display: flex;
   flex-direction: column;
@@ -37,7 +40,7 @@
 #start {
   background-color: #FFBC2C;
   color: #fff;
-    font-family: "Roboto", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight:900;
   text-decoration: none;
   font-variation-settings: "wght" 600;
@@ -46,7 +49,7 @@
   border: none;
   outline: none;
   font-size: 15px;
-  border-radius: 20px;
+  border-radius: 8px;
   cursor: pointer;
 }
 
