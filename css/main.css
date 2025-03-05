@@ -811,7 +811,7 @@ span.delete-btn .edit-btn {
   background-color: #FFBC2C;
 }
 
-.tasks-body {
+.task-body {
   padding-bottom: 80px;
 }
 
@@ -831,8 +831,7 @@ span.delete-btn .edit-btn {
   transition: top 300ms ease-in-out;
   z-index: 1000;
 }
-
-.overlay {
+.todo .overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -842,8 +841,7 @@ span.delete-btn .edit-btn {
   opacity: 0;
   transition: opacity 300ms ease-in-out;
 }
-
-.todo-content {
+.todo .todo-content {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -858,13 +856,13 @@ span.delete-btn .edit-btn {
   transition: all 300ms ease-in-out;
   z-index: 1010;
 }
-.todo-content h2.todo-title {
+.todo .todo-content h2.todo-title {
   margin: 10px 0;
   font-size: 20px;
   color: #616161;
   text-align: left;
 }
-.todo-content h3.category-title {
+.todo .todo-content h3.category-title {
   margin: 10px 0;
   font-size: 16px;
   color: #616161;
@@ -872,20 +870,18 @@ span.delete-btn .edit-btn {
   font-weight: bold;
   display: block;
 }
-.todo-content p.todo-description {
+.todo .todo-content p.todo-description {
   margin: 15px 0;
   color: #616161;
   font-size: 14px;
   text-align: left;
 }
-.todo-content .controls {
+.todo .todo-content .controls {
   display: flex;
   justify-content: flex-end;
   margin: 20px 0 0;
-  /* Hide time-estimate icon container in edit mode */
-  /* Show it in view mode or another mode */
 }
-.todo-content .controls .save-btn {
+.todo .todo-content .controls .save-btn {
   background: #FFBC2C;
   color: #fff;
   padding: 10px 15px;
@@ -894,52 +890,51 @@ span.delete-btn .edit-btn {
   cursor: pointer;
   width: 100%;
 }
-.todo-content .controls #todo.edit-task .time-estimate-icon-container {
-  display: none;
+.todo .todo-content .time-estimate-display {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #616161;
 }
-.todo-content .controls #todo.view-task .time-estimate-icon-container {
-  display: block;
-}
-.todo-content .controls .time-estimate {
+.todo .todo-content .time-estimate {
   margin-top: 15px;
 }
-.todo-content .controls .time-estimate label {
+.todo .todo-content .time-estimate label {
   font-size: 14px;
   color: #616161;
   display: block;
   margin-bottom: 5px;
 }
-.todo-content .controls .time-estimate-icon {
+.todo .todo-content .time-estimate-icon {
   height: 20px;
   width: 20px;
 }
-.todo-content .controls .time-input {
+.todo .todo-content .time-input {
   width: 100%;
-  padding: 8px;
+  padding: 6px;
   font-size: 14px;
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: #fff;
 }
-.todo-content .controls .time-input:disabled {
+.todo .todo-content .time-input:disabled {
   background-color: #f1f1f1;
   cursor: not-allowed;
 }
-.todo-content .controls .time-estimate-icon-container {
+.todo .todo-content .time-estimate-icon-container {
   position: relative;
   display: inline-block;
   margin-top: 10px;
 }
-.todo-content .controls .time-estimate-icon {
+.todo .todo-content .time-estimate-icon {
   width: 24px; /* Adjust size as needed */
   height: 24px; /* Adjust size as needed */
   cursor: pointer;
   transition: transform 0.2s ease-in-out;
 }
-.todo-content .controls .time-estimate-icon:hover {
+.todo .todo-content .time-estimate-icon:hover {
   transform: scale(1.1);
 }
-.todo-content .controls .time-estimate-tooltip {
+.todo .todo-content .time-estimate-tooltip {
   visibility: hidden;
   position: absolute;
   top: 30px;
@@ -955,31 +950,31 @@ span.delete-btn .edit-btn {
   opacity: 0;
   transition: opacity 0.2s;
 }
-.todo-content .controls .time-estimate-icon-container:hover .time-estimate-tooltip {
+.todo .todo-content .time-estimate-icon-container:hover .time-estimate-tooltip {
   visibility: visible;
   opacity: 1;
 }
-.todo-content .controls #time-estimate-text {
+.todo .todo-content #time-estimate-text {
   font-weight: bold;
 }
-.todo-content .controls .controls {
+.todo .todo-content .controls {
   background: transparent;
   color: #7C7C7C;
 }
-.todo-content.todo-active {
+.todo.todo-active {
   top: 0;
   transition: top 0ms ease-in-out 0ms;
   display: block;
 }
-.todo-content.todo-active .overlay {
+.todo.todo-active .overlay {
   opacity: 1;
   transition: all 0ms ease-in-out 0ms;
 }
-.todo-content.todo-active .todo-content {
+.todo.todo-active .todo-content {
   transform: translate(-50%, -50%) scale(1);
   opacity: 1;
 }
-.todo-content .todo .todo-active .save-btn {
+.todo .todo .todo-active .save-btn {
   display: block;
 }
 
@@ -1151,12 +1146,48 @@ span.delete-btn .edit-btn {
   background-color: #FBFAF7;
 }
 
-h2[contenteditable], h3[contenteditable], p[contenteditable] {
-  border: 1px solid #616161;
-  padding: 5px;
-  outline: none;
-  background-color: #D9D9D9;
-  opacity: 30%;
+#todo.view-task .todo-title,
+#todo.view-task .category-title,
+#todo.view-task .todo-description {
+  background-color: #f9f9f9; /* Light background to indicate view-only */
+  color: #777; /* Muted color for non-editable fields */
+  border: none; /* Remove any border to indicate it's not an editable input */
+  cursor: default; /* Make the cursor show a 'default' cursor to prevent interaction */
+}
+
+#todo.view-task .todo-title {
+  font-weight: bold; /* Make title stand out */
+}
+
+#todo.view-task .category-title {
+  font-style: italic; /* Make category slightly different */
+  font-weight: 500;
+  color: #777;
+}
+
+#todo.view-task .todo-description {
+  color: #777; /* Lighter color for description */
+}
+
+#todo.edit-task .todo-title,
+#todo.edit-task .category-title,
+#todo.edit-task .todo-description {
+  background-color: white;
+  color: #777;
+  border: 1px solid #ccc;
+  cursor: text; /* Indicates that the content is editable */
+}
+
+#todo.edit-task .todo-title {
+  background-color: #ccc;
+}
+
+#todo.edit-task .category-title {
+  background-color: #ccc;
+}
+
+#todo.edit-task .todo-description {
+  background-color: #ccc;
 }
 
 .bottom-nav {
@@ -1201,7 +1232,9 @@ h2[contenteditable], h3[contenteditable], p[contenteditable] {
 }
 
 /* SAM Default styling for view-mode */
-#todo.view-task .todo-title, #todo.view-task .category-title, #todo.view-task .todo-description {
+#todo.view-task .todo-title,
+#todo.view-task .category-title,
+#todo.view-task .todo-description {
   background-color: #f9f9f9; /* Light background to indicate view-only */
   color: #666; /* Muted color for non-editable fields */
   border: none; /* Remove any border to indicate it's not an editable input */
@@ -1221,7 +1254,9 @@ h2[contenteditable], h3[contenteditable], p[contenteditable] {
 }
 
 /* Styling for edit task modal */
-#todo.edit-task .todo-title, #todo.edit-task .category-title, #todo.edit-task .todo-description {
+#todo.edit-task .todo-title,
+#todo.edit-task .category-title,
+#todo.edit-task .todo-description {
   background-color: white;
   color: black;
   border: 1px solid #ccc;
@@ -1248,7 +1283,7 @@ h2[contenteditable], h3[contenteditable], p[contenteditable] {
   display: block; /* Show save button when in edit mode */
 }
 
-.filter-sort-container-tasks {
+.filter-sort-container-task {
   display: flex;
   justify-content: flex-end; /* Flyttar knapparna åt höger */
   gap: 10px;
