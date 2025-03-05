@@ -58,7 +58,7 @@ header #login .icon-img {
 }
 
 header #login:hover .icon-img {
-  background-image: url("/images/login-hover.svg");
+  background-image: url("/images/login-hover-yellow.svg");
 }
 
 .bottom-nav {
@@ -132,7 +132,7 @@ header #login:hover .icon-img {
 }
 
 .bottom-nav .cta-button {
-  background-color:#FFBC2C !important;
+  background-color: #FFBC2C !important;
   border-radius: 60%;
   width: 60px;
   height: 60px;
@@ -158,7 +158,7 @@ header #login:hover .icon-img {
 }
 .events-section h2 {
   font-size: 16px;
-  color: #b7b7b7;
+  color: rgb(182.5, 182.5, 182.5);
   font-weight: normal;
   letter-spacing: 0.5px;
   margin-bottom: 10px;
@@ -195,7 +195,7 @@ main {
   font-size: 16px;
   font-weight: 100;
   font-family: "Roboto", sans-serif;
-  color: #b7b7b7;
+  color: rgb(182.5, 182.5, 182.5);
   margin-bottom: 5px;
 }
 
@@ -448,6 +448,14 @@ h1 {
     font-size: 35px;
   }
 }
+.card-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  border: 3px solid orange;
+  min-width: 95%;
+}
+
 .action-buttons {
   display: flex;
   flex-direction: row;
@@ -457,12 +465,11 @@ h1 {
 #save-btn #cancel-btn, button {
   background-color: #7c7c7c;
   color: #fff;
-  margin-top: 50px;
   padding: 10px 20px;
   border: none;
   outline: none;
   font-size: 15px;
-  border-radius: 20px;
+  border-radius: 5px;
   cursor: pointer;
 }
 
@@ -523,15 +530,8 @@ h1 {
   margin-right: 5px;
   right: 15px;
   cursor: pointer;
-}
-
-.habit-card {
-  background: #FBFAF7;
-  padding: 35px;
-  margin: 80px auto;
-  width: 250px;
-  border-radius: 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  top: 10px;
+  font-size: 20px;
 }
 
 .habit-list-container {
@@ -595,16 +595,12 @@ input {
   color: #3f3f3f;
   height: auto;
   min-height: 30px;
-  -webkit-appearance: textfield !important;
-     -moz-appearance: textfield !important;
-          appearance: textfield !important; /* Fix för att se till att input ser normal ut */
+  appearance: textfield !important; /* Fix för att se till att input ser normal ut */
 }
 
 /* Fix för att nummerinput ska visa pilar */
 input[type=number] {
-  -webkit-appearance: textfield !important;
-     -moz-appearance: textfield !important;
-          appearance: textfield !important;
+  appearance: auto !important;
 }
 
 select {
@@ -630,21 +626,24 @@ option {
   padding: 8px;
 }
 
-/* Klasser för delete & edit hover: */
 .delete-btn, .delete-svg {
   background-image: url("/images/trash.svg");
   height: 20px;
   width: 20px;
   border: none;
   background-color: transparent;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .delete-btn:hover {
   background-image: url("/images/trash-hover-yellow.svg") !important;
+  background-color: transparent !important;
   color: #FFBC2C !important;
 }
 
-.edit-btn, .delete-svg {
+.edit-btn, .edit-svg {
   background-image: url("/images/edit-button.svg");
   height: 20px;
   width: 20px;
@@ -657,29 +656,29 @@ option {
 
 .edit-btn:hover {
   background-image: url("/images/edit-button-hover-yellow.svg") !important;
+  background-color: transparent !important;
   color: #FFBC2C !important;
 }
 
-/* Övriga stilar kommer som tidigare … */
-/* Stilar för Habit Select */
+/* Habit Card styles*/
 .habit-select {
   position: relative;
   width: 100%;
   margin-bottom: 15px;
 }
 
-.habit-select-btn {
-  width: 100%;
-  padding: 8px;
-  font-size: 16px;
-  text-align: left;
-  background: #F8F7F4;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+#habit-title, #habit-repetition {
+  background: #FBFAF7 !important;
+  border: none;
+  outline: none;
+}
+
+.habit-select-menu label {
+  display: block;
+  padding: 10px;
   cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  border-radius: 5px;
+  text-align: center;
 }
 
 .habit-select-btn img {
@@ -688,12 +687,12 @@ option {
 }
 
 .habit-select-menu {
-  display: none; /* Dölj menyn som standard */
+  display: none;
   position: absolute;
   top: 100%;
-  left: 0;
-  width: 100%;
-  background: #F8F7F4;
+  text-align: left;
+  background: #FBFAF7;
+  margin-top: 3px;
   border: 1px solid #ccc;
   border-radius: 8px;
   padding: 10px;
@@ -710,6 +709,123 @@ option {
 
 .habit-select.active .habit-select-menu {
   display: block;
+  border: none !important;
+}
+
+.habit-select-btn, #habit-category-btn, .habit-select-btn, #habit-priority-btn {
+  background-color: #FBFAF7;
+  font-family: "Roboto";
+  font-size: 14px;
+  padding: 6px;
+  border: none;
+  color: #616161;
+}
+
+.habit-select-menu input[type=checkbox] {
+  opacity: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.habit-select-btn, #habit-category-btn, .habit-select-btn, #habit-priority-btn {
+  background-color: transparent !important;
+}
+
+.habit-select-menu label {
+  font-size: 14px;
+  color: #616161;
+  line-height: 1.4;
+}
+
+.habit-card {
+  background: #fbfaf7;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+  margin: 80px auto;
+  text-align: center;
+  width: 240px;
+  height: 190px;
+  transform: scale(0.7);
+  transform-origin: center;
+}
+
+.habit-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#habit-trash-edit, .delete-btn .edit-btn {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+.habit-category {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+  font-weight: 200;
+  font-family: "Roboto", sans-serif;
+  font-variation-settings: "wght" 200;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
+
+.habit-card-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+}
+
+/* Footer: repetitionsantal, placerat längst ner till höger */
+.habit-card-footer {
+  text-align: right;
+  font-size: 14px;
+  color: #616161;
+}
+
+.habit-card .delete-btn, .edit-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+}
+
+.habit-card .delete-btn {
+  background-image: url("/images/trash.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.habit-card .delete-btn:hover {
+  background-image: url("/images/trash-hover-yellow.svg");
+}
+
+.habit-card .edit-btn {
+  background-image: url("/images/edit-button.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.habit-card .edit-btn:hover {
+  background-image: url("/images/edit-button-hover-yellow.svg");
+}
+
+/* Category icon */
+.habit-icon img {
+  max-width: 100%;
+  height: 80px;
+  width: 80px;
 }
 
 #index {
@@ -747,11 +863,15 @@ option {
   width: 100%;
 }
 
-#login-button {
-  background-color: #7c7c7c;
+#start {
+  background-color: #FFBC2C;
   color: #fff;
-  margin-top: 50px;
-  padding: 10px 20px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  text-decoration: none;
+  font-variation-settings: "wght" 600;
+  margin-top: 80px;
+  padding: 12px 80px;
   border: none;
   outline: none;
   font-size: 15px;
@@ -759,8 +879,8 @@ option {
   cursor: pointer;
 }
 
-#login-button {
-  background-color: #FFBC2C;
+#start:hover {
+  background-color: #7c7c7c;
 }
 
 * {
@@ -902,7 +1022,6 @@ option {
   background-color: #FFBC2C;
   display: flex;
   justify-content: center;
-  width: -moz-fit-content;
   width: fit-content;
   margin: 20px auto;
   padding: 10px 15px;
@@ -975,8 +1094,7 @@ option {
 .checkbox-icon img {
   max-width: 100%;
   max-height: 100%;
-  -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
 }
 
 .checkbox-input:checked + .checkbox-icon {
@@ -1167,4 +1285,6 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-}/*# sourceMappingURL=main.css.map */
+}
+
+/*# sourceMappingURL=main.css.map */
