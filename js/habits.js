@@ -335,20 +335,24 @@ document.addEventListener("DOMContentLoaded", function () {
         const habitCard = document.createElement("div");
         habitCard.classList.add("habit-card");
 
+
+
         habitCard.innerHTML = ` 
-      <div class="habit-card-header" id="habit-trash-edit">
-        <button class="delete-btn" data-id="${habit.id}"></button>
-        <h2 class="habit-category">${habit.category}</h2>
-        <button class="edit-btn" data-id="${habit.id}"></button>
+    <div class="habit-card-inner">
+        <div class="habit-card-header" id="habit-trash-edit">
+          <button class="delete-btn" data-id="${habit.id}"></button>
+          <h2 class="habit-category">${habit.category}</h2>
+          <button class="edit-btn" data-id="${habit.id}"></button>
+        </div>
+        <hr class="habit-divider">
+        <div class="habit-card-body">
+          <div class="habit-icon" id="habit-icon-${habit.id}"></div>
+        </div>
+        <div class="habit-card-footer">
+          <span class="habit-repetitions">Rep. ${habit.repetitions} </span>
+        </div>
       </div>
-      <hr class="divider">
-      <div class="habit-card-body">
-        <div class="habit-icon" id="habit-icon-${habit.id}"></div>
-      </div>
-      <div class="habit-card-footer">
-        <span class="habit-repetitions">Rep. ${habit.repetitions} </span>
-      </div>
-        `;
+   `;
         habitList.appendChild(habitCard);
 
         const habitIcon = document.getElementById(`habit-icon-${habit.id}`);
@@ -363,6 +367,16 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       });
   
+      document.querySelectorAll(".habit-icon img").forEach(btn => {
+        btn.addEventListener("click", function () {
+          const habitId = parseInt(this.getAttribute("data-id"));
+          const habit = habits.find(h => h.id === habitId);
+          if (habit) {
+            openPopup(habit);
+          }
+        });
+      });
+      
       document.querySelectorAll(".edit-btn").forEach(btn => {
         btn.addEventListener("click", function () {
           const habitId = parseInt(this.getAttribute("data-id"));
