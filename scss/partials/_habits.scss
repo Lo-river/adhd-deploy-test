@@ -1,19 +1,27 @@
+#habit-body{
+  padding-bottom:80px;
+  
+
+}
+
 
 .card-container{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  // display: flex;
+  // flex-direction: row;
+  // flex-wrap: wrap;
+  // justify-content: center;
+  margin-top: 30px;
+  // padding: 30px;
+ gap:10px;
+  width: 100%;
+  // border: 3px solid orange;
+  // min-width: 95%;
+  box-sizing:content-box !important;
   
-  border: 3px solid orange;
-  min-width: 95%;
 
 }
 
-.action-buttons {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
+
 
  #save-btn #cancel-btn, button {
   background-color: #7c7c7c;
@@ -102,33 +110,25 @@
 
 
 .habit-list-container {
+  // display: flex;
+  // flex-direction: row !important;
   margin-top: 2px;
+}
+#habit-list{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  // gap: 15px;
+  // width: 99%;
+  
 }
 
 
 
 
 
-// 4 mars 22.30:
-  // .edit-btn {
-  //     background-image: url("/images/logo-index.svg");
-  //     background-color: transparent;
-  //   // cursor: pointer;
-  //   // font-size: 20px;
-  //   // color: #616161;
-  //   // position: absolute;
-  //   // top: 10px;
-  //   // right: 40px;
-  //   // z-index: 10;
-  //   // transition: color 0.3s ease;
 
-
-  // }
-  //  .edit-btn:hover {
-  //   background-image: url("images/edit-button-hover-yellow.svg");
-
-
-  //   }
   .bottom-nav .cta-button {
     border-radius: 50%;
     width: 60px;
@@ -155,6 +155,12 @@
   justify-content: space-between;
   align-items: center;
   margin-top: 10px;
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 
@@ -275,20 +281,20 @@ option {
   margin-bottom: 15px;
 }
 
-// Kanske inte aktuellt längre: 
-// .habit-select-btn {
-//   width: 100%;
-//   padding: 8px;
-//   font-size: 16px;
-//   text-align: left;
-//   background: #F8F7F4;
-//   border: 1px solid #ccc;
-//   border-radius: 8px;
-//   cursor: pointer;
-//   display: flex;
-//   justify-content: space-between;
-//   align-items: center;
-// }
+
+.habit-select-btn {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  text-align: left;
+  background: #F8F7F4;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
 #habit-title, #habit-repetition {
   background: $card-backgroundcolor !important; 
@@ -315,9 +321,10 @@ option {
 
 .habit-select-menu {
   display: none; 
+  flex-direction: row;
   position: absolute;
   top: 100%;
-  text-align: left;
+  text-align: left !important;
   background: $card-backgroundcolor;
   margin-top:3px ;
   border: 1px solid #ccc;
@@ -332,11 +339,13 @@ option {
   margin-bottom: 8px;
   font-size: 16px;
   cursor: pointer;
+  text-align: left;
 }
 
 .habit-select.active .habit-select-menu {
   display: block;
   border: none !important;
+  
 }
 
 
@@ -374,29 +383,63 @@ option {
 }
 
 
+// .habit-card {
+//   flex: 1 1 calc(50% - 10px);
+//   max-width: 1 1 calc(50% - 10px);
+//   background: #fbfaf7;
+//   padding: 15px;
+//   border-radius: 10px;
+//   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+//   margin-bottom: 10px;  
+//   margin: 80px auto;
+//   text-align: center;
+//   // width: 240px;
+//   width: calc(50% - 10px);
+//   min-width: 200px;
+//   height: auto;
+//   // transform: scale(0.7); //Minskar kortet
+//   // transform-origin: center; //utgår ifrån midden när den minskar
+//   box-sizing:content-box;
+// }
+// .habit-card {
+//   background: #fbfaf7;
+//   padding: 15px;
+//   border-radius: 8px;
+//   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+//   text-align: center;
+//   width: 80px;
+ 
+//   flex: 1 1 calc(50% - 20px); /* 50% minus gap */
+//   max-width: calc(50% - 20px);
+//   margin: 10px;
+//     // transform: scale(0.7); 
+//   // transform-origin: center; 
+//   box-sizing:content-box;
+ 
+// }
+
 .habit-card {
-  background: #fbfaf7;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  margin-bottom: 10px;  
-  margin: 80px auto;
+  width: calc(50% - 10px);
+  // // height: ;
+  min-width: 50%; 
+  background-color: $card-backgroundcolor;
+  padding: 0px;
+  border-radius: 10px;
   text-align: center;
-  width: 240px;
-  height: 190px;
-  transform: scale(0.7); //Minskar kortet
-  transform-origin: center; //utgår ifrån midden när den minskar
+  transform: scale(0.8);
+  zoom: 0.9;
+
 }
-
-
 .habit-card-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
 }
 
+.habit-card-inner{
+  transform: scale(0.8);
 
+}
  #habit-trash-edit, .delete-btn .edit-btn
 {
   display: flex;
@@ -417,12 +460,12 @@ option {
 }
 
 
-.divider {
+.habit-divider {
   // margin: 10px 0;
   border: none;
   border-top: 1px solid #ddd;
   margin-bottom: 10px;
-  margin-top: 5px;
+  margin-top: 10px;
 }
 
 // Där kategori-ikonen är
@@ -434,7 +477,7 @@ option {
 
 }
 
-/* Footer: repetitionsantal, placerat längst ner till höger */
+/* Footer: antal repetioner, placerat längst ner till höger */
 .habit-card-footer {
   text-align: right;
   font-size: 14px;
@@ -470,9 +513,9 @@ option {
   background-image: url("/images/edit-button-hover-yellow.svg");
 }
 
-/* Category icon */
+// Category icon 
 .habit-icon img {
   max-width: 100%;
-  height: 80px;
-  width: 80px;
+  height:100px;
+  width: 100px;
 }
