@@ -76,6 +76,7 @@ z-index: 1000;
     }
 
   }
+
   .time-estimate-display {
     margin-top: 10px;
     font-size: 14px;
@@ -153,6 +154,24 @@ z-index: 1000;
 
 #time-estimate-text {
   font-weight: bold;
+}
+
+/* Hide time estimate icon in edit mode */
+#todo.edit-task .time-estimate-icon-container {
+  display: none;
+}
+
+/* Show time estimate input only in edit mode */
+#todo.view-task .time-estimate {
+  display: none;
+}
+
+#todo.edit-task .time-estimate-display {
+  display: none;
+}
+
+#todo.view-task .time-estimate-display {
+  display: block;
 }
 
   .controls {

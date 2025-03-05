@@ -646,16 +646,12 @@ input {
   color: #3f3f3f;
   height: auto;
   min-height: 30px;
-  -webkit-appearance: textfield;
-     -moz-appearance: textfield;
-          appearance: textfield; /* Fix för att se till att input ser normal ut */
+  appearance: textfield; /* Fix för att se till att input ser normal ut */
 }
 
 /* Fix för att nummerinput ska visa pilar */
 input[type=number] {
-  -webkit-appearance: textfield !important;
-     -moz-appearance: textfield !important;
-          appearance: textfield !important;
+  appearance: textfield !important;
 }
 
 select {
@@ -855,6 +851,8 @@ span.delete-btn .edit-btn {
   box-shadow: 0px 2px 2px 5px rgba(0, 0, 0, 0.05);
   transition: all 300ms ease-in-out;
   z-index: 1010;
+  /* Hide time estimate icon in edit mode */
+  /* Show time estimate input only in edit mode */
 }
 .todo .todo-content h2.todo-title {
   margin: 10px 0;
@@ -957,6 +955,18 @@ span.delete-btn .edit-btn {
 .todo .todo-content #time-estimate-text {
   font-weight: bold;
 }
+.todo .todo-content #todo.edit-task .time-estimate-icon-container {
+  display: none;
+}
+.todo .todo-content #todo.view-task .time-estimate {
+  display: none;
+}
+.todo .todo-content #todo.edit-task .time-estimate-display {
+  display: none;
+}
+.todo .todo-content #todo.view-task .time-estimate-display {
+  display: block;
+}
 .todo .todo-content .controls {
   background: transparent;
   color: #7C7C7C;
@@ -1007,7 +1017,6 @@ span.delete-btn .edit-btn {
   background-color: #FFBC2C;
   display: flex;
   justify-content: center;
-  width: -moz-fit-content;
   width: fit-content;
   margin: 20px auto;
   padding: 10px 15px;
@@ -1096,8 +1105,7 @@ span.delete-btn .edit-btn {
 .checkbox-icon img {
   max-width: 100%;
   max-height: 100%;
-  -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
 }
 
 .checkbox-input:checked + .checkbox-icon {
@@ -1352,4 +1360,4 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-}/*# sourceMappingURL=main.css.map */
+}
