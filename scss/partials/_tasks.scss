@@ -1,3 +1,7 @@
+.tasks-body {
+  padding-bottom: 80px;
+  }
+
 .center {
   position: absolute;
   top: 50%;
@@ -13,7 +17,7 @@
  height: 100%;
  transition: top 300ms ease-in-out;
  z-index: 1000;
- 
+ }
  
  .overlay {
    position: absolute;
@@ -75,12 +79,15 @@
        width: 100%;
      }
  
-   }
-   .time-estimate-display {
-     margin-top: 10px;
-     font-size: 14px;
-     color: #616161;
- }
+/* Hide time-estimate icon container in edit mode */
+#todo.edit-task .time-estimate-icon-container {
+  display: none;
+}
+
+/* Show it in view mode or another mode */
+#todo.view-task .time-estimate-icon-container {
+  display: block;
+}
  
    .time-estimate {
      margin-top:15px;
@@ -392,9 +399,7 @@
  }
  
  /* SAM Default styling for view-mode */
- #todo.view-task .todo-title,
- #todo.view-task .category-title,
- #todo.view-task .todo-description {
+ #todo.view-task .todo-title, #todo.view-task .category-title, #todo.view-task .todo-description {
      background-color: #f9f9f9; /* Light background to indicate view-only */
      color: #666; /* Muted color for non-editable fields */
      border: none; /* Remove any border to indicate it's not an editable input */
@@ -414,9 +419,7 @@
  }
  
  /* Styling for edit task modal */
- #todo.edit-task .todo-title,
- #todo.edit-task .category-title,
- #todo.edit-task .todo-description {
+ #todo.edit-task .todo-title, #todo.edit-task .category-title, #todo.edit-task .todo-description {
      background-color: white;
      color: black;
      border: 1px solid #ccc;
@@ -540,4 +543,4 @@
  
  .filter-btn {
    position: relative;
- } 
+  }
