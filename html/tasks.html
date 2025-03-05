@@ -15,7 +15,7 @@
       #tasks{color: #FFBC2C !important;}
  </style>
   </head>
-  <body class="tasks-body">
+  <body class="task-body">
     <div class="wrap-container">
       <header>
         <a href="login.html" id="login" class="icon">
@@ -40,15 +40,13 @@
           <h2 class="todo-title">To Do Title</h2>
           <h3 class="category-title">Category</h3>
           <p class="todo-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-          
           <!-- VISA ENDAST I EDIT MODE EJ KLART  -->
-          <div class="time-estimate" id="time-estimate-section"> 
-            <label for="time-estimate">Time Estimate in minutes:</label>
-            <input type="text" id="time-estimate" class="time-input" placeholder="Enter time estimate in minutes" />
+          <div class="time-estimate"> 
+            <label for="time-estimate">Time Estimate:</label>
+            <input type="text" id="time-estimate" class="time-input" placeholder="Enter time estimate" />
         </div> 
-       
         <!-- VISA ENDAST I VIEW-MODE EJ KLART -->
-        <div class="time-estimate-icon-container" id=""time-estimate-icon-container>
+        <div class="time-estimate-icon-container">
           <img class="time-estimate-icon" src="/images/clock-nine-svgrepo-com.svg" alt="Time Estimate Icon" />
           <span class="time-estimate-tooltip">Time Estimate: <span id="time-estimate-text">Not set</span></span>
       </div>
@@ -58,7 +56,7 @@
         </div>
       </div>
      <div class="list-container">
-      <div class="filter-sort-container-tasks">
+      <div class="filter-sort-container-task">
         <!--  Filter-knapp -->
         <button class="dropdown-btn filter-btn" id="filter-btn">
           Filter <img src="/images/filter-up.svg" alt="Filter icon" />

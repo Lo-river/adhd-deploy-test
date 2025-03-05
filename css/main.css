@@ -1026,6 +1026,8 @@ img#logo-inlog {
   background-color: #7c7c7c;
 }
 
+.task-body {
+  padding-bottom: 80px;
 .login-action-container {
   display: flex;
   flex-direction: row !important;
@@ -1066,8 +1068,7 @@ img#logo-inlog {
   transition: top 300ms ease-in-out;
   z-index: 1000;
 }
-
-.overlay {
+.todo .overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -1077,8 +1078,7 @@ img#logo-inlog {
   opacity: 0;
   transition: opacity 300ms ease-in-out;
 }
-
-.todo-content {
+.todo .todo-content {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -1094,11 +1094,13 @@ img#logo-inlog {
   z-index: 1010;
 }
 .todo .todo-content h2.todo-title {
+.todo .todo-content h2.todo-title {
   margin: 10px 0;
   font-size: 20px;
   color: #616161;
   text-align: left;
 }
+.todo .todo-content h3.category-title {
 .todo .todo-content h3.category-title {
   margin: 10px 0;
   font-size: 16px;
@@ -1107,20 +1109,18 @@ img#logo-inlog {
   font-weight: bold;
   display: block;
 }
-.todo-content p.todo-description {
+.todo .todo-content p.todo-description {
   margin: 15px 0;
   color: #616161;
   font-size: 14px;
   text-align: left;
 }
-.todo-content .controls {
+.todo .todo-content .controls {
   display: flex;
   justify-content: flex-end;
   margin: 20px 0 0;
-  /* Hide time-estimate icon container in edit mode */
-  /* Show it in view mode or another mode */
 }
-.todo-content .controls .save-btn {
+.todo .todo-content .controls .save-btn {
   background: #FFBC2C;
   color: #fff;
   padding: 10px 15px;
@@ -1129,52 +1129,51 @@ img#logo-inlog {
   cursor: pointer;
   width: 100%;
 }
-.todo-content .controls #todo.edit-task .time-estimate-icon-container {
-  display: none;
+.todo .todo-content .time-estimate-display {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #616161;
 }
-.todo-content .controls #todo.view-task .time-estimate-icon-container {
-  display: block;
-}
-.todo-content .controls .time-estimate {
+.todo .todo-content .time-estimate {
   margin-top: 15px;
 }
-.todo-content .controls .time-estimate label {
+.todo .todo-content .time-estimate label {
   font-size: 14px;
   color: #616161;
   display: block;
   margin-bottom: 5px;
 }
-.todo-content .controls .time-estimate-icon {
+.todo .todo-content .time-estimate-icon {
   height: 20px;
   width: 20px;
 }
-.todo-content .controls .time-input {
+.todo .todo-content .time-input {
   width: 100%;
-  padding: 8px;
+  padding: 6px;
   font-size: 14px;
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: #fff;
 }
-.todo-content .controls .time-input:disabled {
+.todo .todo-content .time-input:disabled {
   background-color: #f1f1f1;
   cursor: not-allowed;
 }
-.todo-content .controls .time-estimate-icon-container {
+.todo .todo-content .time-estimate-icon-container {
   position: relative;
   display: inline-block;
   margin-top: 10px;
 }
-.todo-content .controls .time-estimate-icon {
+.todo .todo-content .time-estimate-icon {
   width: 24px; /* Adjust size as needed */
   height: 24px; /* Adjust size as needed */
   cursor: pointer;
   transition: transform 0.2s ease-in-out;
 }
-.todo-content .controls .time-estimate-icon:hover {
+.todo .todo-content .time-estimate-icon:hover {
   transform: scale(1.1);
 }
-.todo-content .controls .time-estimate-tooltip {
+.todo .todo-content .time-estimate-tooltip {
   visibility: hidden;
   position: absolute;
   top: 30px;
@@ -1190,31 +1189,31 @@ img#logo-inlog {
   opacity: 0;
   transition: opacity 0.2s;
 }
-.todo-content .controls .time-estimate-icon-container:hover .time-estimate-tooltip {
+.todo .todo-content .time-estimate-icon-container:hover .time-estimate-tooltip {
   visibility: visible;
   opacity: 1;
 }
-.todo-content .controls #time-estimate-text {
+.todo .todo-content #time-estimate-text {
   font-weight: bold;
 }
-.todo-content .controls .controls {
+.todo .todo-content .controls {
   background: transparent;
   color: #7C7C7C;
 }
-.todo-content.todo-active {
+.todo.todo-active {
   top: 0;
   transition: top 0ms ease-in-out 0ms;
   display: block;
 }
-.todo-content.todo-active .overlay {
+.todo.todo-active .overlay {
   opacity: 1;
   transition: all 0ms ease-in-out 0ms;
 }
-.todo-content.todo-active .todo-content {
+.todo.todo-active .todo-content {
   transform: translate(-50%, -50%) scale(1);
   opacity: 1;
 }
-.todo-content .todo .todo-active .save-btn {
+.todo .todo .todo-active .save-btn {
   display: block;
 }
 
@@ -1386,12 +1385,48 @@ span.delete-btn .edit-btn {
   background-color: #FBFAF7;
 }
 
-h2[contenteditable], h3[contenteditable], p[contenteditable] {
-  border: 1px solid #616161;
-  padding: 5px;
-  outline: none;
-  background-color: #D9D9D9;
-  opacity: 30%;
+#todo.view-task .todo-title,
+#todo.view-task .category-title,
+#todo.view-task .todo-description {
+  background-color: #f9f9f9; /* Light background to indicate view-only */
+  color: #777; /* Muted color for non-editable fields */
+  border: none; /* Remove any border to indicate it's not an editable input */
+  cursor: default; /* Make the cursor show a 'default' cursor to prevent interaction */
+}
+
+#todo.view-task .todo-title {
+  font-weight: bold; /* Make title stand out */
+}
+
+#todo.view-task .category-title {
+  font-style: italic; /* Make category slightly different */
+  font-weight: 500;
+  color: #777;
+}
+
+#todo.view-task .todo-description {
+  color: #777; /* Lighter color for description */
+}
+
+#todo.edit-task .todo-title,
+#todo.edit-task .category-title,
+#todo.edit-task .todo-description {
+  background-color: white;
+  color: #777;
+  border: 1px solid #ccc;
+  cursor: text; /* Indicates that the content is editable */
+}
+
+#todo.edit-task .todo-title {
+  background-color: #ccc;
+}
+
+#todo.edit-task .category-title {
+  background-color: #ccc;
+}
+
+#todo.edit-task .todo-description {
+  background-color: #ccc;
 }
 
 /* SAM Default styling for view-mode */
@@ -1450,70 +1485,40 @@ h2[contenteditable], h3[contenteditable], p[contenteditable] {
 
 .filter-btn, .sort-btn {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-  background: #F8F7F4;
-  border: 2px solid #ccc;
-  padding: 8px 20px;
-  font-size: 14px;
-  font-weight: 500;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s, border-color 0.3s;
-  min-width: 80px;
-}
-.filter-btn:hover, .sort-btn:hover {
-  background: rgba(255, 188, 44, 0.1);
-}
-.filter-btn.active, .sort-btn.active {
-  border-color: #FFBC2C;
-  background: rgba(255, 188, 44, 0.1);
-}
-.filter-btn img, .sort-btn img {
-  width: 14px;
-  height: 14px;
-}
-
-.filter-btn, .sort-btn {
-  color: #000 !important; /* Försäkrar att texten blir svart på events sidan TA INTE BORT!!*/
-}
-
-.filter-menu {
-  display: none;
-  position: absolute;
-  background: #F8F7F4;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-  min-width: 100px;
-  /* Positionera menyn korrekt under knappen */
-  top: 100%;
-  left: 48%;
   flex-direction: column;
-  gap: 12px;
-  text-align: left;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.2s ease-in-out, visibility 0.2s;
-}
-
-.filter-menu.show {
-  display: flex;
-  opacity: 1;
-  visibility: visible;
-}
-
-.event-due-date {
-  display: flex;
   align-items: center;
-  justify-content: flex-end;
-  margin-top: 10px;
+  font-size: 12px;
+  text-decoration: none;
+  color: #000000;
+  /* margin-top: 18px; */
+}
+.bottom-nav .nav-item img {
+  width: 24px;
+  height: 24px;
+}
+.bottom-nav .cta-button {
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  background-image: url("/images/cta-button.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: none;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+}
+
+.filter-btn {
+  position: relative;
 }
 
 /* SAM Default styling for view-mode */
-#todo.view-task .todo-title, #todo.view-task .category-title, #todo.view-task .todo-description {
+#todo.view-task .todo-title,
+#todo.view-task .category-title,
+#todo.view-task .todo-description {
   background-color: #f9f9f9; /* Light background to indicate view-only */
   color: #666; /* Muted color for non-editable fields */
   border: none; /* Remove any border to indicate it's not an editable input */
@@ -1533,7 +1538,9 @@ h2[contenteditable], h3[contenteditable], p[contenteditable] {
 }
 
 /* Styling for edit task modal */
-#todo.edit-task .todo-title, #todo.edit-task .category-title, #todo.edit-task .todo-description {
+#todo.edit-task .todo-title,
+#todo.edit-task .category-title,
+#todo.edit-task .todo-description {
   background-color: white;
   color: black;
   border: 1px solid #ccc;
@@ -1560,7 +1567,7 @@ h2[contenteditable], h3[contenteditable], p[contenteditable] {
   display: block; /* Show save button when in edit mode */
 }
 
-.filter-sort-container-tasks {
+.filter-sort-container-task {
   display: flex;
   justify-content: flex-end; /* Flyttar knapparna åt höger */
   gap: 10px;
@@ -1650,7 +1657,9 @@ h2[contenteditable], h3[contenteditable], p[contenteditable] {
 }
 
 /* SAM Default styling for view-mode */
-#todo.view-task .todo-title, #todo.view-task .category-title, #todo.view-task .todo-description {
+#todo.view-task .todo-title,
+#todo.view-task .category-title,
+#todo.view-task .todo-description {
   background-color: #f9f9f9; /* Light background to indicate view-only */
   color: #666; /* Muted color for non-editable fields */
   border: none; /* Remove any border to indicate it's not an editable input */
@@ -1670,7 +1679,9 @@ h2[contenteditable], h3[contenteditable], p[contenteditable] {
 }
 
 /* Styling for edit task modal */
-#todo.edit-task .todo-title, #todo.edit-task .category-title, #todo.edit-task .todo-description {
+#todo.edit-task .todo-title,
+#todo.edit-task .category-title,
+#todo.edit-task .todo-description {
   background-color: white;
   color: black;
   border: 1px solid #ccc;
@@ -1697,7 +1708,7 @@ h2[contenteditable], h3[contenteditable], p[contenteditable] {
   display: block; /* Show save button when in edit mode */
 }
 
-.filter-sort-container-tasks {
+.filter-sort-container-task {
   display: flex;
   justify-content: flex-end; /* Flyttar knapparna åt höger */
   gap: 10px;
