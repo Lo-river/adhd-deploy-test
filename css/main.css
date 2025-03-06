@@ -694,7 +694,9 @@ input {
   color: #3f3f3f;
   height: auto;
   min-height: 30px;
-  appearance: textfield !important;
+  -webkit-appearance: textfield !important;
+     -moz-appearance: textfield !important;
+          appearance: textfield !important;
 }
 
 select {
@@ -991,9 +993,87 @@ option {
   background-image: url("/images/habits/habit-reset-hover-yellow.svg");
 }
 
-/*#home-body{
-    padding-bottom: 80px;
-}*/
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: #FFBC2C;
+  font-weight: lighter;
+  transition: color 0.3s ease-in-out;
+}
+
+.view-all-link {
+  display: flex;
+  text-align: center !important;
+  font-size: 12px;
+  margin-top: 1px;
+  font-weight: lighter !important;
+  color: #FFBC2C;
+}
+.view-all-link:hover {
+  text-decoration: underline;
+  color: #f8a900;
+}
+
+.home-section h2 {
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.wrap-container {
+  max-width: 430px;
+  margin: 0 auto;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h2 {
+  font-size: 18px;
+  font-weight: lighter;
+  margin-top: 15px;
+  text-align: left;
+  width: 120%;
+}
+
+.home-section {
+  width: 100%;
+  max-width: 300px;
+  margin-right: 5%;
+}
+
+.home-card {
+  background-color: #FBFAF7;
+  border-radius: 8px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  margin-bottom: 5px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.home-card-title {
+  font-size: 16px;
+  font-weight: lighter;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.home-card-subtitle {
+  font-size: 12px;
+  color: #7D7D7D;
+  text-align: right;
+  margin-right: 5px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
 #index {
   margin-top: 50px;
 }
@@ -1344,6 +1424,7 @@ img#logo-inlog {
   background-color: #FFBC2C;
   display: flex;
   justify-content: center;
+  width: -moz-fit-content;
   width: fit-content;
   margin: 20px auto;
   padding: 10px 15px;
@@ -1432,7 +1513,8 @@ span.delete-btn .edit-btn {
 .checkbox-icon img {
   max-width: 100%;
   max-height: 100%;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 .checkbox-input:checked + .checkbox-icon {
@@ -1692,4 +1774,4 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-}
+}/*# sourceMappingURL=main.css.map */
