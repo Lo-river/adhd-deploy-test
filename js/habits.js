@@ -1,24 +1,34 @@
+
+
+
+// KODEN NEDAN OKEJ - INNAN FILTER/SORT
+
 document.addEventListener("DOMContentLoaded", function () {
-    // Hämta element
+    // Hämtar element
     const habitPopup = document.getElementById("habit-popup");
     const ctaButton = document.querySelector(".cta-button");
     const cancelButton = document.getElementById("cancel-btn");
     const saveButton = document.getElementById("save-btn");
     const habitList = document.getElementById("habit-list");
     
+
+
+    //Habit filter & sort
     const titleInput = document.getElementById("habit-title");
-    // Använd display istället för ett inputfält för repetition
     const repetitionDisplay = document.getElementById("habit-repetition-display");
-    
     const habitPriorityBtn = document.getElementById("habit-priority-btn");
     const habitCategoryBtn = document.getElementById("habit-category-btn");
-    
-    // Popup edit-knapp (används nu som en riktig knapp med klassen "edit-btn")
     const popupEditBtn = document.getElementById("popup-edit-btn");
     
+
     let habits = JSON.parse(localStorage.getItem("habits")) || [];
     let currentEditingHabitId = null;
-    let currentHabit = null; // Variabel för aktuell vana
+    let currentHabit = null; // den aktuella habit
+    let currentFilterPriority = "all";
+    let repetitionsSortAscending = true;
+    let prioritySortAscending = true;
+
+
 
     function openPopup(habit = null, isEdible = true) {
       document.body.classList.add("editing-mode");
@@ -346,7 +356,7 @@ document.addEventListener("DOMContentLoaded", function () {
           habitPriorityBtn.querySelector("span").textContent = opt.parentElement.textContent.trim();
         }
       });
-      // Sätt repetitionsvärde i displayen
+      // Sätt repetitionsvärde 
       repetitionDisplay.textContent = habit.repetitions;
       const categoryOptions = document.getElementsByName("habit-category");
       categoryOptions.forEach(opt => {
@@ -382,7 +392,7 @@ document.addEventListener("DOMContentLoaded", function () {
     priorityOptions.forEach(opt => {
       if (opt.checked) selectedPriority = opt.value;
     });
-    // Hämta repetitionsvärde från displayen
+    // Hämta repetitionsvärde 
     const repetitions = parseInt(repetitionDisplay.textContent) || 0;
     const categoryOptions = document.getElementsByName("habit-category");
     let selectedCategory = "";
@@ -629,3 +639,10 @@ function setupSorting() {
       loadHabitsFromLocalStorage(); // Ladda om vanorna efter sortering
   });
 }
+
+
+
+
+
+
+// KODEN ÖVER OKEJ OCH SOM SKA ANVÄNDAS- INNAN FILTER/SORT
