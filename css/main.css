@@ -41,10 +41,23 @@ Då tex med:
     min-width: 500px;
   }
 }
-@media (min-width: 500px) {
+@media (max-width: 350px) {
+  #habit-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center !important;
+    border: 2px solid orange;
+  }
   .habit-card {
-    flex: 1 calc(33.33% - 20px);
-    min-width: 500px;
+    background: #fbfaf7;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 250px !important;
+    margin: 10px;
+    box-sizing: content-box;
   }
 }
 header {
@@ -176,7 +189,7 @@ header #login:hover .icon-img {
 }
 .events-section h2 {
   font-size: 16px;
-  color: rgb(182.5, 182.5, 182.5);
+  color: #b7b7b7;
   font-weight: normal;
   letter-spacing: 0.5px;
   margin-bottom: 10px;
@@ -218,7 +231,7 @@ main {
   font-size: 16px;
   font-weight: 100;
   font-family: "Roboto", sans-serif;
-  color: rgb(182.5, 182.5, 182.5);
+  color: #b7b7b7;
   margin-bottom: 5px;
 }
 
@@ -527,21 +540,18 @@ h1 {
   background-color: #FFBC2C !important;
 }
 
-/* Skapa overlay-effekt när popup är öppen */
 .editing-mode .habit-list-container {
-  filter: blur(5px); /* Gör bakgrunden oskarp */
-  pointer-events: none; /* Förhindrar klick på korten */
+  filter: blur(5px);
+  pointer-events: none;
 }
 
-/* Visa overlay när .editing-mode är aktiv */
 .editing-mode #overlay {
   display: block;
 }
 
-/* Popup ska vara överst */
 .popup {
   z-index: 10;
-  display: none; /* Dold från början */
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -584,8 +594,10 @@ h1 {
   font-size: 20px;
 }
 
-.habit-list-container {
-  margin-top: 2px;
+.wrap-container.habit-list-container {
+  margin-top: 20px;
+  border: solid 4px orange;
+  justify-items: center;
 }
 
 #habit-list {
@@ -593,6 +605,7 @@ h1 {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
+  width: 100%;
 }
 
 .bottom-nav .cta-button {
@@ -639,16 +652,6 @@ h2 {
   text-align: left;
 }
 
-h1[contenteditable],
-h2[contenteditable],
-p[contenteditable] {
-  border: 1px solid #616161;
-  padding: 5px;
-  outline: none;
-  background-color: #d9d9d9;
-  opacity: 30%;
-}
-
 input {
   padding: 5px 10px;
   border-radius: 8px;
@@ -658,12 +661,9 @@ input {
   color: #3f3f3f;
   height: auto;
   min-height: 30px;
-  appearance: textfield !important; /* Fix för att se till att input ser normal ut */
-}
-
-/* Fix för att nummerinput ska visa pilar */
-input[type=number] {
-  appearance: auto !important;
+  -webkit-appearance: textfield !important;
+     -moz-appearance: textfield !important;
+          appearance: textfield !important;
 }
 
 select {
@@ -723,7 +723,6 @@ option {
   color: #FFBC2C !important;
 }
 
-/* Habit Card styles*/
 .habit-select {
   position: relative;
   width: 100%;
@@ -866,7 +865,6 @@ option {
   padding: 10px 0;
 }
 
-/* Footer: antal repetioner, placerat längst ner till höger */
 .habit-card-footer {
   text-align: right;
   font-size: 14px;
@@ -905,6 +903,61 @@ option {
   max-width: 100%;
   height: 100px;
   width: 100px;
+}
+
+.habit-repetition-actions {
+  flex-direction: row;
+  align-items: center !important;
+  text-align: center !important;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.habit-action-btn {
+  background-color: #FBFAF7;
+  width: 20px;
+  height: 20px;
+  color: #9D9D9D;
+}
+
+#habit-count {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+#add-repetition, #sub-repetition, #reset-repetition {
+  width: 5px !important;
+  height: 5px !important;
+  background-size: contain;
+  background-repeat: no-repeat;
+  border: none;
+  background-color: transparent !important;
+  cursor: pointer;
+}
+
+#add-repetition {
+  background-image: url("/images/habits/habit-add.svg");
+}
+
+#add-repetition:hover {
+  background-image: url("/images/habits/habit-add-hover-yellow.svg");
+}
+
+#sub-repetition {
+  background-image: url("/images/habits/habit-subtrac.svg");
+}
+
+#sub-repetition:hover {
+  background-image: url("/images/habits/habit-subtrac-hover-yellow.svg");
+}
+
+#reset-repetition {
+  background-image: url("/images/habits/habit-reset.svg");
+}
+
+#reset-repetition:hover {
+  background-image: url("/images/habits/habit-reset-hover-yellow.svg");
 }
 
 #index {
@@ -1044,10 +1097,8 @@ img#logo-inlog {
   width: 90%;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+.tasks-body {
+  padding-bottom: 80px;
 }
 
 .center {
@@ -1093,13 +1144,13 @@ img#logo-inlog {
   transition: all 300ms ease-in-out;
   z-index: 1010;
 }
-.todo .todo-content h2.todo-title {
+.todo-content h2.todo-title {
   margin: 10px 0;
   font-size: 20px;
   color: #616161;
   text-align: left;
 }
-.todo .todo-content h3.category-title {
+.todo-content h3.category-title {
   margin: 10px 0;
   font-size: 16px;
   color: #616161;
@@ -1247,6 +1298,7 @@ img#logo-inlog {
   background-color: #FFBC2C;
   display: flex;
   justify-content: center;
+  width: -moz-fit-content;
   width: fit-content;
   margin: 20px auto;
   padding: 10px 15px;
@@ -1335,7 +1387,8 @@ span.delete-btn .edit-btn {
 .checkbox-icon img {
   max-width: 100%;
   max-height: 100%;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 .checkbox-input:checked + .checkbox-icon {
@@ -1394,259 +1447,45 @@ h2[contenteditable], h3[contenteditable], p[contenteditable] {
   opacity: 30%;
 }
 
-/* SAM Default styling for view-mode */
-#todo.view-task .todo-title,
-#todo.view-task .category-title,
-#todo.view-task .todo-description {
-  background-color: #f9f9f9; /* Light background to indicate view-only */
-  color: #000; /* Muted color for non-editable fields */
-  border: none; /* Remove any border to indicate it's not an editable input */
-  cursor: default; /* Make the cursor show a 'default' cursor to prevent interaction */
-}
-
-#todo.view-task .todo-title {
-  font-weight: bold; /* Make title stand out */
-}
-
-#todo.view-task .category-title {
-  font-style: italic; /* Make category slightly different */
-}
-
-#todo.view-task .todo-description {
-  color: #777; /* Lighter color for description */
-}
-
-/* SAM Styling for edit task modal */
-#todo.edit-task .todo-title,
-#todo.edit-task .category-title,
-#todo.edit-task .todo-description {
-  background-color: white;
-  color: black;
-  border: 1px solid #ccc;
-  cursor: text;
-}
-
-#todo.edit-task .todo-title {
-  background-color: #ccc;
-}
-
-#todo.edit-task .category-title {
-  background-color: #ccc;
-}
-
-#todo.edit-task .todo-description {
-  background-color: #ccc;
-}
-
-.filter-sort-container {
+.bottom-nav {
   display: flex;
-  justify-content: flex-end; /* Flyttar knapparna åt höger */
-  gap: 10px;
-  margin-bottom: 15px;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
   width: 100%;
-  padding-right: 20px;
-  position: relative;
+  /* height: $nav-height; */
+  border-top: 1px solid #ddd;
 }
-
-.filter-btn, .sort-btn {
+.bottom-nav .nav-item {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-  background: #F8F7F4;
-  border: 2px solid #ccc;
-  padding: 8px 20px;
-  font-size: 14px;
-  font-weight: 500;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s, border-color 0.3s;
-  min-width: 80px;
-}
-.filter-btn:hover, .sort-btn:hover {
-  background: rgba(255, 188, 44, 0.1);
-}
-.filter-btn.active, .sort-btn.active {
-  border-color: #FFBC2C;
-  background: rgba(255, 188, 44, 0.1);
-}
-.filter-btn img, .sort-btn img {
-  width: 14px;
-  height: 14px;
-}
-
-.filter-btn, .sort-btn {
-  color: #000 !important; /* Försäkrar att texten blir svart på events sidan TA INTE BORT!!*/
-}
-
-.filter-menu {
-  display: none;
-  position: absolute;
-  background: #F8F7F4;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-  min-width: 100px;
-  /* Positionera menyn korrekt under knappen */
-  top: 100%;
-  left: 48%;
   flex-direction: column;
-  gap: 12px;
-  text-align: left;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.2s ease-in-out, visibility 0.2s;
-}
-
-.filter-menu.show {
-  display: flex;
-  opacity: 1;
-  visibility: visible;
-}
-
-.event-due-date {
-  display: flex;
   align-items: center;
-  justify-content: flex-end;
-  margin-top: 10px;
+  font-size: 12px;
+  text-decoration: none;
+  color: #000000;
+  /* margin-top: 18px; */
 }
-
-/* SAM Default styling for view-mode */
-#todo.view-task .todo-title, #todo.view-task .category-title, #todo.view-task .todo-description {
-  background-color: #f9f9f9; /* Light background to indicate view-only */
-  color: #666; /* Muted color for non-editable fields */
-  border: none; /* Remove any border to indicate it's not an editable input */
-  cursor: default; /* Make the cursor show a 'default' cursor to prevent interaction */
+.bottom-nav .nav-item img {
+  width: 24px;
+  height: 24px;
 }
-
-#todo.view-task .todo-title {
-  font-weight: bold; /* Make title stand out */
-}
-
-#todo.view-task .category-title {
-  font-style: italic; /* Make category slightly different */
-}
-
-#todo.view-task .todo-description {
-  color: #777; /* Lighter color for description */
-}
-
-/* Styling for edit task modal */
-#todo.edit-task .todo-title, #todo.edit-task .category-title, #todo.edit-task .todo-description {
-  background-color: white;
-  color: black;
-  border: 1px solid #ccc;
-  cursor: text;
-}
-
-#todo.edit-task .todo-title {
-  background-color: #ccc;
-}
-
-#todo.edit-task .category-title {
-  background-color: #ccc;
-}
-
-#todo.edit-task .todo-description {
-  background-color: #ccc;
-}
-
-.save-btn {
-  display: none; /* Hidden by default */
-}
-
-.save-btn.show {
-  display: block; /* Show save button when in edit mode */
-}
-
-.filter-sort-container-tasks {
-  display: flex;
-  justify-content: flex-end; /* Flyttar knapparna åt höger */
-  gap: 10px;
-  margin-bottom: 15px;
-  width: 100%;
-  padding-right: 20px;
-  position: relative;
-}
-
-.filter-btn, .sort-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-  background: #F8F7F4;
-  border: 2px solid #ccc;
-  padding: 8px 20px;
-  font-size: 14px;
-  font-weight: 500;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s, border-color 0.3s;
-  min-width: 80px;
-}
-.filter-btn:hover, .sort-btn:hover {
-  background: rgba(255, 188, 44, 0.1);
-}
-.filter-btn.active, .sort-btn.active {
-  border-color: #FFBC2C;
-  background: rgba(255, 188, 44, 0.1);
-}
-.filter-btn img, .sort-btn img {
-  width: 14px;
-  height: 14px;
-}
-
-.filter-btn, .sort-btn {
-  color: #000 !important; /* Försäkrar att texten blir svart på events sidan TA INTE BORT!!*/
-}
-
-.filter-menu {
-  display: none;
+.bottom-nav .cta-button {
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  background-image: url("/images/cta-button.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: none;
   position: absolute;
-  background: #F8F7F4;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-  min-width: 100px;
-  /* Positionera menyn korrekt under knappen */
-  top: 100%;
-  left: 48%;
-  flex-direction: column;
-  gap: 12px;
-  text-align: left;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.2s ease-in-out, visibility 0.2s;
-}
-
-.filter-menu.show {
-  display: flex;
-  opacity: 1;
-  visibility: visible;
-}
-
-.filter-menu label {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 16px;
-  font-weight: 500;
-  color: #333;
-  text-align: left;
-}
-
-.filter-menu input[type=checkbox] {
-  width: 20px;
-  height: 20px;
-  border-radius: 6px;
-  border: 2px solid #B0B0B0;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
   cursor: pointer;
 }
-
-.filter-btn {
-  position: relative;
+.bottom-nav .cta-button:hover {
+  background-image: url("/images/cta-button-hover.svg");
 }
 
 /* SAM Default styling for view-mode */
@@ -1800,6 +1639,4 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-/*# sourceMappingURL=main.css.map */
+}/*# sourceMappingURL=main.css.map */
