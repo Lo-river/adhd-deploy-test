@@ -1131,7 +1131,7 @@ img#logo-inlog {
   width: 90%;
 }
 
-.tasks-body {
+.body-tasks {
   padding-bottom: 80px;
 }
 
@@ -1151,8 +1151,7 @@ img#logo-inlog {
   transition: top 300ms ease-in-out;
   z-index: 1000;
 }
-
-.overlay {
+.todo .overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -1162,8 +1161,7 @@ img#logo-inlog {
   opacity: 0;
   transition: opacity 300ms ease-in-out;
 }
-
-.todo-content {
+.todo .todo-content {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -1178,13 +1176,13 @@ img#logo-inlog {
   transition: all 300ms ease-in-out;
   z-index: 1010;
 }
-.todo-content h2.todo-title {
+.todo .todo-content h2.todo-title {
   margin: 10px 0;
   font-size: 20px;
   color: #616161;
   text-align: left;
 }
-.todo-content h3.category-title {
+.todo .todo-content h3.category-title {
   margin: 10px 0;
   font-size: 16px;
   color: #616161;
@@ -1192,20 +1190,21 @@ img#logo-inlog {
   font-weight: bold;
   display: block;
 }
-.todo-content p.todo-description {
+.todo .todo-content p.todo-description {
   margin: 15px 0;
   color: #616161;
   font-size: 14px;
   text-align: left;
 }
-.todo-content .controls {
+.todo .todo-content .controls {
   display: flex;
   justify-content: flex-end;
   margin: 20px 0 0;
-  /* Hide time-estimate icon container in edit mode */
-  /* Show it in view mode or another mode */
+  /* Hidden by default in view-mode */
+  /* Display for due date in view mode */
+  /* Edit mode styles: Show the input for due date */
 }
-.todo-content .controls .save-btn {
+.todo .todo-content .controls .save-btn {
   background: #FFBC2C;
   color: #fff;
   padding: 10px 15px;
@@ -1214,26 +1213,39 @@ img#logo-inlog {
   cursor: pointer;
   width: 100%;
 }
-.todo-content .controls #todo.edit-task .time-estimate-icon-container {
+.todo .todo-content .controls .todo-active .due-date-input {
   display: none;
 }
-.todo-content .controls #todo.view-task .time-estimate-icon-container {
+.todo .todo-content .controls .todo-active .due-date-display {
+  display: block;
+  font-weight: bold;
+  margin-top: 8px;
+}
+.todo .todo-content .controls .todo-active.edit-task .due-date-input {
   display: block;
 }
-.todo-content .controls .time-estimate {
+.todo .todo-content .controls .todo-active.edit-task .due-date-display {
+  display: none;
+}
+.todo .todo-content .time-estimate-display {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #616161;
+}
+.todo .todo-content .time-estimate {
   margin-top: 15px;
 }
-.todo-content .controls .time-estimate label {
+.todo .todo-content .time-estimate label {
   font-size: 14px;
   color: #616161;
   display: block;
   margin-bottom: 5px;
 }
-.todo-content .controls .time-estimate-icon {
+.todo .todo-content .time-estimate-icon {
   height: 20px;
   width: 20px;
 }
-.todo-content .controls .time-input {
+.todo .todo-content .time-input {
   width: 100%;
   padding: 8px;
   font-size: 14px;
@@ -1241,25 +1253,25 @@ img#logo-inlog {
   border-radius: 5px;
   background-color: #fff;
 }
-.todo-content .controls .time-input:disabled {
+.todo .todo-content .time-input:disabled {
   background-color: #f1f1f1;
   cursor: not-allowed;
 }
-.todo-content .controls .time-estimate-icon-container {
+.todo .todo-content .time-estimate-icon-container {
   position: relative;
   display: inline-block;
   margin-top: 10px;
 }
-.todo-content .controls .time-estimate-icon {
+.todo .todo-content .time-estimate-icon {
   width: 24px; /* Adjust size as needed */
   height: 24px; /* Adjust size as needed */
   cursor: pointer;
   transition: transform 0.2s ease-in-out;
 }
-.todo-content .controls .time-estimate-icon:hover {
+.todo .todo-content .time-estimate-icon:hover {
   transform: scale(1.1);
 }
-.todo-content .controls .time-estimate-tooltip {
+.todo .todo-content .time-estimate-tooltip {
   visibility: hidden;
   position: absolute;
   top: 30px;
@@ -1275,31 +1287,31 @@ img#logo-inlog {
   opacity: 0;
   transition: opacity 0.2s;
 }
-.todo-content .controls .time-estimate-icon-container:hover .time-estimate-tooltip {
+.todo .todo-content .time-estimate-icon-container:hover .time-estimate-tooltip {
   visibility: visible;
   opacity: 1;
 }
-.todo-content .controls #time-estimate-text {
+.todo .todo-content #time-estimate-text {
   font-weight: bold;
 }
-.todo-content .controls .controls {
+.todo .todo-content .controls {
   background: transparent;
   color: #7C7C7C;
 }
-.todo-content.todo-active {
+.todo.todo-active {
   top: 0;
   transition: top 0ms ease-in-out 0ms;
   display: block;
 }
-.todo-content.todo-active .overlay {
+.todo.todo-active .overlay {
   opacity: 1;
   transition: all 0ms ease-in-out 0ms;
 }
-.todo-content.todo-active .todo-content {
+.todo.todo-active .todo-content {
   transform: translate(-50%, -50%) scale(1);
   opacity: 1;
 }
-.todo-content .todo .todo-active .save-btn {
+.todo .todo .todo-active .save-btn {
   display: block;
 }
 
@@ -1521,7 +1533,9 @@ h2[contenteditable], h3[contenteditable], p[contenteditable] {
 }
 
 /* SAM Default styling for view-mode */
-#todo.view-task .todo-title, #todo.view-task .category-title, #todo.view-task .todo-description {
+#todo.view-task .todo-title,
+#todo.view-task .category-title,
+#todo.view-task .todo-description {
   background-color: #f9f9f9; /* Light background to indicate view-only */
   color: #666; /* Muted color for non-editable fields */
   border: none; /* Remove any border to indicate it's not an editable input */
@@ -1541,7 +1555,9 @@ h2[contenteditable], h3[contenteditable], p[contenteditable] {
 }
 
 /* Styling for edit task modal */
-#todo.edit-task .todo-title, #todo.edit-task .category-title, #todo.edit-task .todo-description {
+#todo.edit-task .todo-title,
+#todo.edit-task .category-title,
+#todo.edit-task .todo-description {
   background-color: white;
   color: black;
   border: 1px solid #ccc;
@@ -1568,6 +1584,7 @@ h2[contenteditable], h3[contenteditable], p[contenteditable] {
   display: block; /* Show save button when in edit mode */
 }
 
+/* Filter & Sortering - Justera placering åt höger */
 .filter-sort-container-tasks {
   display: flex;
   justify-content: flex-end; /* Flyttar knapparna åt höger */
@@ -1578,6 +1595,7 @@ h2[contenteditable], h3[contenteditable], p[contenteditable] {
   position: relative;
 }
 
+/* Filter & Sort-knappar (text inuti knapparna) */
 .filter-btn, .sort-btn {
   display: flex;
   align-items: center;
@@ -1609,6 +1627,7 @@ h2[contenteditable], h3[contenteditable], p[contenteditable] {
   color: #000 !important; /* Försäkrar att texten blir svart på events sidan TA INTE BORT!!*/
 }
 
+/* Justerar filter-menyn */
 .filter-menu {
   display: none;
   position: absolute;
@@ -1635,6 +1654,7 @@ h2[contenteditable], h3[contenteditable], p[contenteditable] {
   visibility: visible;
 }
 
+/* Anpassa checkbox och text */
 .filter-menu label {
   display: flex;
   align-items: center;
@@ -1645,8 +1665,9 @@ h2[contenteditable], h3[contenteditable], p[contenteditable] {
   text-align: left;
 }
 
+/* Stil för checkboxarna */
 .filter-menu input[type=checkbox] {
-  width: 20px;
+  width: 20px; /* Större checkbox */
   height: 20px;
   border-radius: 6px;
   border: 2px solid #B0B0B0;

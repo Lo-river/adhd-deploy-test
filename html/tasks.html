@@ -15,7 +15,7 @@
       #tasks{color: #FFBC2C !important;}
  </style>
   </head>
-  <body class="tasks-body">
+  <body class="body-tasks">
     <div class="wrap-container">
       <header>
         <a href="login.html" id="login" class="icon">
@@ -41,14 +41,19 @@
           <h3 class="category-title">Category</h3>
           <p class="todo-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
           
+            <!-- Add Due Date Section -->
+            <div class="due-date-container">
+                <input id="due-date" type="date" class="due-date-input" disabled>
+                <span id="due-date-display" class="due-date-display"></span>
+            </div>
+          
           <!-- VISA ENDAST I EDIT MODE EJ KLART  -->
-          <div class="time-estimate" id="time-estimate-section"> 
-            <label for="time-estimate">Time Estimate in minutes:</label>
-            <input type="text" id="time-estimate" class="time-input" placeholder="Enter time estimate in minutes" />
+          <div class="time-estimate"> 
+            <label for="time-estimate"></label>
+            <input type="text" id="time-estimate" class="time-input" placeholder="Enter time estimate" />
         </div> 
-       
         <!-- VISA ENDAST I VIEW-MODE EJ KLART -->
-        <div class="time-estimate-icon-container" id=""time-estimate-icon-container>
+        <div class="time-estimate-icon-container">
           <img class="time-estimate-icon" src="/images/clock-nine-svgrepo-com.svg" alt="Time Estimate Icon" />
           <span class="time-estimate-tooltip">Time Estimate: <span id="time-estimate-text">Not set</span></span>
       </div>
