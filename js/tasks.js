@@ -1,30 +1,34 @@
 document.addEventListener('DOMContentLoaded', function () {
-  let tasks = JSON.parse(localStorage.getItem('tasks')) || {};
+  let tasks = JSON.parse(localStorage.getItem('tasks')) || {}; 
   let currentTaskId = null;
   let isEditing = false; // Track if the task is being edited
   let newTaskCreated = false;
+  let categories = new Set(); // Store unique categories
 
   setupFilterMenu();
   setupSorting();
+  loadCategories();
   
+  updateTaskList();
 /* Hantera Popup */
 function openToDoModal(isEditingMode = false, taskId = null) {
   let todoNode = document.querySelector("#todo");
   if (!todoNode) return;
 
   todoNode.classList.add("todo-active");
-  todoNode.style.display = 'block'; 
-  currentTaskId = taskId;
+  todoNode.style.display = 'block';
+  
+  isEditing = isEditingMode;
+  currentTaskId = taskId !== null ? taskId : tasks.length;
 
   const title = todoNode.querySelector(".todo-title");
-  const category = todoNode.querySelector(".category-title");
+  const category = todoNode.querySelector(".category-select");
   const description = todoNode.querySelector(".todo-description");
-  const timeEstimateSection = document.querySelector("#time-estimate-section"); // Time estimate input div
-  const timeEstimateIconContainer = document.getElementById("time-estimate-icon-container"); // Time estimate icon section
-  const timeEstimateInput = document.getElementById("time-estimate"); // Time estimate input field
-  const timeEstimateText = document.querySelector("#time-estimate-text"); // Tooltip text
-  const timeEstimateIconElement = document.querySelector(".time-estimate-icon"); // Clock icon
-
+  // const timeEstimateSection = document.querySelector("#time-estimate-section"); // Time estimate input div
+  // const timeEstimateIconContainer = document.getElementById("time-estimate-icon-container"); // Time estimate icon section
+  // const timeEstimateInput = document.getElementById("time-estimate"); // Time estimate input field
+  // const timeEstimateText = document.querySelector("#time-estimate-text"); // Tooltip text
+  // const timeEstimateIconElement = document.querySelector(".time-estimate-icon"); // Clock icon
   const saveBtn = document.querySelector(".save-btn");
   const editIcon = document.querySelector(".edit-btn");
   
@@ -34,46 +38,92 @@ function openToDoModal(isEditingMode = false, taskId = null) {
   if (isEditingMode) {
       saveBtn.style.display = "block"; // Show save button in edit mode
       editIcon.style.display = "none"; // Hide edit icon
-      timeEstimateSection.style.display = "block"; // Show time estimate input field
-      timeEstimateIconContainer.style.display = "none"; // Hide time estimate icon
+      // timeEstimateSection.style.display = "block"; // Show time estimate input field
+      // timeEstimateIconContainer.style.display = "none"; // Hide time estimate icon
       todoNode.classList.add("edit-task");
   } else {
       saveBtn.style.display = "none"; // Hide save button in view mode
       editIcon.style.display = "block"; // Show edit icon
-      timeEstimateSection.style.display = "none"; // Hide time estimate input field
-      timeEstimateIconContainer.style.display = "block"; // Show time estimate icon
+      // timeEstimateSection.style.display = "none"; // Hide time estimate input field
+      // timeEstimateIconContainer.style.display = "block"; // Show time estimate icon
       todoNode.classList.add("view-task");
   }
   
   if (tasks[taskId]) {
       title.textContent = tasks[taskId].title;
-      category.textContent = tasks[taskId].category;
+      // category.textContent = tasks[taskId].category;
       description.textContent = tasks[taskId].description;
-
-      // Load and display the correct time estimate
-      const timeEstimate = tasks[taskId].timeEstimate || "Not set";
       
-      if (isEditingMode) {
-          timeEstimateInput.value = tasks[taskId].timeEstimate || ""; // Prefill input in edit mode
-      } else {
-          timeEstimateText.textContent = timeEstimate; // Update tooltip in view mode
-          timeEstimateIconElement.src = "/images/clock-nine-svgrepo-com.svg"; // Keep the clock icon
-      }
+      // Load and display the correct time estimate
+      // const timeEstimate = tasks[taskId].timeEstimate || "Not set";
+      
+      // if (isEditingMode) {
+      //     timeEstimateInput.value = tasks[taskId].timeEstimate || ""; // Prefill input in edit mode
+      // } else {
+      //     timeEstimateText.textContent = timeEstimate; // Update tooltip in view mode
+      //     timeEstimateIconElement.src = "/images/clock-nine-svgrepo-com.svg"; // Keep the clock icon
+      // }
   } else {
       title.textContent = "New Task";
-      category.textContent = "No Category";
-      description.textContent = "Enter task description...";     
-      timeEstimateInput.value = ''; // Empty time estimate for new task
-      timeEstimateText.textContent = "Not set"; // Default tooltip text
+      // category.textContent = "No Category";
+      description.textContent = "Enter task description...";
+      categorySelect.value = "";     
+      // timeEstimateInput.value = ''; // Empty time estimate for new task
+      // timeEstimateText.textContent = "Not set"; // Default tooltip text
   }
 
   // Set contenteditable based on mode
-  title.setAttribute("contenteditable", isEditingMode ? "true" : "false");
-  category.setAttribute("contenteditable", isEditingMode ? "true" : "false");
-  description.setAttribute("contenteditable", isEditingMode ? "true" : "false");
+  title.setAttribute("contenteditable", isEditing ? "true" : "false");
+  // category.setAttribute("contenteditable", isEditingMode ? "true" : "false");
+  description.setAttribute("contenteditable", isEditing ? "true" : "false");
+
+  populateCategoryDropdown();
 }
 
-  
+function loadCategories() {
+  const categorySelect = document.getElementById("category-select");
+  const categories = JSON.parse(localStorage.getItem("categories")) || ["Work", "Personal"];
+
+  categorySelect.innerHTML = '<option value="">Select Category</option>';
+  categories.forEach(category => {
+      const option = document.createElement("option");
+      option.value = category;
+      option.textContent = category;
+      categorySelect.appendChild(option);
+  });
+}
+
+document.getElementById("add-category-btn").addEventListener("click", function () {
+  const newCategoryInput = document.getElementById("new-category-input");
+  const newCategory = newCategoryInput.value.trim();
+
+  if (newCategory === "") {
+      alert("Please enter a category name.");
+      return;
+  }
+
+  let categories = JSON.parse(localStorage.getItem("categories")) || [];
+  if (!categories.includes(newCategory)) {
+      categories.push(newCategory);
+      localStorage.setItem("categories", JSON.stringify(categories));
+      loadCategories(); // Refresh dropdown
+  }
+
+  newCategoryInput.value = ""; // Clear input
+});
+
+function populateCategoryDropdown() {
+  const categorySelect = document.getElementById("category-select");
+  categorySelect.innerHTML = `<option value="">Select Category</option>`; // Default option
+
+  categories.forEach(category => {
+      let option = document.createElement("option");
+      option.value = category;
+      option.textContent = category;
+      categorySelect.appendChild(option);
+  });
+}
+
   // Close modal function
   function closeToDo() {
       let todoNode = document.querySelector("#todo");
@@ -116,16 +166,20 @@ function openToDoModal(isEditingMode = false, taskId = null) {
   function saveTask() {
       if (currentTaskId) {
           const title = document.querySelector(".todo-title").textContent;
-          const category = document.querySelector(".category-title").textContent;
+          const category = document.querySelector(".category-select").value || "Uncategorized";
           const description = document.querySelector(".todo-description").textContent;
-          const timeEstimate = document.querySelector("#time-estimate").value; // Get time estimate value
+          // const timeEstimate = document.querySelector("#time-estimate").value; // Get time estimate value
 
-          tasks[currentTaskId] = { title, category, description, timeEstimate }; // Add time estimate to the task object 
-          localStorage.setItem("tasks", JSON.stringify(tasks));
-         
-          updateTaskList();
-          closeToDo();
-      }
+          if (currentTaskId === tasks.length) {
+            tasks.push({ title, category, description });
+        } else {
+            tasks[currentTaskId] = { title, category, description };
+        }
+    
+        categories.add(category); // Store category
+        populateCategoryDropdown();
+        closeToDo();
+    }
   }
 
     // Add new task function
@@ -345,7 +399,7 @@ function setupSorting() {
 }
 
   // Event listeners  
-  document.getElementById("add-task-btn").addEventListener("click", addNewTask); 
+  document.getElementById("add-task-btn").addEventListener("click", () => openToDoModal(true)); 
   document.querySelector(".save-btn").addEventListener("click", saveTask); // Save task on save button click
   document.querySelector(".close-icon").addEventListener("click", closeToDo); // Close modal when close icon is clicked
   // document.querySelector(".edit-icon").addEventListener("click", enableEditing);
