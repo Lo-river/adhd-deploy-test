@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home - Productivity Assistant Application</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/main.css" />
     <script src="/js/home.js" defer></script>
     <script src="/js/main.js" defer></script>
@@ -25,31 +26,29 @@
       <img src="/images/adhd-logo.svg" alt="logo" class="logo" />
     </header>
 
-
       <main>
         <p class="date">Loading date...</p>
-          <!-- 1. De tre senaste ej utförda ärenden -->
-  <section id="recent-tasks" class="home-section">
-    <h2>Recent Undone Tasks</h2>
-    <ul id="recent-tasks-list"></ul>
-    <a href="tasks.html">View All Tasks</a>
-  </section>
+  <!-- 1. De tre senaste ej utförda ärenden -->
+<section id="recent-tasks" class="home-section">
+  <h2>Recent Undone Tasks</h2>
+  <div id="recent-tasks-list"></div>
+  <a href="tasks.html" class="view-all-link">View All Tasks</a>
+</section>
 
-  <!-- 2. De tre rutiner med högst antal repetitioner -->
-  <section id="top-habits" class="home-section">
-    <h2>Top Habits</h2>
-    <ul id="top-habits-list"></ul>
-    <a href="habits.html">View All Habits</a>
-  </section>
+<!-- 2. De tre rutiner med högst antal repetitioner -->
+<section id="top-habits" class="home-section">
+  <h2>Top Habits</h2>
+  <div id="top-habits-list"></div>
+  <a href="habits.html" class="view-all-link">View All Habits</a>
+</section>
 
-  <!-- 3. De tre nästkommande händelserna -->
-  <section id="upcoming-events" class="home-section">
-    <h2>Upcoming Events</h2>
-    <ul id="upcoming-events-list"></ul>
-    <a href="events.html">View All Events</a>
-  </section>
+<!-- 3. De tre nästkommande händelserna -->
+<section id="upcoming-events" class="home-section">
+  <h2>Upcoming Events</h2>
+  <div id="upcoming-events-list"></div>
+  <a href="events.html" class="view-all-link">View All Events</a>
+</section>
       </main>
-
 
       <nav class="bottom-nav">
           <a href="home.html" id="home" class="icon" alt="Home icon, press to go to start page">
@@ -73,31 +72,6 @@
             <div class="icon-img"></div>
             <span>Events</span> 
       </nav>
-
-
-
-      <!-- <nav class="bottom-nav">
-        <a href="home.html" id="home" class="icon">
-          <div class="icon-img"></div>
-          <span>Home</span>
-        </a>
-
-        <a href="tasks.html" id="tasks" class="icon">
-          <div class="icon-img"></div>
-          <span>Tasks</span>
-        </a>
-
-        <button class="cta-button"></button>
-        <a href="habits.html" id="habits" class="icon">
-          <div class="icon-img"></div>
-          <span>Habits</span>
-        </a>
-
-        <a href="events.html" id="events" class="icon">
-          <div class="icon-img"></div>
-          <span>Events</span> 
-    </nav> -->
-     
     </div>
   </body>
 </html>

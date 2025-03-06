@@ -15,7 +15,7 @@
       #tasks{color: #FFBC2C !important;}
  </style>
   </head>
-  <body class="tasks-body">
+  <body class="body-tasks">
     <div class="wrap-container">
       <header>
         <a href="login.html" id="login" class="icon">
@@ -37,18 +37,31 @@
         <div class="todo-content">
           <img src="/images/cross-svgrepo-com.svg" class="close-icon" alt="Close the modal" style="width: 24; height: 24px;">
           <span class="edit-btn"></span>
-          <h2 class="todo-title">To Do Title</h2>
-          <h3 class="category-title">Category</h3>
-          <p class="todo-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+          <h2 class="todo-title" contenteditable="true">To Do Title</h2>
+          <!-- <label for="category-select">Category:</label> -->
+<select id="category-select" class="category-select">
+  <option value="">Select Category</option>
+</select>
+<!-- New input field for adding categories -->
+<!-- <input type="text" id="new-category-input" placeholder="Enter new category"> -->
+<button id="add-category-btn">Add Category</button>
+          <!-- <h3 class="category-title">Category</h3> -->
+          <p class="todo-description" contenteditable="true">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+          
+            <!-- Add Due Date Section -->
+            <div class="due-date-container">
+                <input id="due-date" type="date" class="due-date-input">
+                <span id="due-date-display" class="due-date-display"></span>
+            </div>
           
           <!-- VISA ENDAST I EDIT MODE EJ KLART  -->
-          <div class="time-estimate" id="time-estimate-section"> 
-            <label for="time-estimate">Time Estimate in minutes:</label>
-            <input type="text" id="time-estimate" class="time-input" placeholder="Enter time estimate in minutes" />
+          <div class="time-estimate"> 
+            <label for="time-estimate"></label>
+            <input type="text" id="time-estimate" class="time-input" placeholder="Enter time estimate" />
         </div> 
-       
+
         <!-- VISA ENDAST I VIEW-MODE EJ KLART -->
-        <div class="time-estimate-icon-container" id=""time-estimate-icon-container>
+        <div class="time-estimate-icon-container">
           <img class="time-estimate-icon" src="/images/clock-nine-svgrepo-com.svg" alt="Time Estimate Icon" />
           <span class="time-estimate-tooltip">Time Estimate: <span id="time-estimate-text">Not set</span></span>
       </div>
@@ -69,10 +82,16 @@
           <span class="filter-title">Filter</span>
           <label>
             <input type="checkbox" id="filter-finished" />
+            <span class="checkbox-icon">
+            <img src="/images/iconunchecked.svg" alt="Unchecked" class="checkbox-img" />
+            </span>
             Finished
           </label>
           <label>
             <input type="checkbox" id="filter-upcoming" />
+            <span class="checkbox-icon">
+              <img src="/images/iconunchecked.svg" alt="Unchecked" class="checkbox-img" />
+            </span>
             Upcoming
           </label>
         </div>

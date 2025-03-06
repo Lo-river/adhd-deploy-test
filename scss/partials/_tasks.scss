@@ -1,6 +1,6 @@
-.tasks-body {
+.body-tasks {
   padding-bottom: 80px;
-  }
+}
 
 .center {
   position: absolute;
@@ -17,7 +17,7 @@
  height: 100%;
  transition: top 300ms ease-in-out;
  z-index: 1000;
- }
+ 
  
  .overlay {
    position: absolute;
@@ -79,15 +79,33 @@
        width: 100%;
      }
  
-/* Hide time-estimate icon container in edit mode */
-#todo.edit-task .time-estimate-icon-container {
+/* Hidden by default in view-mode */
+.todo-active .due-date-input {
   display: none;
 }
 
-/* Show it in view mode or another mode */
-#todo.view-task .time-estimate-icon-container {
+/* Display for due date in view mode */
+.todo-active .due-date-display {
+  display: block;
+  font-weight: bold;
+  margin-top: 8px;
+}
+
+/* Edit mode styles: Show the input for due date */
+.todo-active.edit-task .due-date-input {
   display: block;
 }
+
+.todo-active.edit-task .due-date-display {
+  display: none;
+}  
+
+   }
+   .time-estimate-display {
+     margin-top: 10px;
+     font-size: 14px;
+     color: #616161;
+ }
  
    .time-estimate {
      margin-top:15px;
@@ -399,27 +417,31 @@
  }
  
  /* SAM Default styling for view-mode */
- #todo.view-task .todo-title, #todo.view-task .category-title, #todo.view-task .todo-description {
-     background-color: #f9f9f9; /* Light background to indicate view-only */
-     color: #666; /* Muted color for non-editable fields */
-     border: none; /* Remove any border to indicate it's not an editable input */
-     cursor: default; /* Make the cursor show a 'default' cursor to prevent interaction */
+ #todo.view-task .todo-title,
+ #todo.view-task .category-title,
+ #todo.view-task .todo-description {
+     background-color: #f9f9f9; 
+     color: #666; 
+     border: none; 
+     cursor: default; 
  }
  
  #todo.view-task .todo-title {
-     font-weight: bold; /* Make title stand out */
+     font-weight: bold; 
  }
  
  #todo.view-task .category-title {
-     font-style: italic; /* Make category slightly different */
+     font-style: italic; 
  }
  
  #todo.view-task .todo-description {
-     color: #777; /* Lighter color for description */
+     color: #777; 
  }
  
- /* Styling for edit task modal */
- #todo.edit-task .todo-title, #todo.edit-task .category-title, #todo.edit-task .todo-description {
+ /* Styling för edit task modal*/
+ #todo.edit-task .todo-title,
+ #todo.edit-task .category-title,
+ #todo.edit-task .todo-description {
      background-color: white;
      color: black;
      border: 1px solid #ccc;
@@ -439,14 +461,14 @@
  }
  
  .save-btn {
-   display: none; /* Hidden by default */
+   display: none; /* Göm i view mode */
  }
  
  .save-btn.show {
-   display: block; /* Show save button when in edit mode */
+   display: block; /* Visa i edit mode */
  }
  
- // Filter & Sortering - Justera placering åt höger
+ /* Filter & Sortering - Justera placering åt höger */
  .filter-sort-container-tasks {
    display: flex;
    justify-content: flex-end; /* Flyttar knapparna åt höger */
@@ -457,7 +479,7 @@
    position: relative;
  }
  
- // Filter & Sort-knappar (text inuti knapparna)
+ /* Filter & Sort-knappar (text inuti knapparna) */
  .filter-btn, .sort-btn {
    display: flex;
    align-items: center;
@@ -492,7 +514,7 @@
    color: #000 !important; /* Försäkrar att texten blir svart på events sidan TA INTE BORT!!*/
  }
  
- // Justerar filter-menyn
+ /* Justerar filter-menyn */
  .filter-menu {
    display: none;
    position: absolute;
@@ -505,7 +527,7 @@
  
    /* Positionera menyn korrekt under knappen */
    top: 100%;
-   left: 48%;
+   left: 22%;
     
    flex-direction: column;
    gap: 12px;
@@ -521,7 +543,7 @@
    visibility: visible;
  }
  
- // Anpassa checkbox och text
+ /* Anpassa checkbox och text */
  .filter-menu label {
    display: flex;
    align-items: center;
@@ -532,9 +554,9 @@
    text-align: left;
  }
  
-  // Stil för checkboxarna
+  /* Stil för checkboxarna */
   .filter-menu input[type="checkbox"] {
-    width: 20px; // Större checkbox
+    width: 20px; /* Större checkbox */
     height: 20px;
     border-radius: 6px;
     border: 2px solid #B0B0B0;
@@ -543,4 +565,5 @@
  
  .filter-btn {
    position: relative;
-  }
+ }
+ 
