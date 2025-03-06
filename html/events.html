@@ -17,7 +17,7 @@
     </head>
 
   </head>
-  <body>
+  <body id="events-body"></body>
     <div class="wrap-container">
       <header>
         <a href="login.html" id="login" class="icon">
@@ -98,10 +98,20 @@
             <label for="due-date">Due date</label>
             <input type="datetime-local" id="due-date" />
           </div>
-
           <button id="save-event-btn">Save</button>
         </div>
       </div>
+
+      <!-- Popup för att visa eventet info -->
+      <div id="event-view-popup" class="event-popup">
+        <div class="event-popup-content">
+          <span class="event-view-close-popup">&times;</span>
+          <h2>Event Details</h2>
+          <h3 id="view-event-title"></h3>
+          <p id="view-event-description"></p>
+        </div>
+      </div>
+
       <nav class="bottom-nav">
         <a href="home.html" id="home" class="icon" alt="Home icon, press to go to start page">
           <div class="icon-img"></div>

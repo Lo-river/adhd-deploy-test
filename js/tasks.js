@@ -19,7 +19,8 @@ document.addEventListener('DOMContentLoaded', function () {
       const title = todoNode.querySelector(".todo-title");
       const category = todoNode.querySelector(".category-title");
       const description = todoNode.querySelector(".todo-description");
-      const timeEstimateIcon = document.querySelector("#time-estimate-icon-container");
+      const timeEstimateSection = document.querySelector("#time-estimate-section"); // Time estimate input div
+      const timeEstimateIconContainer = document.getElementById("time-estimate-icon-container"); // Time estimate icon section
       const saveBtn = document.querySelector(".save-btn");
       const editIcon = document.querySelector(".edit-btn");
       
@@ -29,10 +30,14 @@ document.addEventListener('DOMContentLoaded', function () {
     if (isEditingMode) {
         saveBtn.style.display = "block"; // visa save-knappen i redigeringsläge
         editIcon.style.display = "none"; // göm redigeringsikonen
+        timeEstimateSection.style.display = "block"; // Show time estimate input field in edit mode
+        timeEstimateIconContainer.style.display = "none"; // Hide time estimate icon in edit mode
         todoNode.classList.add("edit-task");
     } else {
         saveBtn.style.display = "none"; // göm save-knappen i view-läge
         editIcon.style.display = "block"; // visa redigeringsikonen
+        timeEstimateSection.style.display = "none"; // Hide time estimate input field in view mode
+        timeEstimateIconContainer.style.display = "block"; // Show time estimate icon in view mode
         todoNode.classList.add("view-task");
     }
     
@@ -47,12 +52,12 @@ document.addEventListener('DOMContentLoaded', function () {
         const timeEstimateIconElement = document.querySelector(".time-estimate-icon");
         const timeEstimateText = document.querySelector("#time-estimate-text");
         if (timeEstimate === "Not set") {
-          timeEstimateIconElement.src = "/images/clock-nine-svgrepo-com.svg"; // Default icon for no time estimate
-          timeEstimateText.textContent = "Not set";
-      } else {
-          timeEstimateIconElement.src = "/images/clock-nine-svgrepo-com.svg"; // Change icon based on time estimate
-          timeEstimateText.textContent = timeEstimate; // Optional, in case you still want to show text in tooltip
-      }
+           timeEstimateIconElement.src = "/images/clock-nine-svgrepo-com.svg"; // Default icon for no time estimate
+           timeEstimateText.textContent = "Not set";
+       } else {
+           timeEstimateIconElement.src = "/images/clock-nine-svgrepo-com.svg"; // Change icon based on time estimate
+           timeEstimateText.textContent = timeEstimate; // Optional, in case you still want to show text in tooltip
+       }
     } else {
         title.textContent = "New Task";
         category.textContent = "No Category";
@@ -64,20 +69,32 @@ document.addEventListener('DOMContentLoaded', function () {
       category.setAttribute("contenteditable", isEditingMode ? "true" : "false");
       description.setAttribute("contenteditable", isEditingMode ? "true" : "false");
       timeEstimateInput.value = ''; // Empty time estimate for new task
+
+       // Set time estimate for new tasks
+       const timeEstimateInput = document.getElementById("time-estimate");
+       timeEstimateInput.value = ''; // Empty time estimate for new task
+
   } 
+
+  
   // Close modal function
   function closeToDo() {
       let todoNode = document.querySelector("#todo");
       if (!todoNode) return;
       
-      newTaskCreated = false;
-      isEditing = false;
-      todoNode.style.display = 'none'; // Hide the modal
+      if (newTaskCreated && currentTaskId && !isEditing) { 
+        // Don't delete newly created task when closing the modal
+        newTaskCreated = false;
+      } else if (isEditing) {
+      // If it's in editing mode and we are closing, we only want to delete it if not saved
+      // The task will be deleted only if it wasn't saved or changed.
+      delete tasks[currentTaskId]; 
+      localStorage.setItem("tasks", JSON.stringify(tasks));
+     }
 
-    //   if (newTaskCreated && currentTaskId && !isEditing) { 
-    //   delete tasks[currentTaskId]; 
-    //   localStorage.setItem("tasks", JSON.stringify(tasks));
-    // }
+     isEditing = false;
+     todoNode.style.display = 'none'; // Hide the modal
+     updateTaskList(); // Update the task list in the UI
   }
   // Enable editing when "Edit" icon is clicked
   function enableEditing() {
@@ -115,6 +132,29 @@ document.addEventListener('DOMContentLoaded', function () {
           closeToDo();
       }
   }
+
+    // Add new task function
+    function addNewTask() {
+      const taskId = "task" + Date.now() + Math.floor(Math.random() * 1000);       
+      tasks[taskId] = { title: "New Task", category: "No Category", description: "Enter task details...", checked: false };
+      // localStorage.setItem("tasks", JSON.stringify(tasks));
+      newTaskCreated = true;
+  
+      updateTaskList();
+      // currentTaskId = taskId;  
+      openToDoModal(taskId, true); // Open in editing mode for a new task
+      enableEditing();
+  } 
+  // Delete task function
+  function deleteTask(taskId) {
+    // Remove task from localStorage
+      delete tasks[taskId];
+      localStorage.setItem("tasks", JSON.stringify(tasks));
+      // Remove the task from the UI by updating the task list
+      updateTaskList();
+  }
+
+
 // Update the task list in the UI
   function updateTaskList(filter = 'all') {
       const taskList = document.getElementById("todo-list");
@@ -209,24 +249,24 @@ document.addEventListener('DOMContentLoaded', function () {
           taskList.appendChild(li);
       });
   }
-  // Add new task function
-  function addNewTask() {
-      const taskId = "task" + Date.now() + Math.floor(Math.random() * 1000);       
-      tasks[taskId] = { title: "New Task", category: "No Category", description: "Enter task details...", checked: false };
-      localStorage.setItem("tasks", JSON.stringify(tasks));
-      newTaskCreated = true;
+  // // Add new task function
+  // function addNewTask() {
+  //     const taskId = "task" + Date.now() + Math.floor(Math.random() * 1000);       
+  //     tasks[taskId] = { title: "New Task", category: "No Category", description: "Enter task details...", checked: false };
+  //     // localStorage.setItem("tasks", JSON.stringify(tasks));
+  //     newTaskCreated = true;
   
-      updateTaskList();
-      currentTaskId = taskId;  
-      openToDoModal(taskId, true); // Open in editing mode for a new task
-      enableEditing();
-  } 
-  // Delete task function
-  function deleteTask(taskId) {
-      delete tasks[taskId];
-      localStorage.setItem("tasks", JSON.stringify(tasks));
-      updateTaskList();
-  }
+  //     updateTaskList();
+  //     // currentTaskId = taskId;  
+  //     openToDoModal(taskId, true); // Open in editing mode for a new task
+  //     enableEditing();
+  // } 
+  // // Delete task function
+  // function deleteTask(taskId) {
+  //     delete tasks[taskId];
+  //     localStorage.setItem("tasks", JSON.stringify(tasks));
+  //     updateTaskList();
+  // }
 
   // Funktionerna för filter-menyn
 function setupFilterMenu() {

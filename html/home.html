@@ -15,7 +15,7 @@
    </style>
 
   </head>
-  <body>
+  <body id="home-body">
     <div class="wrap-container">
       
     <header>
@@ -28,9 +28,27 @@
 
       <main>
         <p class="date">Loading date...</p>
-      </main>
-      <h1>HOME</h1>
+          <!-- 1. De tre senaste ej utförda ärenden -->
+  <section id="recent-tasks" class="home-section">
+    <h2>Recent Undone Tasks</h2>
+    <ul id="recent-tasks-list"></ul>
+    <a href="tasks.html">View All Tasks</a>
+  </section>
 
+  <!-- 2. De tre rutiner med högst antal repetitioner -->
+  <section id="top-habits" class="home-section">
+    <h2>Top Habits</h2>
+    <ul id="top-habits-list"></ul>
+    <a href="habits.html">View All Habits</a>
+  </section>
+
+  <!-- 3. De tre nästkommande händelserna -->
+  <section id="upcoming-events" class="home-section">
+    <h2>Upcoming Events</h2>
+    <ul id="upcoming-events-list"></ul>
+    <a href="events.html">View All Events</a>
+  </section>
+      </main>
 
 
       <nav class="bottom-nav">

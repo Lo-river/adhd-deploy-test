@@ -202,6 +202,18 @@ function loadEventsFromLocalStorage() {
         // Format: 19 March 2025 | 00:00
         eventCard.querySelector(".event-date").textContent = formatEventDateTime(event.date);
 
+        // Hämta kort-info
+        const eventCardElement = eventCard.querySelector(".event-card");
+
+        eventCardElement.addEventListener("click", (e) => {
+         
+         if(e.target.closest(".delete-btn")) return;
+        
+         if(e.target.closest(".edit-btn")) return;
+         
+         openViewEvent(event);
+     });
+
         const editButton = eventCard.querySelector(".edit-btn");
         const deleteButton = eventCard.querySelector(".delete-btn");
 
@@ -247,3 +259,17 @@ function clearEventForm() {
     document.getElementById("due-date").value = "";
     editingEvent = null;
 }
+function openViewEvent(eventObj) {
+    // Fyll i info i popupen
+    document.getElementById("view-event-title").textContent = eventObj.title;
+    document.getElementById("view-event-description").textContent = eventObj.description;
+  
+    // Visa popupen
+    document.getElementById("event-view-popup").style.display = "flex";
+  }
+  
+  // Stäng-knappen i popupen
+  document.querySelector(".event-view-close-popup").addEventListener("click", () => {
+    document.getElementById("event-view-popup").style.display = "none";
+  });
+  

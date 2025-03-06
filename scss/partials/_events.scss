@@ -1,3 +1,8 @@
+#events-body{
+    padding-bottom:80px;
+
+  }
+
 .events-section {
     margin: 20px;
     padding: 15px;
@@ -67,7 +72,7 @@ h1 {
     justify-content: flex-end; 
     gap: 10px;
     width: 100%;
-    padding-right: 40px; 
+    padding-right: 55px !important; 
     position: relative; 
     margin-top: 80px; 
 }
@@ -77,8 +82,8 @@ h1 {
     align-items: center;
     justify-content: center;
     gap: 5px;  
-    background: #F8F7F4;
-    border: 2px solid #ccc;
+    background: #F8F7F4 !important;
+    border: 2px solid #ccc !important;
     padding: 8px 20px;
     font-size: 14px;
     font-weight: 500;
@@ -88,12 +93,12 @@ h1 {
     min-width: 80px;
     
     &:hover {
-        background: rgba(255, 188, 44, 0.1);
+        background: rgba(255, 188, 44, 0.1) !important;
     }
 
     &.active {
-        border-color: #FFBC2C;
-        background: rgba(255, 188, 44, 0.1);
+        border-color: #FFBC2C !important;
+        background: rgba(255, 188, 44, 0.1) !important;
     }
 
     img {
@@ -118,9 +123,9 @@ h1 {
     z-index: 1000;
     min-width: 100px;
 
-    /* Positionera menyn korrekt under knappen */
+    // Positionera menyn korrekt under knappen
     top: 100%;
-    left: 43%;
+    left: 47% !important;
      
     flex-direction: column;
     gap: 12px;
@@ -207,7 +212,7 @@ h1 {
 }
 
 .events-section {
-    width: 90%;
+    width: 80% !important;
     max-width: 400px;
     margin-bottom: -30px; 
 }
@@ -236,7 +241,7 @@ h1 {
 
     h3.event-title {
         font-size: 16px;
-        font-weight: lighter;
+        font-weight: lighter !important;
         margin: 0;
     }
 
@@ -250,11 +255,11 @@ h1 {
     .event-actions {
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 1px;
 
         img {
-            width: 20px;
-            height: 20px;
+            width: 20px !important;
+            height: 20px !important;
             cursor: pointer;
             opacity: 0.7;
             transition: opacity 0.3s ease-in-out;
@@ -360,6 +365,35 @@ h1 {
         width: 100%;
     }
 }
+    #event-view-popup {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.5);
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+     }
+  
+     #event-view-popup .event-popup-content {
+        background: #FBFAF7; 
+        padding: 20px;
+        border-radius: 10px;
+        text-align: left;
+        width: 320px;
+        position: relative;
+     }
+     #event-view-popup .event-view-close-popup {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 20px;
+        cursor: pointer;
+    }
+  
 
 // Anpassning för iPhone 14 Pro Max (430px bredd)
 @media (max-width: 430px) {

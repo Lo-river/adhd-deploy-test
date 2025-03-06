@@ -39,23 +39,23 @@
   background-color: #FFBC2C !important;
 }
 
-/* Skapa overlay-effekt när popup är öppen */
+// Gör overlay-effekt när popup är öppen 
 .editing-mode .habit-list-container {
-  filter: blur(5px); /* Gör bakgrunden oskarp */
-  pointer-events: none; /* Förhindrar klick på korten */
+  filter: blur(5px); //
+  pointer-events: none; // Förhindrar klick på korten
 }
 
 
 
-/* Visa overlay när .editing-mode är aktiv */
+// Visa overlay när .editing-mode är aktiv 
 .editing-mode #overlay {
   display: block;
 }
 
-/* Popup ska vara överst */
+// Popup ska vara överst
 .popup {
   z-index: 10;
-  display: none; /* Dold från början */
+  display: none; //Dold från början 
   position: fixed;
   top: 0;
   left: 0;
@@ -90,6 +90,7 @@
   width: 300px;
 }
 
+
 .close-icon {
   position: absolute;
   margin-top: 5px;
@@ -98,7 +99,6 @@
   cursor: pointer;
 
   top: 10px;
-
   font-size: 20px;
 
 }
@@ -109,18 +109,19 @@
 
 
 
-.habit-list-container {
-  // display: flex;
-  // flex-direction: row !important;
-  margin-top: 2px;
+.wrap-container.habit-list-container {
+  margin-top: 20px;
+  border: solid 4px orange; //Bara för att kolla styling
+  justify-items: center;
+
 }
+
 #habit-list{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
-  // gap: 15px;
-  // width: 99%;
+  justify-content:space-between;
+  width: 100%;
   
 }
 
@@ -178,16 +179,6 @@ h2 {
 }
 
 
-h1[contenteditable],
-h2[contenteditable],
-p[contenteditable] {
-  border: 1px solid #616161;
-  padding: 5px;
-  outline: none;
-  background-color: #d9d9d9;
-  opacity: 30%;
-}
-
 input {
   padding: 5px 10px;
   border-radius: 8px;
@@ -197,16 +188,8 @@ input {
   color: #3f3f3f;
   height: auto;
   min-height: 30px;
-  appearance: textfield !important; /* Fix för att se till att input ser normal ut */
+  appearance: textfield !important; 
 }
-
-/* Fix för att nummerinput ska visa pilar */
-input[type="number"] {
-  appearance: auto !important ;
-
-}
-
-
 
 
 
@@ -274,7 +257,7 @@ option {
 
 
 
-/* Habit Card styles*/
+//input färg
 .habit-select {
   position: relative;
   width: 100%;
@@ -377,7 +360,7 @@ option {
  .habit-select-menu label {
   font-size: 14px;  
   color: #616161;      
-  line-height: 1.4; // Justera radavståndet 
+  line-height: 1.4; // Ändrar radavståndet 
 
 
 }
@@ -401,22 +384,7 @@ option {
 //   // transform-origin: center; //utgår ifrån midden när den minskar
 //   box-sizing:content-box;
 // }
-// .habit-card {
-//   background: #fbfaf7;
-//   padding: 15px;
-//   border-radius: 8px;
-//   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-//   text-align: center;
-//   width: 80px;
- 
-//   flex: 1 1 calc(50% - 20px); /* 50% minus gap */
-//   max-width: calc(50% - 20px);
-//   margin: 10px;
-//     // transform: scale(0.7); 
-//   // transform-origin: center; 
-//   box-sizing:content-box;
- 
-// }
+
 
 .habit-card {
   width: calc(50% - 10px);
@@ -477,7 +445,7 @@ option {
 
 }
 
-/* Footer: antal repetioner, placerat längst ner till höger */
+//Footer: antal repetioner, placerat längst ner till höger
 .habit-card-footer {
   text-align: right;
   font-size: 14px;
@@ -519,3 +487,67 @@ option {
   height:100px;
   width: 100px;
 }
+
+.habit-repetition-actions{
+  flex-direction: row;
+  align-items: center !important;
+  text-align: center !important;
+  // border: 0.5px solid palevioletred;
+  margin-top: 20px;
+  margin-bottom: 30px;
+
+}
+.habit-action-btn{
+  background-color: $card-backgroundcolor;
+  width: 20px;
+  height: 20px;
+  color: $secondary-textcolor;
+  // // display: block;
+  // flex-direction: row;
+  // justify-content: center !important;
+  // // text-align: center !important;
+}
+   
+              // #add-repetition
+              // #sub-repetition
+              // #reset-repetition
+
+
+// Uppdatering 6 mars
+
+#habit-count{
+  display: flex;
+  justify-content:space-between;
+  font-size: 12px;
+
+}
+
+#add-repetition, #sub-repetition, #reset-repetition {
+  width: 5px !important;
+  height: 5px !important;
+  background-size: contain;
+  background-repeat: no-repeat;
+  border: none;
+  background-color: transparent !important ;
+  cursor: pointer;
+}
+#add-repetition {
+  background-image: url("/images/habits/habit-add.svg");
+}
+#add-repetition:hover {
+  background-image: url("/images/habits/habit-add-hover-yellow.svg");
+}
+#sub-repetition {
+  background-image: url("/images/habits/habit-subtrac.svg");
+}
+#sub-repetition:hover {
+  background-image: url("/images/habits/habit-subtrac-hover-yellow.svg");
+}
+#reset-repetition {
+  background-image: url("/images/habits/habit-reset.svg");
+}
+#reset-repetition:hover {
+  background-image: url("/images/habits/habit-reset-hover-yellow.svg");
+}
+
+
