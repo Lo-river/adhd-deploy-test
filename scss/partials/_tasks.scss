@@ -420,25 +420,25 @@
  #todo.view-task .todo-title,
  #todo.view-task .category-title,
  #todo.view-task .todo-description {
-     background-color: #f9f9f9; /* Light background to indicate view-only */
-     color: #666; /* Muted color for non-editable fields */
-     border: none; /* Remove any border to indicate it's not an editable input */
-     cursor: default; /* Make the cursor show a 'default' cursor to prevent interaction */
+     background-color: #f9f9f9; 
+     color: #666; 
+     border: none; 
+     cursor: default; 
  }
  
  #todo.view-task .todo-title {
-     font-weight: bold; /* Make title stand out */
+     font-weight: bold; 
  }
  
  #todo.view-task .category-title {
-     font-style: italic; /* Make category slightly different */
+     font-style: italic; 
  }
  
  #todo.view-task .todo-description {
-     color: #777; /* Lighter color for description */
+     color: #777; 
  }
  
- /* Styling for edit task modal */
+ /* Styling för edit task modal*/
  #todo.edit-task .todo-title,
  #todo.edit-task .category-title,
  #todo.edit-task .todo-description {
@@ -461,11 +461,11 @@
  }
  
  .save-btn {
-   display: none; /* Hidden by default */
+   display: none; /* Göm i view mode */
  }
  
  .save-btn.show {
-   display: block; /* Show save button when in edit mode */
+   display: block; /* Visa i edit mode */
  }
  
  /* Filter & Sortering - Justera placering åt höger */
@@ -527,7 +527,7 @@
  
    /* Positionera menyn korrekt under knappen */
    top: 100%;
-   left: 48%;
+   left: 22%;
     
    flex-direction: column;
    gap: 12px;
