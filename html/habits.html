@@ -26,31 +26,32 @@
       </header>
       <p class="date">MONDAY 17 MAY 2025</p>
       <h1>HABITS</h1>
-
-      <div class="filter-sort-container">
-         
-        <button class="dropdown-btn filter-btn" id="filter-btn">
-          Filter <img src="/images/filter-up.svg" alt="Filter icon" />
-        </button>
-         
-        <div id="filter-menu" class="filter-menu">
-          <span class="filter-title">Filter</span>
-          <label class="custom-checkbox">
-            <input type="checkbox" id="filter-finished" />
-            <span class="checkmark"></span> Finished
-          </label>
-          <label class="custom-checkbox">
-            <input type="checkbox" id="filter-upcoming" />
-            <span class="checkmark"></span> Upcoming
-          </label>
-        </div>
- 
-        <button class="dropdown-btn sort-btn" id="sort-btn">
-          Sort <img src="/images/sort-arrows.svg" alt="Sort icon" />
-        </button>
-      </div>
       
-  
+
+       <div id="habit-filter-sort-wrapper">
+        <div class="habit-filter-sort-container">
+          <button class="dropdown-btn habit-filter-btn" id="habit-filter-btn">
+            Filter <img src="/images/filter-up.svg" alt="Filter icon" />
+          </button>
+          <div id="habit-filter-menu" class="habit-filter-menu">
+            <span class="filter-title">Filter by Priority</span>
+            <select id="habit-filter-priority">
+              <option value="all">All</option>
+              <option value="low">Low</option>
+              <option value="normal">Normal</option>
+              <option value="high">High</option>
+            </select>
+          </div>
+          <button class="dropdown-btn habit-sort-btn" id="habit-sort-btn">
+            Sort Repetitions <img src="/images/sort-arrows.svg" alt="Sort icon" />
+          </button>
+          <button class="dropdown-btn habit-sort-btn" id="habit-priority-sort-btn">
+            Sort Priority <img src="/images/sort-arrows.svg" alt="Sort icon" />
+          </button>
+        </div>
+       </div>
+
+    
 
       <div class="card-container">
         <div id="habit-popup" class="popup">
@@ -147,7 +148,4 @@
   </body>
 </html> 
 
-
-
-<!-- Ny innnan läggdags 6 mars 05.33 -->
 
