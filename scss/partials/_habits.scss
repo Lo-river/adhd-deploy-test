@@ -4,11 +4,7 @@
 
 }
 
-
-
-
 // Habit Filter & Sortering
-
 
 #habit-filter-sort-wrapper{
   display: flex;
@@ -29,7 +25,6 @@
   // border: 3px solid rgb(37, 111, 222);
 
 }
-
 
 .habit-filter-btn, .habit-sort-btn {
   display: flex;
@@ -64,12 +59,10 @@
   }
 }
 
-
 .habit-filter-btn, .habit-sort-btn {
   color: #000 !important; /* Försäkrar att texten blir svart på habit sidan TA INTE BORT!!*/
 }
 
-// Justerar filter-menyn
 .habit-filter-menu {
   display: none;
   position: absolute;
@@ -158,12 +151,6 @@
 .habit-filter-btn {
   position: relative;
 }
-
-
-// FILTER OCH SORT
-
-
-
 
 .card-container{
   // display: flex;
@@ -265,11 +252,6 @@
 }
 
 
-
-
-
-
-
 .wrap-container.habit-list-container {
   margin-top: 20px;
   border: solid 4px orange; //Bara för att kolla styling
@@ -285,10 +267,6 @@
   width: 100%;
 
 }
-
-
-
-
 
 
   .bottom-nav .cta-button {
@@ -308,7 +286,6 @@
   .bottom-nav .cta-button:hover {
     background-image: url("/images/cta-button-hover.svg");
   }
-
 
 
 
@@ -380,7 +357,6 @@ option {
 
 
 
-
 .delete-btn, .delete-svg {
   background-image: url("/images/trash.svg");
   height: 20px;
@@ -411,10 +387,6 @@ option {
   background-color: transparent !important;
   color: #FFBC2C !important;
 }
-
-
-
-
 
 
 
