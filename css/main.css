@@ -821,9 +821,7 @@ input {
   color: #3f3f3f;
   height: auto;
   min-height: 30px;
-  -webkit-appearance: textfield !important;
-     -moz-appearance: textfield !important;
-          appearance: textfield !important;
+  appearance: textfield !important;
 }
 
 select {
@@ -1458,12 +1456,14 @@ img#logo-inlog {
   width: 20px;
 }
 .todo .todo-content .time-input {
-  width: 100%;
-  padding: 8px;
-  font-size: 14px;
+  width: 33%;
+  padding: 4px;
+  font-size: 13px;
+  color: #616161;
   border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #fff;
+  border-radius: 3px;
+  background-color: #D9D9D9;
+  opacity: 30%;
 }
 .todo .todo-content .time-input:disabled {
   background-color: #f1f1f1;
@@ -1527,21 +1527,6 @@ img#logo-inlog {
   display: block;
 }
 
-.edit-icon {
-  display: block;
-  cursor: pointer;
-  font-size: 20px;
-  color: #616161;
-  position: absolute;
-  top: 10px;
-  right: 40px;
-  z-index: 10;
-  transition: color 0.3s ease;
-}
-.edit-icon:hover {
-  color: #FF9900;
-}
-
 .close-icon {
   color: #616161;
   position: absolute;
@@ -1556,7 +1541,6 @@ img#logo-inlog {
   background-color: #FFBC2C;
   display: flex;
   justify-content: center;
-  width: -moz-fit-content;
   width: fit-content;
   margin: 20px auto;
   padding: 10px 15px;
@@ -1570,8 +1554,8 @@ img#logo-inlog {
 
 /* Klasser för delete & edit hover: */
 span.delete-btn .edit-btn {
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -1645,8 +1629,7 @@ span.delete-btn .edit-btn {
 .checkbox-icon img {
   max-width: 100%;
   max-height: 100%;
-  -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
 }
 
 .checkbox-input:checked + .checkbox-icon {
@@ -1703,6 +1686,7 @@ h2[contenteditable], h3[contenteditable], p[contenteditable] {
   outline: none;
   background-color: #D9D9D9;
   opacity: 30%;
+  max-width: 300px;
 }
 
 .bottom-nav {
@@ -1892,6 +1876,10 @@ h2[contenteditable], h3[contenteditable], p[contenteditable] {
   position: relative;
 }
 
+#category-select {
+  max-width: 330px;
+}
+
 body {
   background-color: #F3F2EE;
   color: #000000;
@@ -1906,4 +1894,4 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-}/*# sourceMappingURL=main.css.map */
+}
