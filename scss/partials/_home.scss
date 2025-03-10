@@ -1,0 +1,91 @@
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+a {
+    text-decoration: none; 
+    color: #FFBC2C; 
+    font-weight: lighter; 
+    transition: color 0.3s ease-in-out; 
+}
+
+// Specifik styling för "View All"-länkar
+.view-all-link {
+    display: flex;
+    text-align: center !important;
+    font-size: 12px;
+    margin-top: 1px;
+    font-weight: lighter !important;
+    color: #FFBC2C;
+    
+    &:hover {
+        text-decoration: underline; 
+        color: darken(#FFBC2C, 10%); 
+    }
+}
+
+.home-section h2 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+// Container för hela home-sidan
+.wrap-container {
+    max-width: 430px;
+    margin: 0 auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+// Rubriker
+h2 {
+    font-size: 18px;
+    font-weight: lighter; 
+    margin-top: 15px;
+    text-align: left;
+    width: 120%;
+}
+
+// Sektioner (Tasks, Habits, Events)
+.home-section {
+    width: 100%;
+    max-width: 300px;
+    margin-right: 5%; 
+}
+
+// Korten som visar informationen
+.home-card {
+    background-color: #FBFAF7;
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    margin-bottom: 5px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+// Rubriken i varje kort
+.home-card-title {
+    font-size: 16px;
+    font-weight: lighter;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+// Undertexten i varje kort
+.home-card-subtitle {
+    font-size: 12px;
+    color: #7D7D7D;
+    text-align: right;
+    margin-right: 5px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+
