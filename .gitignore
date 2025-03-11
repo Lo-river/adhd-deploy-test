@@ -19,3 +19,4 @@ Thumbs.db
 # Ignorera allt i en eventuell "dist"-mapp om ni kompilerar något
 /dist/
 .DS_Store
+.DS_Store
