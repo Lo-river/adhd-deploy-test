@@ -57,3 +57,10 @@ title: "ADHD Application"
 description: "En Jekyll-baserad webbplats"
 baseurl: "" # Lämna tomt för user/org pages, annars använd "/repo-namn"
 url: "https://lo-river.github.io/adhd-deploy-test"
+
+
+title: "ADHD Application"
+description: "En Jekyll-baserad webbplats"
+theme: minima
+plugins:
+  - jekyll-feed
